@@ -103,7 +103,7 @@ class CapturePipeline {
         languageCode: event.languageCode,
       );
       if (result.outcome == CaptureOutcome.pendingOffline) {
-        return _pending(event, storePending: storePending);
+        return await _pending(event, storePending: storePending);
       }
       return ProcessedCapture(
         event: event,
@@ -141,7 +141,7 @@ class CapturePipeline {
         languageCode: event.languageCode,
       );
       if (result.outcome == CaptureOutcome.pendingOffline) {
-        return _pending(event, storePending: storePending);
+        return await _pending(event, storePending: storePending);
       }
       return ProcessedCapture(
         event: event,

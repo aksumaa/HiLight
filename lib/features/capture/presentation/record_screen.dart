@@ -10,7 +10,6 @@ import '../../../core/l10n/app_localizations.dart';
 import '../../../core/theme/hilight_colors.dart';
 import '../../../core/theme/hilight_theme.dart';
 import '../domain/capture_event.dart';
-import '../domain/capture_source.dart';
 import 'language_chips.dart';
 import 'permission_denied_view.dart';
 import 'waveform_bars.dart';

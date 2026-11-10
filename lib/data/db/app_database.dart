@@ -4,7 +4,6 @@ import 'package:drift/drift.dart';
 import 'package:drift/native.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
-import 'package:sqlite3_flutter_libs/sqlite3_flutter_libs.dart';
 
 import '../models/library_item.dart';
 
@@ -73,7 +72,6 @@ class AppDatabase extends _$AppDatabase {
   );
 
   static Future<AppDatabase> open() async {
-    await applyWorkaroundToOpenSqlite3OnOldAndroidVersions();
     final directory = await getApplicationDocumentsDirectory();
     final file = File(p.join(directory.path, 'hilight.sqlite'));
     return AppDatabase(NativeDatabase(file));

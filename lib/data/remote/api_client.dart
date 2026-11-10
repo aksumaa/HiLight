@@ -15,12 +15,10 @@ class ApiException implements Exception {
 }
 
 class ApiClient {
-  ApiClient({required Dio dio, required TokenStore tokens})
-    : _dio = dio,
-      _tokens = tokens;
+  ApiClient({required this.dio, required this.tokens});
 
-  final Dio _dio;
-  final TokenStore _tokens;
+  final Dio dio;
+  final TokenStore tokens;
 
   Future<TokenPair> register({required String email, required String password}) {
     return _session('post', '/auth/register', {'email': email, 'password': password});
@@ -30,23 +28,23 @@ class ApiClient {
     return _session('post', '/auth/login', {'email': email, 'password': password});
   }
 
-  Future<void> logout() => _tokens.clear();
+  Future<void> logout() => tokens.clear();
 
   Future<String?> bearer() async {
-    final access = await _tokens.readAccess();
+    final access = await tokens.readAccess();
     if (access != null && !_expired(access)) return access;
-    final refresh = await _tokens.readRefresh();
+    final refresh = await tokens.readRefresh();
     if (refresh == null) return null;
     try {
-      final response = await _dio.post<Map<String, dynamic>>(
+      final response = await dio.post<Map<String, dynamic>>(
         '/auth/refresh',
         data: {'refresh_token': refresh},
       );
       final pair = _pair(response.data);
-      await _tokens.write(pair);
+      await tokens.write(pair);
       return pair.access;
     } on DioException {
-      await _tokens.clear();
+      await tokens.clear();
       return null;
     }
   }
@@ -55,13 +53,13 @@ class ApiClient {
     final token = await bearer();
     if (token == null) throw ApiException('Sign in required.');
     if (item.deletedAt != null) {
-      await _dio.delete(
+      await dio.delete(
         '/items/${item.id}',
         options: Options(headers: {'Authorization': 'Bearer $token'}),
       );
       return;
     }
-    await _dio.post(
+    await dio.post(
       '/items',
       data: _body(item),
       options: Options(headers: {'Authorization': 'Bearer $token'}),
@@ -71,12 +69,12 @@ class ApiClient {
   Future<RemotePage> pullItems({String? updatedSince, int offset = 0}) async {
     final token = await bearer();
     if (token == null) throw ApiException('Sign in required.');
-    final response = await _dio.get<Map<String, dynamic>>(
+    final response = await dio.get<Map<String, dynamic>>(
       '/items',
       queryParameters: {
         'limit': 100,
         'offset': offset,
-        if (updatedSince != null) 'updated_since': updatedSince,
+        'updated_since': ?updatedSince,
       },
       options: Options(headers: {'Authorization': 'Bearer $token'}),
     );
@@ -93,9 +91,9 @@ class ApiClient {
   }
 
   Future<TokenPair> _session(String method, String path, Map<String, dynamic> body) async {
-    final response = await _dio.post<Map<String, dynamic>>(path, data: body);
+    final response = await dio.post<Map<String, dynamic>>(path, data: body);
     final pair = _pair(response.data);
-    await _tokens.write(pair);
+    await tokens.write(pair);
     return pair;
   }
 

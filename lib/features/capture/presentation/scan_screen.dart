@@ -8,7 +8,6 @@ import '../../../core/l10n/app_localizations.dart';
 import '../../../core/theme/hilight_colors.dart';
 import '../../../core/theme/hilight_theme.dart';
 import '../domain/capture_event.dart';
-import '../domain/capture_source.dart';
 import '../domain/recognition.dart';
 import 'capture_frame_overlay.dart';
 import 'language_chips.dart';

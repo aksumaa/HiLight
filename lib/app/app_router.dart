@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../core/l10n/app_localizations.dart';
 import '../features/account/presentation/account_screen.dart';
-import '../features/capture/domain/capture_pipeline.dart';
+import '../features/capture/domain/capture_event.dart';
 import '../features/capture/presentation/edit_capture_screen.dart';
 import '../features/capture/presentation/record_screen.dart';
 import '../features/capture/presentation/scan_screen.dart';

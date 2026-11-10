@@ -11,7 +11,6 @@ import '../../../core/theme/hilight_colors.dart';
 import '../../../core/theme/hilight_theme.dart';
 import '../../../data/models/library_item.dart';
 import '../domain/capture_event.dart';
-import '../domain/capture_pipeline.dart';
 import 'language_chips.dart';
 import 'local_audio_player.dart';
 

@@ -119,7 +119,10 @@ class CaptureLanguageController extends Notifier<String> {
   @override
   String build() {
     final stored = ref.watch(sharedPreferencesProvider).getString(storageKey);
-    if (stored == 'en' || stored == 'ru' || stored == 'uz') return stored;
+    if (stored != null &&
+        (stored == 'en' || stored == 'ru' || stored == 'uz')) {
+      return stored;
+    }
     final code = PlatformDispatcher.instance.locale.languageCode;
     if (code == 'ru' || code == 'uz') return code;
     return 'en';
