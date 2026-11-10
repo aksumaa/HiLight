@@ -66,7 +66,7 @@ class _AccountScreenState extends ConsumerState<AccountScreen> {
     return Scaffold(
       appBar: AppBar(title: Text(l10n.accountTitle)),
       body: ListView(
-        padding: const EdgeInsets.all(24),
+        padding: const EdgeInsets.fromLTRB(20, 12, 20, 32),
         children: [
           Text(
             _registering ? l10n.registerTitle : l10n.loginTitle,
@@ -87,7 +87,7 @@ class _AccountScreenState extends ConsumerState<AccountScreen> {
           ),
           if (_error != null) ...[
             const SizedBox(height: 12),
-            Text(_error!, style: TextStyle(color: colors.voice)),
+            Text(_error!, style: TextStyle(color: colors.primary, fontSize: 14)),
           ],
           const SizedBox(height: 20),
           FilledButton(

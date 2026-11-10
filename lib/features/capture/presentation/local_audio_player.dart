@@ -48,13 +48,9 @@ class _LocalAudioPlayerState extends State<LocalAudioPlayer> {
     final colors = context.hilight;
     final playing = _state == PlayerState.playing;
     return DecoratedBox(
-      decoration: BoxDecoration(
-        color: colors.card,
-        borderRadius: BorderRadius.circular(HilightColors.radius),
-        boxShadow: colors.cardShadow,
-      ),
+      decoration: colors.surface(),
       child: ListTile(
-        leading: Icon(Icons.graphic_eq, color: colors.voice),
+        leading: Icon(Icons.graphic_eq, color: colors.text),
         title: Text(
           widget.path.split('/').last,
           maxLines: 1,
@@ -63,7 +59,7 @@ class _LocalAudioPlayerState extends State<LocalAudioPlayer> {
         ),
         trailing: IconButton(
           onPressed: _toggle,
-          icon: Icon(playing ? Icons.pause_circle : Icons.play_circle, color: colors.voice),
+          icon: Icon(playing ? Icons.pause_circle_outline : Icons.play_circle_outline, color: colors.text),
         ),
       ),
     );

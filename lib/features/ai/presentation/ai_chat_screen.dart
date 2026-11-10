@@ -68,7 +68,7 @@ class _AiChatScreenState extends ConsumerState<AiChatScreen> {
                   ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+            padding: const EdgeInsets.fromLTRB(20, 8, 20, 24),
             child: Row(
               children: [
                 Expanded(
@@ -126,28 +126,21 @@ class _MessageView extends StatelessWidget {
       return Align(
         alignment: Alignment.centerRight,
         child: Container(
-          margin: const EdgeInsets.only(bottom: 12),
-          padding: const EdgeInsets.all(14),
-          decoration: BoxDecoration(
-            color: colors.primary,
-            borderRadius: BorderRadius.circular(HilightColors.radius),
-          ),
+          margin: const EdgeInsets.only(bottom: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
+          decoration: colors.surface(radius: 18),
           child: Text(
             message.text ?? '',
-            style: TextStyle(color: colors.card, fontFamily: HilightTheme.uiFont),
+            style: TextStyle(color: colors.text, fontFamily: HilightTheme.uiFont, fontSize: 15, height: 1.4),
           ),
         ),
       );
     }
     final fromNotes = reply.kind == AiAnswerKind.fromNotes;
     return Container(
-      margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: colors.card,
-        borderRadius: BorderRadius.circular(HilightColors.radius),
-        boxShadow: colors.cardShadow,
-      ),
+      margin: const EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.all(20),
+      decoration: colors.surface(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -155,7 +148,7 @@ class _MessageView extends StatelessWidget {
             fromNotes ? l10n.aiFromNotes : l10n.aiGeneral,
             style: TextStyle(
               color: fromNotes ? colors.quote : colors.secondary,
-              fontWeight: FontWeight.w600,
+              fontWeight: FontWeight.w500,
               fontSize: 13,
             ),
           ),
@@ -173,6 +166,13 @@ class _MessageView extends StatelessWidget {
                 for (final item in reply.sources)
                   ActionChip(
                     label: Text(_snippet(item.text), overflow: TextOverflow.ellipsis),
+                    backgroundColor: colors.card,
+                    side: BorderSide(color: colors.hairline),
+                    labelStyle: TextStyle(
+                      fontFamily: HilightTheme.uiFont,
+                      fontSize: 13,
+                      color: colors.text,
+                    ),
                     onPressed: () => context.push('/item/${item.id}'),
                   ),
               ],

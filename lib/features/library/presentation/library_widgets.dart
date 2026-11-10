@@ -51,7 +51,7 @@ class SectionLabel extends StatelessWidget {
         color: context.hilight.secondary,
         fontFamily: HilightTheme.uiFont,
         fontSize: 13,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w500,
       ),
     );
   }

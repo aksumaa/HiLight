@@ -14,15 +14,11 @@ class InsightsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(l10n.insightsTitle)),
       body: Padding(
-        padding: const EdgeInsets.all(24),
+        padding: const EdgeInsets.fromLTRB(20, 8, 20, 120),
         child: DecoratedBox(
-          decoration: BoxDecoration(
-            color: colors.card,
-            borderRadius: BorderRadius.circular(HilightColors.radius),
-            boxShadow: colors.cardShadow,
-          ),
+          decoration: colors.surface(),
           child: Padding(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(24),
             child: Text(
               l10n.insightsBody,
               style: TextStyle(

@@ -12,7 +12,7 @@ class ListLibraryLayout extends LibraryLayout {
   Widget build(BuildContext context, List<LibraryItem> items, ValueChanged<LibraryItem> onOpen) {
     return ListView(
       key: const Key('library-list'),
-      padding: const EdgeInsets.fromLTRB(20, 8, 20, 24),
+      padding: const EdgeInsets.fromLTRB(20, 8, 20, 120),
       children: [
         for (final item in items)
           LibraryItemTile(item: item, onOpen: onOpen),
@@ -28,7 +28,7 @@ class CardsLibraryLayout extends LibraryLayout {
   Widget build(BuildContext context, List<LibraryItem> items, ValueChanged<LibraryItem> onOpen) {
     return ListView(
       key: const Key('library-cards'),
-      padding: const EdgeInsets.fromLTRB(20, 8, 20, 24),
+      padding: const EdgeInsets.fromLTRB(20, 8, 20, 120),
       children: [
         for (final item in items)
           LibraryItemTile(item: item, onOpen: onOpen, kind: LibraryTileKind.card),
@@ -44,7 +44,7 @@ class CompactLibraryLayout extends LibraryLayout {
   Widget build(BuildContext context, List<LibraryItem> items, ValueChanged<LibraryItem> onOpen) {
     return ListView(
       key: const Key('library-compact'),
-      padding: const EdgeInsets.fromLTRB(20, 8, 20, 24),
+      padding: const EdgeInsets.fromLTRB(20, 8, 20, 120),
       children: [
         for (final item in items)
           LibraryItemTile(item: item, onOpen: onOpen, kind: LibraryTileKind.compact),

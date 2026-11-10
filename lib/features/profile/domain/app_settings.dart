@@ -62,3 +62,12 @@ Color accentColor(AccentChoice choice) {
     AccentChoice.ai => HilightColors.light.ai,
   };
 }
+
+Color accentTint(AccentChoice choice) {
+  return switch (choice) {
+    AccentChoice.quote => HilightColors.light.quoteTint,
+    AccentChoice.voice => HilightColors.light.voiceTint,
+    AccentChoice.note => HilightColors.light.noteTint,
+    AccentChoice.ai => HilightColors.light.aiTint,
+  };
+}

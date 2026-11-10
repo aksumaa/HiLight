@@ -31,6 +31,7 @@ class ProfileScreen extends ConsumerWidget {
         actions: const [SyncIconButton()],
       ),
       body: ListView(
+        padding: const EdgeInsets.fromLTRB(20, 8, 20, 120),
         children: [
           ListTile(
             title: Text(l10n.appearanceTitle),

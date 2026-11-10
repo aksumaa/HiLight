@@ -51,7 +51,7 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
             ),
           ),
           SizedBox(
-            height: 44,
+            height: 64,
             child: ListView(
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -125,13 +125,16 @@ class _FilterChip extends StatelessWidget {
       label: Text(label),
       selected: selected,
       onSelected: (_) => onSelected(),
-      selectedColor: colors.primary,
+      selectedColor: colors.card,
       backgroundColor: colors.card,
       labelStyle: TextStyle(
         fontFamily: HilightTheme.uiFont,
-        color: selected ? colors.card : colors.text,
+        fontSize: 14,
+        fontWeight: selected ? FontWeight.w500 : FontWeight.w400,
+        color: selected ? colors.primary : colors.text,
       ),
-      side: BorderSide(color: colors.secondary.withValues(alpha: 0.35)),
+      side: BorderSide(color: selected ? colors.primary.withValues(alpha: 0.45) : colors.hairline),
+      shape: const StadiumBorder(),
     );
   }
 }

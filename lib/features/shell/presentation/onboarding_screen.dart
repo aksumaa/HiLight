@@ -72,7 +72,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                       height: 8,
                       margin: const EdgeInsets.only(right: 6),
                       decoration: BoxDecoration(
-                        color: i == _page ? colors.primary : colors.secondary.withValues(alpha: 0.35),
+                        color: i == _page ? colors.primary : colors.hairline,
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
@@ -113,7 +113,16 @@ class _Slide extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(title, style: HilightTheme.quoteStyle(colors).copyWith(fontSize: 32)),
+        Text(
+          title,
+          style: TextStyle(
+            fontFamily: HilightTheme.uiFont,
+            fontSize: 32,
+            height: 1.2,
+            fontWeight: FontWeight.w500,
+            color: colors.text,
+          ),
+        ),
         const SizedBox(height: 16),
         Text(
           body,

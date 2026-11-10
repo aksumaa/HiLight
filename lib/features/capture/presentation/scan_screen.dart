@@ -177,10 +177,7 @@ class _ScanScreenState extends ConsumerState<ScanScreen> {
                 ),
                 const Spacer(),
                 DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: colors.card,
-                    borderRadius: BorderRadius.circular(HilightColors.radius),
-                  ),
+                  decoration: colors.surface(radius: 16),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                     child: Text(
@@ -229,7 +226,11 @@ class _RoundIconButton extends StatelessWidget {
     final colors = context.hilight;
     return IconButton.filled(
       tooltip: tooltip,
-      style: IconButton.styleFrom(backgroundColor: colors.card, foregroundColor: colors.text),
+      style: IconButton.styleFrom(
+        backgroundColor: colors.card.withValues(alpha: 0.92),
+        foregroundColor: colors.text,
+        side: BorderSide(color: colors.hairline),
+      ),
       onPressed: onPressed,
       icon: Icon(icon),
     );
@@ -256,13 +257,13 @@ class _Shutter extends StatelessWidget {
           height: 76,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: colors.card,
-            border: Border.all(color: colors.primary, width: 4),
+            color: colors.card.withValues(alpha: 0.92),
+            border: Border.all(color: colors.ink.withValues(alpha: 0.75), width: 1.5),
           ),
           child: busy
               ? Padding(
                   padding: const EdgeInsets.all(22),
-                  child: CircularProgressIndicator(color: colors.primary, strokeWidth: 3),
+                  child: CircularProgressIndicator(color: colors.ink, strokeWidth: 2),
                 )
               : null,
         ),

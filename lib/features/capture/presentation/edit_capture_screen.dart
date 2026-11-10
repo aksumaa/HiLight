@@ -121,7 +121,23 @@ class _EditCaptureScreenState extends ConsumerState<EditCaptureScreen> {
         if (!didPop) _leave();
       },
       child: Scaffold(
-        appBar: AppBar(title: Text(l10n.editTitle)),
+        appBar: AppBar(
+          title: Text(l10n.editTitle),
+          actions: [
+            PopupMenuButton<String>(
+              icon: Icon(Icons.more_horiz, color: colors.secondary),
+              onSelected: (value) {
+                if (_busy) return;
+                if (value == 'again') _again();
+                if (value == 'discard') _discard();
+              },
+              itemBuilder: (context) => [
+                PopupMenuItem(value: 'again', child: Text(l10n.editRecognizeAgain)),
+                PopupMenuItem(value: 'discard', child: Text(l10n.editDiscard)),
+              ],
+            ),
+          ],
+        ),
         body: ListView(
           padding: const EdgeInsets.fromLTRB(20, 8, 20, 28),
           children: [
@@ -163,18 +179,11 @@ class _EditCaptureScreenState extends ConsumerState<EditCaptureScreen> {
               value: _language,
               onChanged: (code) => setState(() => _language = code),
             ),
-            const SizedBox(height: 20),
-            OutlinedButton(
-              onPressed: _busy ? null : _again,
-              child: Text(l10n.editRecognizeAgain),
-            ),
-            const SizedBox(height: 12),
+            const SizedBox(height: 28),
             FilledButton(
               onPressed: _busy ? null : _save,
               child: Text(l10n.editSave),
             ),
-            const SizedBox(height: 8),
-            TextButton(onPressed: _busy ? null : _discard, child: Text(l10n.editDiscard)),
           ],
         ),
       ),
@@ -213,10 +222,7 @@ class _EditCaptureScreenState extends ConsumerState<EditCaptureScreen> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
       child: DecoratedBox(
-        decoration: BoxDecoration(
-          color: colors.card,
-          borderRadius: BorderRadius.circular(HilightColors.radius),
-        ),
+        decoration: colors.surface(),
         child: Padding(
           padding: const EdgeInsets.all(14),
           child: Text(message, style: TextStyle(color: colors.secondary)),

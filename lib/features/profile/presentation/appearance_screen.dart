@@ -92,6 +92,7 @@ class AppearanceScreen extends ConsumerWidget {
               for (final choice in AccentChoice.values) ...[
                 _AccentDot(
                   color: accentColor(choice),
+                  tint: accentTint(choice),
                   selected: settings.accent == choice,
                   dotKey: Key('accent-${choice.name}'),
                   onTap: () => notifier.setAccent(choice),
@@ -141,12 +142,16 @@ class _Choice extends StatelessWidget {
       label: Text(label),
       selected: selected,
       onSelected: (_) => onTap(),
-      selectedColor: colors.primary,
+      selectedColor: colors.card,
       backgroundColor: colors.card,
       labelStyle: TextStyle(
         fontFamily: HilightTheme.uiFont,
-        color: selected ? colors.card : colors.text,
+        fontSize: 14,
+        fontWeight: selected ? FontWeight.w500 : FontWeight.w400,
+        color: selected ? colors.primary : colors.text,
       ),
+      side: BorderSide(color: selected ? colors.primary.withValues(alpha: 0.45) : colors.hairline),
+      shape: const StadiumBorder(),
     );
   }
 }
@@ -179,9 +184,9 @@ class _LayoutPreview extends StatelessWidget {
             color: colors.card,
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
-              color: selected ? colors.primary : colors.secondary.withValues(alpha: 0.35),
-              width: selected ? 2 : 1,
+              color: selected ? colors.primary.withValues(alpha: 0.55) : colors.hairline,
             ),
+            boxShadow: colors.cardShadow,
           ),
           child: Padding(
             padding: const EdgeInsets.all(10),
@@ -189,7 +194,7 @@ class _LayoutPreview extends StatelessWidget {
               children: [
                 _Mini(kind: kind),
                 const SizedBox(height: 8),
-                Text(label, style: TextStyle(fontSize: 12, color: colors.text)),
+                Text(label, style: TextStyle(fontSize: 13, color: colors.text)),
               ],
             ),
           ),
@@ -242,12 +247,14 @@ class _Mini extends StatelessWidget {
 class _AccentDot extends StatelessWidget {
   const _AccentDot({
     required this.color,
+    required this.tint,
     required this.selected,
     required this.dotKey,
     required this.onTap,
   });
 
   final Color color;
+  final Color tint;
   final bool selected;
   final Key dotKey;
   final VoidCallback onTap;
@@ -258,15 +265,18 @@ class _AccentDot extends StatelessWidget {
       key: dotKey,
       onTap: onTap,
       customBorder: const CircleBorder(),
-      child: Container(
-        width: 36,
-        height: 36,
-        decoration: BoxDecoration(
-          color: color,
-          shape: BoxShape.circle,
-          border: Border.all(
-            color: selected ? context.hilight.text : context.hilight.card,
-            width: 3,
+      child: SizedBox(
+        width: 48,
+        height: 48,
+        child: Center(
+          child: Container(
+            width: 28,
+            height: 28,
+            decoration: BoxDecoration(
+              color: tint,
+              shape: BoxShape.circle,
+              border: Border.all(color: color, width: selected ? 2 : 1.25),
+            ),
           ),
         ),
       ),
@@ -287,19 +297,15 @@ class _LivePreview extends StatelessWidget {
     final compact = settings.layout == LibraryLayoutKind.compact;
     return DecoratedBox(
       key: const Key('appearance-preview'),
-      decoration: BoxDecoration(
-        color: colors.card,
-        borderRadius: BorderRadius.circular(HilightColors.radius),
-        boxShadow: colors.cardShadow,
-      ),
+      decoration: colors.surface(),
       child: Padding(
         padding: EdgeInsets.all(compact ? 12 : 18),
         child: Row(
           children: [
             Container(
-              width: 8,
-              height: 8,
-              decoration: BoxDecoration(color: accent, shape: BoxShape.circle),
+              width: 2,
+              height: 18,
+              decoration: BoxDecoration(color: accent, borderRadius: BorderRadius.circular(2)),
             ),
             const SizedBox(width: 10),
             Expanded(
@@ -307,9 +313,13 @@ class _LivePreview extends StatelessWidget {
                 l10n.previewSample,
                 maxLines: compact ? 1 : 3,
                 overflow: TextOverflow.ellipsis,
-                style: settings.layout == LibraryLayoutKind.cards
-                    ? HilightTheme.quoteStyle(colors).copyWith(fontSize: 18)
-                    : const TextStyle(fontFamily: HilightTheme.uiFont, height: 1.35),
+                style: TextStyle(
+                  fontFamily: HilightTheme.uiFont,
+                  fontSize: settings.layout == LibraryLayoutKind.cards ? 18 : 15,
+                  height: 1.4,
+                  fontWeight: FontWeight.w400,
+                  color: colors.text,
+                ),
               ),
             ),
           ],

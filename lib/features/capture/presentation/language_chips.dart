@@ -30,13 +30,18 @@ class LanguageChips extends ConsumerWidget {
           ChoiceChip(
             label: Text(labels[code]!),
             selected: selected == code,
-            selectedColor: colors.primary,
+            selectedColor: colors.card,
+            backgroundColor: colors.card,
             labelStyle: TextStyle(
               fontFamily: HilightTheme.uiFont,
-              color: selected == code ? colors.card : colors.text,
+              fontSize: 14,
+              fontWeight: selected == code ? FontWeight.w500 : FontWeight.w400,
+              color: selected == code ? colors.primary : colors.text,
             ),
-            backgroundColor: colors.card,
-            side: BorderSide(color: colors.secondary.withValues(alpha: 0.35)),
+            side: BorderSide(
+              color: selected == code ? colors.primary.withValues(alpha: 0.45) : colors.hairline,
+            ),
+            shape: const StadiumBorder(),
             onSelected: (_) async {
               if (onChanged != null) {
                 onChanged!(code);

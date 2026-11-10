@@ -38,26 +38,30 @@ class LibraryItemTile extends StatelessWidget {
     };
     final date = DateFormat.yMMMd(Localizations.localeOf(context).toString()).format(item.createdAt);
     final body = item.text.isEmpty ? l10n.statusPending : item.text;
-    final quote = item.type == ItemType.quote || kind == LibraryTileKind.card;
+    final quote = item.type == ItemType.quote;
+    final shape = RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(HilightColors.radius),
+      side: BorderSide(color: colors.hairline),
+    );
     return Padding(
-      padding: EdgeInsets.only(bottom: kind == LibraryTileKind.compact ? 8 : 12),
-      child: Material(
-        color: colors.card,
-        elevation: 0,
-        shadowColor: colors.shadow,
-        shape: RoundedRectangleBorder(
+      padding: const EdgeInsets.only(bottom: 16),
+      child: DecoratedBox(
+        decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(HilightColors.radius),
+          boxShadow: colors.cardShadow,
         ),
-        child: InkWell(
-          onTap: () => onOpen(item),
-          borderRadius: BorderRadius.circular(HilightColors.radius),
-          child: Ink(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(HilightColors.radius),
-              boxShadow: kind == LibraryTileKind.compact ? null : colors.cardShadow,
-            ),
+        child: Material(
+          color: colors.card,
+          elevation: 0,
+          shape: shape,
+          child: InkWell(
+            onTap: () => onOpen(item),
+            customBorder: shape,
             child: Padding(
-              padding: EdgeInsets.all(kind == LibraryTileKind.card ? 20 : 14),
+              padding: EdgeInsets.symmetric(
+                horizontal: kind == LibraryTileKind.compact ? 16 : 20,
+                vertical: kind == LibraryTileKind.card ? 24 : 18,
+              ),
               child: kind == LibraryTileKind.compact
                   ? _Compact(accent: accent, body: body, date: date, colors: colors)
                   : _Full(
@@ -96,11 +100,11 @@ class _Compact extends StatelessWidget {
     return Row(
       children: [
         Container(
-          width: 8,
-          height: 8,
-          decoration: BoxDecoration(color: accent, shape: BoxShape.circle),
+          width: 2,
+          height: 16,
+          decoration: BoxDecoration(color: accent, borderRadius: BorderRadius.circular(2)),
         ),
-        const SizedBox(width: 10),
+        const SizedBox(width: 12),
         Expanded(
           child: Text(
             body,
@@ -110,7 +114,7 @@ class _Compact extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 8),
-        Text(date, style: TextStyle(color: colors.secondary, fontSize: 12)),
+        Text(date, style: TextStyle(color: colors.secondary, fontSize: 13)),
       ],
     );
   }
@@ -145,14 +149,21 @@ class _Full extends StatelessWidget {
         Row(
           children: [
             Container(
-              width: 8,
-              height: 8,
-              decoration: BoxDecoration(color: accent, shape: BoxShape.circle),
+              width: 2,
+              height: 14,
+              decoration: BoxDecoration(color: accent, borderRadius: BorderRadius.circular(2)),
             ),
-            const SizedBox(width: 8),
-            Text(source, style: TextStyle(color: colors.secondary, fontFamily: HilightTheme.uiFont)),
+            const SizedBox(width: 10),
+            Text(
+              source,
+              style: TextStyle(
+                color: colors.secondary,
+                fontFamily: HilightTheme.uiFont,
+                fontSize: 13,
+              ),
+            ),
             const Spacer(),
-            Text(date, style: TextStyle(color: colors.secondary, fontSize: 12)),
+            Text(date, style: TextStyle(color: colors.secondary, fontSize: 13)),
           ],
         ),
         const SizedBox(height: 10),
@@ -166,7 +177,7 @@ class _Full extends StatelessWidget {
         ),
         if (pending) ...[
           const SizedBox(height: 8),
-          Text(l10n.statusPending, style: TextStyle(color: colors.quote, fontSize: 13)),
+          Text(l10n.statusPending, style: TextStyle(color: colors.quote, fontSize: 13, fontWeight: FontWeight.w500)),
         ],
       ],
     );

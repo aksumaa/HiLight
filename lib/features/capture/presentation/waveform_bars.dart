@@ -23,11 +23,13 @@ class WaveformBars extends StatelessWidget {
                   alignment: Alignment.center,
                   child: FractionallySizedBox(
                     heightFactor: 0.15 + (0.85 * level.clamp(0, 1)),
-                    widthFactor: 1,
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        color: colors.voice,
-                        borderRadius: BorderRadius.circular(8),
+                    child: SizedBox(
+                      width: 3,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: colors.voice,
+                          borderRadius: BorderRadius.circular(2),
+                        ),
                       ),
                     ),
                   ),

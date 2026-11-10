@@ -25,7 +25,7 @@ class _DeviceScreenState extends ConsumerState<DeviceScreen> {
     return Scaffold(
       appBar: AppBar(title: Text(l10n.deviceTitle)),
       body: ListView(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.fromLTRB(20, 8, 20, 32),
         children: [
           Text(
             l10n.deviceBody,
@@ -34,13 +34,9 @@ class _DeviceScreenState extends ConsumerState<DeviceScreen> {
           const SizedBox(height: 20),
           if (_lastText != null)
             DecoratedBox(
-              decoration: BoxDecoration(
-                color: colors.card,
-                borderRadius: BorderRadius.circular(HilightColors.radius),
-                boxShadow: colors.cardShadow,
-              ),
+              decoration: colors.surface(),
               child: Padding(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(20),
                 child: Text(_lastText!, style: HilightTheme.quoteStyle(colors).copyWith(fontSize: 20)),
               ),
             ),

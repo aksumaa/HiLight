@@ -91,22 +91,44 @@ class _ItemBodyState extends ConsumerState<_ItemBody> {
       _ => l10n.languageEnglish,
     };
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.itemDetailTitle)),
+      appBar: AppBar(
+        title: Text(l10n.itemDetailTitle),
+        actions: [
+          PopupMenuButton<String>(
+            icon: Icon(Icons.more_horiz, color: colors.secondary),
+            onSelected: (value) {
+              switch (value) {
+                case 'copy':
+                  _copy();
+                case 'edit':
+                  setState(() => _editing = true);
+                case 'delete':
+                  _delete();
+              }
+            },
+            itemBuilder: (context) => [
+              PopupMenuItem(value: 'copy', child: Text(l10n.itemCopy)),
+              if (!_editing) PopupMenuItem(value: 'edit', child: Text(l10n.itemEdit)),
+              PopupMenuItem(value: 'delete', child: Text(l10n.itemDelete)),
+            ],
+          ),
+        ],
+      ),
       body: ListView(
-        padding: const EdgeInsets.fromLTRB(20, 8, 20, 32),
+        padding: const EdgeInsets.fromLTRB(20, 12, 20, 32),
         children: [
           Row(
             children: [
               Container(
-                width: 10,
-                height: 10,
-                decoration: BoxDecoration(color: accent, shape: BoxShape.circle),
+                width: 2,
+                height: 16,
+                decoration: BoxDecoration(color: accent, borderRadius: BorderRadius.circular(2)),
               ),
-              const SizedBox(width: 8),
-              Text(source, style: TextStyle(color: colors.secondary)),
+              const SizedBox(width: 10),
+              Text(source, style: TextStyle(color: colors.secondary, fontSize: 14)),
             ],
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 20),
           if (_editing)
             TextField(
               controller: _text,
@@ -121,7 +143,7 @@ class _ItemBodyState extends ConsumerState<_ItemBody> {
                   ? HilightTheme.quoteStyle(colors)
                   : const TextStyle(fontFamily: HilightTheme.uiFont, fontSize: 18, height: 1.4),
             ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 20),
           if (_editing) ...[
             TextField(controller: _tag, decoration: InputDecoration(labelText: l10n.editTag)),
             const SizedBox(height: 12),
@@ -131,26 +153,16 @@ class _ItemBodyState extends ConsumerState<_ItemBody> {
               decoration: InputDecoration(labelText: l10n.editPage),
             ),
           ] else ...[
-            if (item.tag != null) Text('${l10n.editTag}: ${item.tag}'),
-            if (item.page != null) Text('${l10n.editPage}: ${item.page}'),
-            Text('${l10n.editLanguage}: $language'),
+            if (item.tag != null)
+              Text('${l10n.editTag}: ${item.tag}', style: TextStyle(color: colors.secondary, fontSize: 14)),
+            if (item.page != null)
+              Text('${l10n.editPage}: ${item.page}', style: TextStyle(color: colors.secondary, fontSize: 14)),
+            Text('${l10n.editLanguage}: $language', style: TextStyle(color: colors.secondary, fontSize: 14)),
           ],
-          const SizedBox(height: 20),
-          Wrap(
-            spacing: 8,
-            children: [
-              OutlinedButton(onPressed: _copy, child: Text(l10n.itemCopy)),
-              OutlinedButton(
-                onPressed: _editing ? _save : () => setState(() => _editing = true),
-                child: Text(_editing ? l10n.itemSave : l10n.itemEdit),
-              ),
-              OutlinedButton(onPressed: _delete, child: Text(l10n.itemDelete)),
-            ],
-          ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 28),
           FilledButton(
-            onPressed: () => context.push('/ai', extra: item),
-            child: Text(l10n.discussAi),
+            onPressed: _editing ? _save : () => context.push('/ai', extra: item),
+            child: Text(_editing ? l10n.itemSave : l10n.discussAi),
           ),
         ],
       ),

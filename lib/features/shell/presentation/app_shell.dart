@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -16,39 +18,51 @@ class AppShell extends StatelessWidget {
     final colors = context.hilight;
     final index = navigationShell.currentIndex;
     return Scaffold(
+      extendBody: true,
       body: navigationShell,
-      bottomNavigationBar: SafeArea(
-        top: false,
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(8, 6, 8, 8),
-          child: Row(
-            children: [
-              _Tab(
-                label: l10n.navHome,
-                icon: Icons.home_outlined,
-                selected: index == 0,
-                onTap: () => navigationShell.goBranch(0),
+      bottomNavigationBar: ClipRect(
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 24, sigmaY: 24),
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              color: colors.card.withValues(alpha: 0.82),
+              border: Border(top: BorderSide(color: colors.hairline)),
+            ),
+            child: SafeArea(
+              top: false,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(8, 8, 8, 6),
+                child: Row(
+                  children: [
+                    _Tab(
+                      label: l10n.navHome,
+                      icon: Icons.home_outlined,
+                      selected: index == 0,
+                      onTap: () => navigationShell.goBranch(0),
+                    ),
+                    _Tab(
+                      label: l10n.navLibrary,
+                      icon: Icons.menu_book_outlined,
+                      selected: index == 1,
+                      onTap: () => navigationShell.goBranch(1),
+                    ),
+                    _CaptureButton(label: l10n.navCapture),
+                    _Tab(
+                      label: l10n.navInsights,
+                      icon: Icons.insights_outlined,
+                      selected: index == 2,
+                      onTap: () => navigationShell.goBranch(2),
+                    ),
+                    _Tab(
+                      label: l10n.navProfile,
+                      icon: Icons.person_outline,
+                      selected: index == 3,
+                      onTap: () => navigationShell.goBranch(3),
+                    ),
+                  ],
+                ),
               ),
-              _Tab(
-                label: l10n.navLibrary,
-                icon: Icons.menu_book_outlined,
-                selected: index == 1,
-                onTap: () => navigationShell.goBranch(1),
-              ),
-              _CaptureButton(label: l10n.navCapture),
-              _Tab(
-                label: l10n.navInsights,
-                icon: Icons.insights_outlined,
-                selected: index == 2,
-                onTap: () => navigationShell.goBranch(2),
-              ),
-              _Tab(
-                label: l10n.navProfile,
-                icon: Icons.person_outline,
-                selected: index == 3,
-                onTap: () => navigationShell.goBranch(3),
-              ),
-            ],
+            ),
           ),
         ),
       ),
@@ -79,17 +93,22 @@ class _Tab extends StatelessWidget {
         onTap: onTap,
         borderRadius: BorderRadius.circular(16),
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 6),
+          padding: const EdgeInsets.symmetric(vertical: 8),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(icon, color: color, size: 22),
-              const SizedBox(height: 2),
+              Icon(icon, color: color, size: 22, weight: 300),
+              const SizedBox(height: 4),
               Text(
                 label,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(color: color, fontSize: 11, fontFamily: HilightTheme.uiFont),
+                style: TextStyle(
+                  color: color,
+                  fontSize: 13,
+                  fontWeight: selected ? FontWeight.w500 : FontWeight.w400,
+                  fontFamily: HilightTheme.uiFont,
+                ),
               ),
             ],
           ),
@@ -108,30 +127,38 @@ class _CaptureButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.hilight;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 4),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Material(
-            color: colors.primary,
+            color: Colors.transparent,
             shape: const CircleBorder(),
-            elevation: 2,
-            shadowColor: colors.shadow,
             child: InkWell(
               key: const Key('capture-button'),
               customBorder: const CircleBorder(),
               onTap: () => showCaptureSheet(context),
-              child: SizedBox(
+              child: Ink(
                 width: 56,
                 height: 56,
-                child: Icon(Icons.add, color: colors.card, size: 28),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: colors.card.withValues(alpha: 0.4),
+                  border: Border.all(color: colors.ink.withValues(alpha: 0.8), width: 1.25),
+                ),
+                child: Icon(Icons.add, color: colors.ink, size: 22, weight: 300),
               ),
             ),
           ),
-          const SizedBox(height: 2),
+          const SizedBox(height: 4),
           Text(
             label,
-            style: TextStyle(color: colors.primary, fontSize: 11, fontFamily: HilightTheme.uiFont),
+            style: TextStyle(
+              color: colors.primary,
+              fontSize: 13,
+              fontWeight: FontWeight.w500,
+              fontFamily: HilightTheme.uiFont,
+            ),
           ),
         ],
       ),
@@ -144,8 +171,9 @@ Future<void> showCaptureSheet(BuildContext context) {
   return showModalBottomSheet<void>(
     context: context,
     backgroundColor: colors.card,
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(HilightColors.radius)),
+    shape: RoundedRectangleBorder(
+      borderRadius: const BorderRadius.vertical(top: Radius.circular(HilightColors.radius)),
+      side: BorderSide(color: colors.hairline),
     ),
     builder: (sheetContext) {
       return _CaptureSheet(
@@ -168,17 +196,17 @@ class _CaptureSheet extends StatelessWidget {
     final l10n = AppLocalizations.of(context);
     return SafeArea(
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 16, 20, 20),
+        padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(l10n.captureSheetTitle, style: Theme.of(context).textTheme.headlineMedium),
-            const SizedBox(height: 16),
+            const SizedBox(height: 20),
             FilledButton(onPressed: () => onChoose('/scan'), child: Text(l10n.homeScan)),
-            const SizedBox(height: 10),
+            const SizedBox(height: 12),
             OutlinedButton(onPressed: () => onChoose('/record'), child: Text(l10n.homeRecord)),
-            const SizedBox(height: 10),
+            const SizedBox(height: 12),
             OutlinedButton(onPressed: () => onChoose('/write'), child: Text(l10n.captureWrite)),
           ],
         ),

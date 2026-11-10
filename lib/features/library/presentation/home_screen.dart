@@ -41,7 +41,7 @@ class HomeScreen extends ConsumerWidget {
           }
           final feed = HomeFeed.from(list);
           return ListView(
-            padding: const EdgeInsets.fromLTRB(20, 8, 20, 24),
+            padding: const EdgeInsets.fromLTRB(20, 8, 20, 120),
             children: [
               SectionLabel(l10n.todayReview),
               const SizedBox(height: 12),
@@ -53,7 +53,7 @@ class HomeScreen extends ConsumerWidget {
                     item: item,
                     onOpen: (item) => context.push('/item/${item.id}'),
                   ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 16),
               SectionLabel(l10n.homeRecent),
               const SizedBox(height: 12),
               if (feed.recent.isEmpty)
@@ -64,33 +64,41 @@ class HomeScreen extends ConsumerWidget {
                     item: item,
                     onOpen: (item) => context.push('/item/${item.id}'),
                   ),
-              const SizedBox(height: 8),
-              Material(
-                color: colors.card,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(HilightColors.radius),
-                ),
-                child: InkWell(
-                  onTap: () => context.push('/ai'),
-                  borderRadius: BorderRadius.circular(HilightColors.radius),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 16),
-                    child: Row(
-                      children: [
-                        Icon(Icons.auto_awesome, color: colors.ai),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: Text(
-                            l10n.askAi,
-                            style: TextStyle(
-                              fontFamily: HilightTheme.uiFont,
-                              fontWeight: FontWeight.w600,
-                              color: colors.text,
+              const SizedBox(height: 16),
+              DecoratedBox(
+                decoration: colors.surface(),
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    onTap: () => context.push('/ai'),
+                    borderRadius: BorderRadius.circular(HilightColors.radius),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 2,
+                            height: 18,
+                            decoration: BoxDecoration(
+                              color: colors.ai,
+                              borderRadius: BorderRadius.circular(2),
                             ),
                           ),
-                        ),
-                        Icon(Icons.chevron_right, color: colors.secondary),
-                      ],
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: Text(
+                              l10n.askAi,
+                              style: TextStyle(
+                                fontFamily: HilightTheme.uiFont,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                                color: colors.text,
+                              ),
+                            ),
+                          ),
+                          Icon(Icons.chevron_right, color: colors.secondary),
+                        ],
+                      ),
                     ),
                   ),
                 ),
