@@ -1,0 +1,30 @@
+[project]
+name = "hilight-api"
+version = "0.1.0"
+description = "HiLight API: notes, sync, OCR, and speech-to-text."
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi>=0.115.6",
+  "uvicorn[standard]>=0.34.0",
+  "sqlalchemy[asyncio]>=2.0.36",
+  "asyncpg>=0.30.0",
+  "alembic>=1.14.0",
+  "pydantic>=2.10.4",
+  "pydantic-settings>=2.7.0",
+  "email-validator>=2.2.0",
+  "pyjwt>=2.10.1",
+  "bcrypt>=4.2.1",
+  "python-multipart>=0.0.20",
+  "pgvector>=0.3.6",
+  "httpx>=0.28.1",
+  "pytesseract>=0.3.13",
+  "pillow>=11.1.0",
+]
+
+[project.optional-dependencies]
+whisper = ["faster-whisper>=1.1.0"]
+dev = ["pytest>=8.3.4", "pytest-asyncio>=0.25.2"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

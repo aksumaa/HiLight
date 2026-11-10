@@ -1,0 +1,27 @@
+from functools import lru_cache
+
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+class Settings(BaseSettings):
+    model_config = SettingsConfigDict(env_file=".env", extra="ignore")
+
+    database_url: str = "postgresql+asyncpg://hilight:hilight@localhost:5432/hilight"
+    jwt_secret: str = "dev-only-change-me"
+    jwt_access_minutes: int = 15
+    jwt_refresh_days: int = 30
+    ocr_provider: str = "tesseract"
+    stt_provider: str = "whisper"
+    whisper_model: str = "base"
+    whisper_device: str = "cpu"
+    ocr_max_bytes: int = 8_388_608
+    stt_max_bytes: int = 26_214_400
+    ocr_rate_limit: int = 10
+    ocr_rate_window_seconds: int = 60
+    stt_rate_limit: int = 6
+    stt_rate_window_seconds: int = 60
+
+
+@lru_cache
+def get_settings() -> Settings:
+    return Settings()
