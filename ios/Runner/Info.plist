@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Hilight</string>
+	<string>HiLight</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -63,13 +63,8 @@
 	<string>HiLight uses the camera to photograph a book page and turn it into text you can save.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>HiLight uses the microphone to record a voice note and turn it into text.</string>
-	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>HiLight uses speech recognition to turn a voice note into text. The recording stays on your iPhone until you save it.</string>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsLocalNetworking</key>
-		<true/>
-	</dict>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>HiLight connects to the HiLight API on your local network while you are developing.</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

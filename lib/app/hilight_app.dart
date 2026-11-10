@@ -24,9 +24,11 @@ class HiLightApp extends ConsumerWidget {
       themeMode: settings.themeMode,
       locale: Locale(settings.localeCode),
       builder: (context, child) {
+        final system = MediaQuery.textScalerOf(context);
+        final combined = system.scale(settings.fontScale);
         return MediaQuery(
           data: MediaQuery.of(context).copyWith(
-            textScaler: TextScaler.linear(settings.fontScale),
+            textScaler: TextScaler.linear(combined),
           ),
           child: child ?? const SizedBox.shrink(),
         );

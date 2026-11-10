@@ -89,28 +89,35 @@ class _Tab extends StatelessWidget {
     final colors = context.hilight;
     final color = selected ? colors.primary : colors.secondary;
     return Expanded(
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(16),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(icon, color: color, size: 22, weight: 300),
-              const SizedBox(height: 4),
-              Text(
-                label,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  color: color,
-                  fontSize: 13,
-                  fontWeight: selected ? FontWeight.w500 : FontWeight.w400,
-                  fontFamily: HilightTheme.uiFont,
-                ),
+      child: Semantics(
+        button: true,
+        selected: selected,
+        label: label,
+        child: ExcludeSemantics(
+          child: InkWell(
+            onTap: onTap,
+            borderRadius: BorderRadius.circular(16),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(icon, color: color, size: 22, weight: 300),
+                  const SizedBox(height: 4),
+                  Text(
+                    label,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: color,
+                      fontSize: 13,
+                      fontWeight: selected ? FontWeight.w500 : FontWeight.w400,
+                      fontFamily: HilightTheme.uiFont,
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
       ),
@@ -131,22 +138,28 @@ class _CaptureButton extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Material(
-            color: Colors.transparent,
-            shape: const CircleBorder(),
-            child: InkWell(
-              key: const Key('capture-button'),
-              customBorder: const CircleBorder(),
-              onTap: () => showCaptureSheet(context),
-              child: Ink(
-                width: 56,
-                height: 56,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: colors.card.withValues(alpha: 0.4),
-                  border: Border.all(color: colors.ink.withValues(alpha: 0.8), width: 1.25),
+          Semantics(
+            button: true,
+            label: label,
+            child: ExcludeSemantics(
+              child: Material(
+                color: Colors.transparent,
+                shape: const CircleBorder(),
+                child: InkWell(
+                  key: const Key('capture-button'),
+                  customBorder: const CircleBorder(),
+                  onTap: () => showCaptureSheet(context),
+                  child: Ink(
+                    width: 56,
+                    height: 56,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: colors.card.withValues(alpha: 0.4),
+                      border: Border.all(color: colors.ink.withValues(alpha: 0.8), width: 1.25),
+                    ),
+                    child: Icon(Icons.add, color: colors.ink, size: 22, weight: 300),
+                  ),
                 ),
-                child: Icon(Icons.add, color: colors.ink, size: 22, weight: 300),
               ),
             ),
           ),

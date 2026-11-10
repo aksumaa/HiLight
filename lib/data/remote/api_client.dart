@@ -53,10 +53,15 @@ class ApiClient {
     final token = await bearer();
     if (token == null) throw ApiException('Sign in required.');
     if (item.deletedAt != null) {
-      await dio.delete(
-        '/items/${item.id}',
-        options: Options(headers: {'Authorization': 'Bearer $token'}),
-      );
+      try {
+        await dio.delete(
+          '/items/${item.id}',
+          options: Options(headers: {'Authorization': 'Bearer $token'}),
+        );
+      } on DioException catch (error) {
+        // The row was never uploaded, or already removed. Do not block the queue.
+        if (error.response?.statusCode != 404) rethrow;
+      }
       return;
     }
     await dio.post(

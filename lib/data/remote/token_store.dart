@@ -19,7 +19,14 @@ abstract class TokenStore {
 
 class SecureTokenStore implements TokenStore {
   SecureTokenStore({FlutterSecureStorage? storage})
-    : _storage = storage ?? const FlutterSecureStorage();
+    : _storage =
+          storage ??
+          const FlutterSecureStorage(
+            iOptions: IOSOptions(
+              accessibility: KeychainAccessibility.first_unlock_this_device,
+              synchronizable: false,
+            ),
+          );
 
   static const _access = 'hilight_access_token';
   static const _refresh = 'hilight_refresh_token';

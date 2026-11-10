@@ -12,6 +12,15 @@ from app.services.stt import build_stt, suffix_for
 router = APIRouter(tags=["recognition"])
 
 
+_languages = {"en", "ru", "uz"}
+
+
+def _language(value: str) -> str:
+    if value not in _languages:
+        raise AppError(422, "invalid_language", "Language must be en, ru, or uz.")
+    return value
+
+
 async def _read_limited(upload: UploadFile, max_bytes: int) -> bytes:
     data = await upload.read(max_bytes + 1)
     if len(data) > max_bytes:
@@ -29,6 +38,7 @@ async def ocr(
     settings: Settings = Depends(get_settings),
 ) -> TextOut:
     limiter.hit(user.id, "ocr", settings.ocr_rate_limit, settings.ocr_rate_window_seconds)
+    language = _language(language)
     content_type = (image.content_type or "").lower()
     if content_type and not content_type.startswith("image/"):
         raise AppError(422, "invalid_image", "Upload an image file.")
@@ -46,6 +56,7 @@ async def stt(
     settings: Settings = Depends(get_settings),
 ) -> TextOut:
     limiter.hit(user.id, "stt", settings.stt_rate_limit, settings.stt_rate_window_seconds)
+    language = _language(language)
     content_type = (audio.content_type or "").lower()
     allowed = content_type.startswith("audio/") or content_type in {
         "",

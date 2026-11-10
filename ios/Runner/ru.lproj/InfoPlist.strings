@@ -1,0 +1,3 @@
+NSCameraUsageDescription = "HiLight использует камеру, чтобы сфотографировать страницу и сохранить текст.";
+NSMicrophoneUsageDescription = "HiLight использует микрофон, чтобы записать голосовую заметку и превратить её в текст.";
+NSLocalNetworkUsageDescription = "HiLight подключается к API в локальной сети, пока вы разрабатываете приложение.";

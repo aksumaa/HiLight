@@ -1,0 +1,3 @@
+NSCameraUsageDescription = "HiLight sahifani suratga olib, matnni saqlash uchun kameradan foydalanadi.";
+NSMicrophoneUsageDescription = "HiLight ovozli eslatmani yozib, matnga aylantirish uchun mikrofondan foydalanadi.";
+NSLocalNetworkUsageDescription = "HiLight ishlab chiqish paytida mahalliy tarmoqdagi API ga ulanadi.";

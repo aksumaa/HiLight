@@ -1,0 +1,3 @@
+NSCameraUsageDescription = "HiLight uses the camera to photograph a book page and turn it into text you can save.";
+NSMicrophoneUsageDescription = "HiLight uses the microphone to record a voice note and turn it into text.";
+NSLocalNetworkUsageDescription = "HiLight connects to the HiLight API on your local network while you are developing.";

@@ -50,4 +50,17 @@ void main() {
     );
     expect(find.byKey(const Key('library-cards')), findsOneWidget);
   });
+
+  testWidgets('a long library does not build every row at once', (tester) async {
+    final items = [
+      for (var i = 0; i < 2000; i++)
+        sampleItem(id: 'row-$i', type: ItemType.note, text: 'Row $i'),
+    ];
+    await pumpScreen(tester, const LibraryScreen(), items: items);
+    expect(find.text('Row 0'), findsOneWidget);
+    expect(find.text('Row 1999'), findsNothing);
+    await tester.drag(find.byKey(const Key('library-list')), const Offset(0, -2400));
+    await tester.pump();
+    expect(find.text('Row 1999'), findsNothing);
+  });
 }

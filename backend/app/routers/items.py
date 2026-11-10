@@ -42,10 +42,10 @@ def _out(item: Item) -> ItemOut:
 def _apply(item: Item, body: ItemIn | ItemPatch, now: datetime) -> None:
     data = body.model_dump(exclude_unset=True)
     data.pop("id", None)
-    data.pop("updated_at", None)
+    client_time = _aware(data.pop("updated_at", None))
     for key, value in data.items():
         setattr(item, key, value)
-    item.updated_at = now
+    item.updated_at = client_time or now
 
 
 async def _owned(session: AsyncSession, user_id: UUID, item_id: UUID) -> Item:
@@ -112,7 +112,7 @@ async def create_item(
         audio_url=body.audio_url,
         image_url=body.image_url,
         meta=body.meta,
-        updated_at=now,
+        updated_at=_aware(body.updated_at) or now,
     )
     if body.id is not None:
         item.id = body.id

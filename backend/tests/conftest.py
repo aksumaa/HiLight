@@ -6,7 +6,7 @@ from httpx import ASGITransport, AsyncClient
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import create_async_engine
 
-os.environ.setdefault("JWT_SECRET", "test-secret")
+os.environ.setdefault("JWT_SECRET", "test-secret-only-for-pytest-0123456789")
 os.environ["OCR_PROVIDER"] = "fake"
 os.environ["STT_PROVIDER"] = "fake"
 TEST_URL = os.environ.get(
@@ -46,7 +46,9 @@ async def _schema():
     await _ensure_database()
     setup = create_async_engine(TEST_URL)
     async with setup.begin() as conn:
-        await conn.execute(text("CREATE EXTENSION IF NOT EXISTS vector"))
+        present = await conn.scalar(text("SELECT 1 FROM pg_extension WHERE extname = 'vector'"))
+        if not present:
+            await conn.execute(text("CREATE EXTENSION IF NOT EXISTS vector"))
         await conn.run_sync(Base.metadata.drop_all)
         await conn.run_sync(Base.metadata.create_all)
     await setup.dispose()

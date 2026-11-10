@@ -10,13 +10,11 @@ class ListLibraryLayout extends LibraryLayout {
 
   @override
   Widget build(BuildContext context, List<LibraryItem> items, ValueChanged<LibraryItem> onOpen) {
-    return ListView(
+    return _lazyFeed(
       key: const Key('library-list'),
-      padding: const EdgeInsets.fromLTRB(20, 8, 20, 120),
-      children: [
-        for (final item in items)
-          LibraryItemTile(item: item, onOpen: onOpen),
-      ],
+      items: items,
+      onOpen: onOpen,
+      kind: LibraryTileKind.list,
     );
   }
 }
@@ -26,13 +24,11 @@ class CardsLibraryLayout extends LibraryLayout {
 
   @override
   Widget build(BuildContext context, List<LibraryItem> items, ValueChanged<LibraryItem> onOpen) {
-    return ListView(
+    return _lazyFeed(
       key: const Key('library-cards'),
-      padding: const EdgeInsets.fromLTRB(20, 8, 20, 120),
-      children: [
-        for (final item in items)
-          LibraryItemTile(item: item, onOpen: onOpen, kind: LibraryTileKind.card),
-      ],
+      items: items,
+      onOpen: onOpen,
+      kind: LibraryTileKind.card,
     );
   }
 }
@@ -42,15 +38,29 @@ class CompactLibraryLayout extends LibraryLayout {
 
   @override
   Widget build(BuildContext context, List<LibraryItem> items, ValueChanged<LibraryItem> onOpen) {
-    return ListView(
+    return _lazyFeed(
       key: const Key('library-compact'),
-      padding: const EdgeInsets.fromLTRB(20, 8, 20, 120),
-      children: [
-        for (final item in items)
-          LibraryItemTile(item: item, onOpen: onOpen, kind: LibraryTileKind.compact),
-      ],
+      items: items,
+      onOpen: onOpen,
+      kind: LibraryTileKind.compact,
     );
   }
+}
+
+Widget _lazyFeed({
+  required Key key,
+  required List<LibraryItem> items,
+  required ValueChanged<LibraryItem> onOpen,
+  required LibraryTileKind kind,
+}) {
+  return ListView.builder(
+    key: key,
+    padding: const EdgeInsets.fromLTRB(20, 8, 20, 120),
+    itemCount: items.length,
+    itemBuilder: (context, index) {
+      return LibraryItemTile(item: items[index], onOpen: onOpen, kind: kind);
+    },
+  );
 }
 
 LibraryLayout layoutFor(LibraryLayoutKind kind) {

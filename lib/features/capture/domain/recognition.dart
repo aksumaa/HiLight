@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import 'capture_event.dart';
 
 class RecognitionResult {
@@ -96,12 +98,22 @@ class RecognitionConfig {
 
   factory RecognitionConfig.fromEnvironment() {
     return RecognitionConfig(
-      apiBase: const String.fromEnvironment(
-        'API_BASE',
-        defaultValue: 'http://127.0.0.1:8000',
+      apiBase: resolveApiBase(
+        release: kReleaseMode,
+        defined: const String.fromEnvironment('API_BASE'),
       ),
       useFakeOcr: const bool.fromEnvironment('USE_FAKE_OCR'),
       useFakeStt: const bool.fromEnvironment('USE_FAKE_STT'),
     );
   }
+}
+
+/// Release builds talk only to https. A missing or http address becomes a
+/// placeholder that will not resolve. Debug keeps a local default.
+String resolveApiBase({required bool release, required String defined}) {
+  const releaseFallback = 'https://api.hilight.invalid';
+  const debugFallback = 'http://127.0.0.1:8000';
+  final raw = defined.isEmpty ? (release ? releaseFallback : debugFallback) : defined;
+  if (release && !raw.startsWith('https://')) return releaseFallback;
+  return raw;
 }

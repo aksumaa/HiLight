@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta, timezone
-from uuid import UUID
+from uuid import UUID, uuid4
 
 import bcrypt
 import jwt
@@ -20,6 +20,7 @@ def _encode(settings: Settings, user_id: UUID, kind: str, ttl: timedelta) -> str
     payload = {
         "sub": str(user_id),
         "typ": kind,
+        "jti": str(uuid4()),
         "iat": int(now.timestamp()),
         "exp": int((now + ttl).timestamp()),
     }
