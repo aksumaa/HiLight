@@ -233,4 +233,243 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get logOut => 'Log out';
+
+  @override
+  String get greetingMorning => 'Good morning';
+
+  @override
+  String get greetingAfternoon => 'Good afternoon';
+
+  @override
+  String get greetingEvening => 'Good evening';
+
+  @override
+  String get todayReview => 'Today\'s review';
+
+  @override
+  String get todayReviewEmpty => 'Older notes will show up here.';
+
+  @override
+  String get askAi => 'Ask HiLight AI';
+
+  @override
+  String get navHome => 'Home';
+
+  @override
+  String get navLibrary => 'Library';
+
+  @override
+  String get navCapture => 'Capture';
+
+  @override
+  String get navInsights => 'Insights';
+
+  @override
+  String get navProfile => 'Profile';
+
+  @override
+  String get captureSheetTitle => 'Capture';
+
+  @override
+  String get captureWrite => 'Write note';
+
+  @override
+  String get writeTitle => 'Write a note';
+
+  @override
+  String get writeHint => 'Type a sentence';
+
+  @override
+  String get writeContinue => 'Continue';
+
+  @override
+  String get writeEmpty => 'Write something before continuing.';
+
+  @override
+  String get libraryTitle => 'Library';
+
+  @override
+  String get librarySearch => 'Search notes';
+
+  @override
+  String get libraryEmpty =>
+      'Your library is empty. Capture a sentence to begin.';
+
+  @override
+  String get libraryNoMatches => 'Nothing matches this search.';
+
+  @override
+  String get filterAll => 'All';
+
+  @override
+  String get filterQuotes => 'Quotes';
+
+  @override
+  String get filterVoice => 'Voice';
+
+  @override
+  String get filterNotes => 'Notes';
+
+  @override
+  String get filterAi => 'AI';
+
+  @override
+  String get insightsTitle => 'Insights';
+
+  @override
+  String get insightsBody =>
+      'Insights will gather patterns from your notes later. Your library already works without them.';
+
+  @override
+  String get profileTitle => 'Profile';
+
+  @override
+  String get appearanceTitle => 'Appearance';
+
+  @override
+  String get deviceTitle => 'Device';
+
+  @override
+  String get itemDetailTitle => 'Note';
+
+  @override
+  String get itemMissing => 'This note is no longer in the library.';
+
+  @override
+  String get itemCopy => 'Copy';
+
+  @override
+  String get itemCopied => 'Copied.';
+
+  @override
+  String get itemEdit => 'Edit';
+
+  @override
+  String get itemSave => 'Save';
+
+  @override
+  String get itemDelete => 'Delete';
+
+  @override
+  String get itemDeleteTitle => 'Delete this note?';
+
+  @override
+  String get itemDeleteBody => 'It will leave your library on this iPhone.';
+
+  @override
+  String get itemDeleteAction => 'Delete';
+
+  @override
+  String get discussAi => 'Discuss with HiLight AI';
+
+  @override
+  String get aiTitle => 'HiLight AI';
+
+  @override
+  String get aiHint => 'Ask about your notes';
+
+  @override
+  String get aiSend => 'Send';
+
+  @override
+  String get aiFromNotes => 'From your notes';
+
+  @override
+  String get aiGeneral => 'General knowledge';
+
+  @override
+  String get aiFromNotesBody =>
+      'This answer stays with the notes below. The model is not connected yet.';
+
+  @override
+  String get aiGeneralBody =>
+      'This is general knowledge. It is not drawn from your notes. The model is not connected yet.';
+
+  @override
+  String get aiEmpty => 'Ask a question about something you saved.';
+
+  @override
+  String get appearanceLanguage => 'Language';
+
+  @override
+  String get appearanceTheme => 'Theme';
+
+  @override
+  String get themeSystem => 'System';
+
+  @override
+  String get themeLight => 'Light';
+
+  @override
+  String get themeDark => 'Dark';
+
+  @override
+  String get appearanceLayout => 'Library layout';
+
+  @override
+  String get layoutList => 'List';
+
+  @override
+  String get layoutCards => 'Cards';
+
+  @override
+  String get layoutCompact => 'Compact';
+
+  @override
+  String get appearanceAccent => 'Accent';
+
+  @override
+  String get appearanceFont => 'Font size';
+
+  @override
+  String get appearancePreview => 'Preview';
+
+  @override
+  String get previewSample => 'A sentence worth keeping.';
+
+  @override
+  String get deviceBody =>
+      'The pen is not connected. This screen uses a stand-in and never talks to Bluetooth.';
+
+  @override
+  String get deviceSample => 'A sentence sent from the pen stand-in.';
+
+  @override
+  String get deviceSend => 'Simulate a pen note';
+
+  @override
+  String get deviceSaved => 'Saved to your library.';
+
+  @override
+  String get deviceFailed => 'The stand-in note could not be saved.';
+
+  @override
+  String get onboardingLanguage => 'Choose a language';
+
+  @override
+  String get onboardingNext => 'Next';
+
+  @override
+  String get onboardingStart => 'Continue to sign in';
+
+  @override
+  String get onboardingSlide1Title => 'Capture a sentence';
+
+  @override
+  String get onboardingSlide1Body =>
+      'Photograph a page, record your voice, or type a note.';
+
+  @override
+  String get onboardingSlide2Title => 'One library';
+
+  @override
+  String get onboardingSlide2Body =>
+      'Quotes, voice, and notes land in a single feed. Books are optional.';
+
+  @override
+  String get onboardingSlide3Title => 'Ask later';
+
+  @override
+  String get onboardingSlide3Body =>
+      'HiLight AI will answer from your notes, and label when it does not.';
 }

@@ -6,9 +6,16 @@ abstract final class HilightTheme {
   static const uiFont = 'Inter';
   static const quoteFont = 'Lora';
 
-  static ThemeData light() => _theme(HilightColors.light, Brightness.light);
+  static ThemeData light({Color? accent}) =>
+      _theme(_withAccent(HilightColors.light, accent), Brightness.light);
 
-  static ThemeData dark() => _theme(HilightColors.dark, Brightness.dark);
+  static ThemeData dark({Color? accent}) =>
+      _theme(_withAccent(HilightColors.dark, accent), Brightness.dark);
+
+  static HilightColors _withAccent(HilightColors base, Color? accent) {
+    if (accent == null) return base;
+    return base.copyWith(primary: accent);
+  }
 
   static ThemeData _theme(HilightColors colors, Brightness brightness) {
     final scheme = ColorScheme(

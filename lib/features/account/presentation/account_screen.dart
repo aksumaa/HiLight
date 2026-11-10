@@ -6,6 +6,7 @@ import '../../../app/app_providers.dart';
 import '../../../core/l10n/app_localizations.dart';
 import '../../../core/theme/hilight_colors.dart';
 import '../../../data/remote/api_client.dart';
+import '../../profile/application/settings_controller.dart';
 
 class AccountScreen extends ConsumerStatefulWidget {
   const AccountScreen({super.key});
@@ -42,6 +43,7 @@ class _AccountScreenState extends ConsumerState<AccountScreen> {
         await api.login(email: _email.text.trim(), password: _password.text);
       }
       await ref.read(syncServiceProvider).run();
+      await ref.read(settingsProvider.notifier).markEntered();
       if (mounted) context.go('/');
     } on ApiException {
       if (mounted) setState(() => _error = l10n.loginFailed);
@@ -98,7 +100,12 @@ class _AccountScreenState extends ConsumerState<AccountScreen> {
           ),
           TextButton(onPressed: _busy ? null : _logout, child: Text(l10n.logOut)),
           TextButton(
-            onPressed: _busy ? null : () => context.go('/'),
+            onPressed: _busy
+                ? null
+                : () async {
+                    await ref.read(settingsProvider.notifier).markEntered();
+                    if (context.mounted) context.go('/');
+                  },
             child: Text(l10n.continueOffline),
           ),
         ],

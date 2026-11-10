@@ -109,6 +109,14 @@ final phoneMicSourceProvider = Provider<PhoneMicSource>((ref) {
   return PhoneMicSource();
 });
 
+final manualInputSourceProvider = Provider<ManualInputSource>((ref) {
+  return ManualInputSource();
+});
+
+final mockDeviceSourceProvider = Provider<MockDeviceSource>((ref) {
+  return MockDeviceSource();
+});
+
 final libraryItemsProvider = StreamProvider<List<LibraryItem>>((ref) {
   return ref.watch(itemRepositoryProvider).watchAll();
 });

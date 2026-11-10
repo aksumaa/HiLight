@@ -232,4 +232,242 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get logOut => 'Выйти';
+
+  @override
+  String get greetingMorning => 'Доброе утро';
+
+  @override
+  String get greetingAfternoon => 'Добрый день';
+
+  @override
+  String get greetingEvening => 'Добрый вечер';
+
+  @override
+  String get todayReview => 'Повтор сегодня';
+
+  @override
+  String get todayReviewEmpty => 'Здесь появятся более старые заметки.';
+
+  @override
+  String get askAi => 'Спросить HiLight AI';
+
+  @override
+  String get navHome => 'Главная';
+
+  @override
+  String get navLibrary => 'Библиотека';
+
+  @override
+  String get navCapture => 'Добавить';
+
+  @override
+  String get navInsights => 'Итоги';
+
+  @override
+  String get navProfile => 'Профиль';
+
+  @override
+  String get captureSheetTitle => 'Добавить';
+
+  @override
+  String get captureWrite => 'Написать заметку';
+
+  @override
+  String get writeTitle => 'Новая заметка';
+
+  @override
+  String get writeHint => 'Введите предложение';
+
+  @override
+  String get writeContinue => 'Дальше';
+
+  @override
+  String get writeEmpty => 'Сначала напишите текст.';
+
+  @override
+  String get libraryTitle => 'Библиотека';
+
+  @override
+  String get librarySearch => 'Поиск заметок';
+
+  @override
+  String get libraryEmpty => 'Библиотека пуста. Сохраните первое предложение.';
+
+  @override
+  String get libraryNoMatches => 'Ничего не найдено.';
+
+  @override
+  String get filterAll => 'Все';
+
+  @override
+  String get filterQuotes => 'Цитаты';
+
+  @override
+  String get filterVoice => 'Голос';
+
+  @override
+  String get filterNotes => 'Заметки';
+
+  @override
+  String get filterAi => 'ИИ';
+
+  @override
+  String get insightsTitle => 'Итоги';
+
+  @override
+  String get insightsBody =>
+      'Итоги позже соберут закономерности из ваших заметок. Библиотека уже работает без них.';
+
+  @override
+  String get profileTitle => 'Профиль';
+
+  @override
+  String get appearanceTitle => 'Оформление';
+
+  @override
+  String get deviceTitle => 'Устройство';
+
+  @override
+  String get itemDetailTitle => 'Заметка';
+
+  @override
+  String get itemMissing => 'Этой заметки больше нет в библиотеке.';
+
+  @override
+  String get itemCopy => 'Копировать';
+
+  @override
+  String get itemCopied => 'Скопировано.';
+
+  @override
+  String get itemEdit => 'Изменить';
+
+  @override
+  String get itemSave => 'Сохранить';
+
+  @override
+  String get itemDelete => 'Удалить';
+
+  @override
+  String get itemDeleteTitle => 'Удалить заметку?';
+
+  @override
+  String get itemDeleteBody => 'Она исчезнет из библиотеки на этом iPhone.';
+
+  @override
+  String get itemDeleteAction => 'Удалить';
+
+  @override
+  String get discussAi => 'Обсудить с HiLight AI';
+
+  @override
+  String get aiTitle => 'HiLight AI';
+
+  @override
+  String get aiHint => 'Спросите о своих заметках';
+
+  @override
+  String get aiSend => 'Отправить';
+
+  @override
+  String get aiFromNotes => 'Из ваших заметок';
+
+  @override
+  String get aiGeneral => 'Общие знания';
+
+  @override
+  String get aiFromNotesBody =>
+      'Ответ опирается на заметки ниже. Модель ещё не подключена.';
+
+  @override
+  String get aiGeneralBody =>
+      'Это общие знания, не из ваших заметок. Модель ещё не подключена.';
+
+  @override
+  String get aiEmpty => 'Спросите о том, что вы сохранили.';
+
+  @override
+  String get appearanceLanguage => 'Язык';
+
+  @override
+  String get appearanceTheme => 'Тема';
+
+  @override
+  String get themeSystem => 'Система';
+
+  @override
+  String get themeLight => 'Светлая';
+
+  @override
+  String get themeDark => 'Тёмная';
+
+  @override
+  String get appearanceLayout => 'Вид библиотеки';
+
+  @override
+  String get layoutList => 'Список';
+
+  @override
+  String get layoutCards => 'Карточки';
+
+  @override
+  String get layoutCompact => 'Компактно';
+
+  @override
+  String get appearanceAccent => 'Акцент';
+
+  @override
+  String get appearanceFont => 'Размер шрифта';
+
+  @override
+  String get appearancePreview => 'Предпросмотр';
+
+  @override
+  String get previewSample => 'Предложение, которое стоит сохранить.';
+
+  @override
+  String get deviceBody =>
+      'Ручка не подключена. Этот экран — заглушка и не использует Bluetooth.';
+
+  @override
+  String get deviceSample => 'Предложение от заглушки ручки.';
+
+  @override
+  String get deviceSend => 'Имитировать заметку с ручки';
+
+  @override
+  String get deviceSaved => 'Сохранено в библиотеку.';
+
+  @override
+  String get deviceFailed => 'Заглушку не удалось сохранить.';
+
+  @override
+  String get onboardingLanguage => 'Выберите язык';
+
+  @override
+  String get onboardingNext => 'Дальше';
+
+  @override
+  String get onboardingStart => 'Перейти ко входу';
+
+  @override
+  String get onboardingSlide1Title => 'Сохраните предложение';
+
+  @override
+  String get onboardingSlide1Body =>
+      'Сфотографируйте страницу, запишите голос или наберите заметку.';
+
+  @override
+  String get onboardingSlide2Title => 'Одна библиотека';
+
+  @override
+  String get onboardingSlide2Body =>
+      'Цитаты, голос и заметки попадают в одну ленту. Книги необязательны.';
+
+  @override
+  String get onboardingSlide3Title => 'Спросите позже';
+
+  @override
+  String get onboardingSlide3Body =>
+      'HiLight AI ответит по вашим заметкам и подпишет, если ответ не из них.';
 }

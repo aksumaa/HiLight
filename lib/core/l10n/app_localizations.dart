@@ -519,6 +519,468 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Log out'**
   String get logOut;
+
+  /// No description provided for @greetingMorning.
+  ///
+  /// In en, this message translates to:
+  /// **'Good morning'**
+  String get greetingMorning;
+
+  /// No description provided for @greetingAfternoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Good afternoon'**
+  String get greetingAfternoon;
+
+  /// No description provided for @greetingEvening.
+  ///
+  /// In en, this message translates to:
+  /// **'Good evening'**
+  String get greetingEvening;
+
+  /// No description provided for @todayReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Today\'s review'**
+  String get todayReview;
+
+  /// No description provided for @todayReviewEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Older notes will show up here.'**
+  String get todayReviewEmpty;
+
+  /// No description provided for @askAi.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask HiLight AI'**
+  String get askAi;
+
+  /// No description provided for @navHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get navHome;
+
+  /// No description provided for @navLibrary.
+  ///
+  /// In en, this message translates to:
+  /// **'Library'**
+  String get navLibrary;
+
+  /// No description provided for @navCapture.
+  ///
+  /// In en, this message translates to:
+  /// **'Capture'**
+  String get navCapture;
+
+  /// No description provided for @navInsights.
+  ///
+  /// In en, this message translates to:
+  /// **'Insights'**
+  String get navInsights;
+
+  /// No description provided for @navProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get navProfile;
+
+  /// No description provided for @captureSheetTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Capture'**
+  String get captureSheetTitle;
+
+  /// No description provided for @captureWrite.
+  ///
+  /// In en, this message translates to:
+  /// **'Write note'**
+  String get captureWrite;
+
+  /// No description provided for @writeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a note'**
+  String get writeTitle;
+
+  /// No description provided for @writeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Type a sentence'**
+  String get writeHint;
+
+  /// No description provided for @writeContinue.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get writeContinue;
+
+  /// No description provided for @writeEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Write something before continuing.'**
+  String get writeEmpty;
+
+  /// No description provided for @libraryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Library'**
+  String get libraryTitle;
+
+  /// No description provided for @librarySearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Search notes'**
+  String get librarySearch;
+
+  /// No description provided for @libraryEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Your library is empty. Capture a sentence to begin.'**
+  String get libraryEmpty;
+
+  /// No description provided for @libraryNoMatches.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing matches this search.'**
+  String get libraryNoMatches;
+
+  /// No description provided for @filterAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get filterAll;
+
+  /// No description provided for @filterQuotes.
+  ///
+  /// In en, this message translates to:
+  /// **'Quotes'**
+  String get filterQuotes;
+
+  /// No description provided for @filterVoice.
+  ///
+  /// In en, this message translates to:
+  /// **'Voice'**
+  String get filterVoice;
+
+  /// No description provided for @filterNotes.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes'**
+  String get filterNotes;
+
+  /// No description provided for @filterAi.
+  ///
+  /// In en, this message translates to:
+  /// **'AI'**
+  String get filterAi;
+
+  /// No description provided for @insightsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Insights'**
+  String get insightsTitle;
+
+  /// No description provided for @insightsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Insights will gather patterns from your notes later. Your library already works without them.'**
+  String get insightsBody;
+
+  /// No description provided for @profileTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profileTitle;
+
+  /// No description provided for @appearanceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Appearance'**
+  String get appearanceTitle;
+
+  /// No description provided for @deviceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Device'**
+  String get deviceTitle;
+
+  /// No description provided for @itemDetailTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Note'**
+  String get itemDetailTitle;
+
+  /// No description provided for @itemMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'This note is no longer in the library.'**
+  String get itemMissing;
+
+  /// No description provided for @itemCopy.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy'**
+  String get itemCopy;
+
+  /// No description provided for @itemCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Copied.'**
+  String get itemCopied;
+
+  /// No description provided for @itemEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get itemEdit;
+
+  /// No description provided for @itemSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get itemSave;
+
+  /// No description provided for @itemDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get itemDelete;
+
+  /// No description provided for @itemDeleteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this note?'**
+  String get itemDeleteTitle;
+
+  /// No description provided for @itemDeleteBody.
+  ///
+  /// In en, this message translates to:
+  /// **'It will leave your library on this iPhone.'**
+  String get itemDeleteBody;
+
+  /// No description provided for @itemDeleteAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get itemDeleteAction;
+
+  /// No description provided for @discussAi.
+  ///
+  /// In en, this message translates to:
+  /// **'Discuss with HiLight AI'**
+  String get discussAi;
+
+  /// No description provided for @aiTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'HiLight AI'**
+  String get aiTitle;
+
+  /// No description provided for @aiHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask about your notes'**
+  String get aiHint;
+
+  /// No description provided for @aiSend.
+  ///
+  /// In en, this message translates to:
+  /// **'Send'**
+  String get aiSend;
+
+  /// No description provided for @aiFromNotes.
+  ///
+  /// In en, this message translates to:
+  /// **'From your notes'**
+  String get aiFromNotes;
+
+  /// No description provided for @aiGeneral.
+  ///
+  /// In en, this message translates to:
+  /// **'General knowledge'**
+  String get aiGeneral;
+
+  /// No description provided for @aiFromNotesBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This answer stays with the notes below. The model is not connected yet.'**
+  String get aiFromNotesBody;
+
+  /// No description provided for @aiGeneralBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This is general knowledge. It is not drawn from your notes. The model is not connected yet.'**
+  String get aiGeneralBody;
+
+  /// No description provided for @aiEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask a question about something you saved.'**
+  String get aiEmpty;
+
+  /// No description provided for @appearanceLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get appearanceLanguage;
+
+  /// No description provided for @appearanceTheme.
+  ///
+  /// In en, this message translates to:
+  /// **'Theme'**
+  String get appearanceTheme;
+
+  /// No description provided for @themeSystem.
+  ///
+  /// In en, this message translates to:
+  /// **'System'**
+  String get themeSystem;
+
+  /// No description provided for @themeLight.
+  ///
+  /// In en, this message translates to:
+  /// **'Light'**
+  String get themeLight;
+
+  /// No description provided for @themeDark.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark'**
+  String get themeDark;
+
+  /// No description provided for @appearanceLayout.
+  ///
+  /// In en, this message translates to:
+  /// **'Library layout'**
+  String get appearanceLayout;
+
+  /// No description provided for @layoutList.
+  ///
+  /// In en, this message translates to:
+  /// **'List'**
+  String get layoutList;
+
+  /// No description provided for @layoutCards.
+  ///
+  /// In en, this message translates to:
+  /// **'Cards'**
+  String get layoutCards;
+
+  /// No description provided for @layoutCompact.
+  ///
+  /// In en, this message translates to:
+  /// **'Compact'**
+  String get layoutCompact;
+
+  /// No description provided for @appearanceAccent.
+  ///
+  /// In en, this message translates to:
+  /// **'Accent'**
+  String get appearanceAccent;
+
+  /// No description provided for @appearanceFont.
+  ///
+  /// In en, this message translates to:
+  /// **'Font size'**
+  String get appearanceFont;
+
+  /// No description provided for @appearancePreview.
+  ///
+  /// In en, this message translates to:
+  /// **'Preview'**
+  String get appearancePreview;
+
+  /// No description provided for @previewSample.
+  ///
+  /// In en, this message translates to:
+  /// **'A sentence worth keeping.'**
+  String get previewSample;
+
+  /// No description provided for @deviceBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The pen is not connected. This screen uses a stand-in and never talks to Bluetooth.'**
+  String get deviceBody;
+
+  /// No description provided for @deviceSample.
+  ///
+  /// In en, this message translates to:
+  /// **'A sentence sent from the pen stand-in.'**
+  String get deviceSample;
+
+  /// No description provided for @deviceSend.
+  ///
+  /// In en, this message translates to:
+  /// **'Simulate a pen note'**
+  String get deviceSend;
+
+  /// No description provided for @deviceSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved to your library.'**
+  String get deviceSaved;
+
+  /// No description provided for @deviceFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'The stand-in note could not be saved.'**
+  String get deviceFailed;
+
+  /// No description provided for @onboardingLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a language'**
+  String get onboardingLanguage;
+
+  /// No description provided for @onboardingNext.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get onboardingNext;
+
+  /// No description provided for @onboardingStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue to sign in'**
+  String get onboardingStart;
+
+  /// No description provided for @onboardingSlide1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Capture a sentence'**
+  String get onboardingSlide1Title;
+
+  /// No description provided for @onboardingSlide1Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Photograph a page, record your voice, or type a note.'**
+  String get onboardingSlide1Body;
+
+  /// No description provided for @onboardingSlide2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'One library'**
+  String get onboardingSlide2Title;
+
+  /// No description provided for @onboardingSlide2Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Quotes, voice, and notes land in a single feed. Books are optional.'**
+  String get onboardingSlide2Body;
+
+  /// No description provided for @onboardingSlide3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask later'**
+  String get onboardingSlide3Title;
+
+  /// No description provided for @onboardingSlide3Body.
+  ///
+  /// In en, this message translates to:
+  /// **'HiLight AI will answer from your notes, and label when it does not.'**
+  String get onboardingSlide3Body;
 }
 
 class _AppLocalizationsDelegate
