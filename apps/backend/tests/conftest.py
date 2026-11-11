@@ -9,6 +9,7 @@ from sqlalchemy.ext.asyncio import create_async_engine
 os.environ.setdefault("JWT_SECRET", "test-secret-only-for-pytest-0123456789")
 os.environ["OCR_PROVIDER"] = "fake"
 os.environ["STT_PROVIDER"] = "fake"
+os.environ["DICTIONARY_PROVIDER"] = "fake"
 TEST_URL = os.environ.get(
     "TEST_DATABASE_URL",
     "postgresql+asyncpg://hilight:hilight@localhost:5432/hilight_test",

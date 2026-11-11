@@ -101,6 +101,91 @@ class Conversation(Base):
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
 
+class DictionaryCache(Base):
+    __tablename__ = "dictionary_cache"
+    __table_args__ = (
+        UniqueConstraint("word", "source_language", "target_language", name="uq_dictionary_lookup"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    word: Mapped[str] = mapped_column(String(80))
+    source_language: Mapped[str] = mapped_column(String(8))
+    target_language: Mapped[str] = mapped_column(String(8))
+    translation: Mapped[str] = mapped_column(Text, default="")
+    definition: Mapped[str] = mapped_column(Text, default="")
+    example: Mapped[str] = mapped_column(Text, default="")
+    part_of_speech: Mapped[str] = mapped_column(String(32), default="")
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+
+class Book(Base):
+    __tablename__ = "books"
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
+    user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    title: Mapped[str] = mapped_column(String(300))
+    author: Mapped[str | None] = mapped_column(String(300), nullable=True)
+    cover_url: Mapped[str | None] = mapped_column(Text, nullable=True)
+    total_pages: Mapped[int | None] = mapped_column(nullable=True)
+    isbn: Mapped[str | None] = mapped_column(String(20), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    deleted_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+
+class Word(Base):
+    __tablename__ = "words"
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
+    user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    word: Mapped[str] = mapped_column(String(80))
+    source_language: Mapped[str] = mapped_column(String(8))
+    target_language: Mapped[str] = mapped_column(String(8))
+    translation: Mapped[str] = mapped_column(Text, default="")
+    definition: Mapped[str] = mapped_column(Text, default="")
+    example: Mapped[str] = mapped_column(Text, default="")
+    part_of_speech: Mapped[str] = mapped_column(String(32), default="")
+    source_sentence: Mapped[str] = mapped_column(Text, default="")
+    source_item_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    tags: Mapped[str] = mapped_column(String(200), default="")
+    mastery: Mapped[str] = mapped_column(String(16), default="newWord")
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    deleted_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+
+class StudyCard(Base):
+    __tablename__ = "study_cards"
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
+    user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    kind: Mapped[str] = mapped_column(String(16))
+    word_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    item_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    prompt: Mapped[str] = mapped_column(Text, default="")
+    answer: Mapped[str] = mapped_column(Text, default="")
+    ease: Mapped[float] = mapped_column(default=2.5)
+    interval_days: Mapped[int] = mapped_column(default=0)
+    repetitions: Mapped[int] = mapped_column(default=0)
+    due_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    deleted_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+
+class ReviewLog(Base):
+    __tablename__ = "review_logs"
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
+    user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    card_id: Mapped[str] = mapped_column(String(64))
+    rating: Mapped[int] = mapped_column()
+    interval_days: Mapped[int] = mapped_column(default=0)
+    reviewed_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    deleted_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+
 class Message(Base):
     __tablename__ = "messages"
 

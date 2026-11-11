@@ -20,6 +20,13 @@ class Settings(BaseSettings):
     ocr_rate_window_seconds: int = 60
     stt_rate_limit: int = 6
     stt_rate_window_seconds: int = 60
+    # fake (tests and offline) or llm (OpenAI-compatible chat completions)
+    dictionary_provider: str = "fake"
+    dictionary_api_key: str = ""
+    dictionary_base_url: str = "https://api.openai.com/v1"
+    dictionary_model: str = "gpt-4o-mini"
+    dictionary_rate_limit: int = 30
+    dictionary_rate_window_seconds: int = 60
 
 
 @lru_cache
