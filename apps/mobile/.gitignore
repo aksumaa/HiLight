@@ -1,0 +1,24 @@
+# Flutter / Dart
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+build/
+coverage/
+
+# CocoaPods
+Pods/
+
+# Symbolication and obfuscation
+app.*.symbols
+app.*.map.json
+
+# Android build outputs, if the platform is added later
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+# Widget preview
+.widget_preview/
