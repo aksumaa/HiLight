@@ -1660,6 +1660,30 @@ abstract class AppLocalizations {
   /// **'Mark finished'**
   String get readingMarkDone;
 
+  /// No description provided for @bookSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Summarize'**
+  String get bookSummary;
+
+  /// No description provided for @bookChat.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat with these notes'**
+  String get bookChat;
+
+  /// No description provided for @bookChatHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask about this book'**
+  String get bookChatHint;
+
+  /// No description provided for @bookChatEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'This book has no notes yet.'**
+  String get bookChatEmpty;
+
   /// No description provided for @readingGoal.
   ///
   /// In en, this message translates to:

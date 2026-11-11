@@ -822,6 +822,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get readingMarkDone => 'Mark finished';
 
   @override
+  String get bookSummary => 'Summarize';
+
+  @override
+  String get bookChat => 'Chat with these notes';
+
+  @override
+  String get bookChatHint => 'Ask about this book';
+
+  @override
+  String get bookChatEmpty => 'This book has no notes yet.';
+
+  @override
   String readingGoal(int minutes) {
     return '$minutes min goal';
   }

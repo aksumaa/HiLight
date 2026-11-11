@@ -821,6 +821,18 @@ class AppLocalizationsRu extends AppLocalizations {
   String get readingMarkDone => 'Отметить готовой';
 
   @override
+  String get bookSummary => 'Кратко';
+
+  @override
+  String get bookChat => 'Спросить по заметкам';
+
+  @override
+  String get bookChatHint => 'Вопрос об этой книге';
+
+  @override
+  String get bookChatEmpty => 'В этой книге пока нет заметок.';
+
+  @override
   String readingGoal(int minutes) {
     return 'Цель $minutes мин';
   }

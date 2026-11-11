@@ -818,6 +818,18 @@ class AppLocalizationsUz extends AppLocalizations {
   String get readingMarkDone => 'Tugatilgan deb belgilash';
 
   @override
+  String get bookSummary => 'Qisqacha';
+
+  @override
+  String get bookChat => 'Qaydlar bilan suhbat';
+
+  @override
+  String get bookChatHint => 'Bu kitob haqida so\'rang';
+
+  @override
+  String get bookChatEmpty => 'Bu kitobda hali qayd yo\'q.';
+
+  @override
   String readingGoal(int minutes) {
     return '$minutes daqiqa maqsad';
   }

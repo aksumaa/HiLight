@@ -260,5 +260,9 @@
   "readingStop": "Стоп",
   "readingDone": "Книга дочитана",
   "readingMarkDone": "Отметить готовой",
+  "bookSummary": "Кратко",
+  "bookChat": "Спросить по заметкам",
+  "bookChatHint": "Вопрос об этой книге",
+  "bookChatEmpty": "В этой книге пока нет заметок.",
   "readingGoal": "Цель {minutes} мин"
 }

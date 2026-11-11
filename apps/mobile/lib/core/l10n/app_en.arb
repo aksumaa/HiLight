@@ -276,6 +276,10 @@
   "readingStop": "Stop",
   "readingDone": "Finished",
   "readingMarkDone": "Mark finished",
+  "bookSummary": "Summarize",
+  "bookChat": "Chat with these notes",
+  "bookChatHint": "Ask about this book",
+  "bookChatEmpty": "This book has no notes yet.",
   "readingGoal": "{minutes} min goal",
   "@readingGoal": {
     "placeholders": {

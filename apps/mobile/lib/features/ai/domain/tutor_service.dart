@@ -7,6 +7,8 @@ class TutorReply {
     this.limitReached = false,
     this.versions = const [],
     this.disclaimer = '',
+    this.kind = 'general',
+    this.sources = const [],
   });
 
   final String text;
@@ -14,6 +16,8 @@ class TutorReply {
   final bool limitReached;
   final List<TutorVersion> versions;
   final String disclaimer;
+  final String kind;
+  final List<String> sources;
 }
 
 class TutorVersion {
@@ -113,6 +117,68 @@ class TutorService {
         TutorVersion(text: 'In short, $sentence', explanation: 'Starts with the point.'),
       ],
     );
+  }
+
+  Future<TutorReply> summarize({
+    required String title,
+    required String bookId,
+    required List<String> notes,
+    String chapter = '',
+  }) {
+    return _notes(
+      path: '/ai/summary',
+      body: {'title': title, 'book_id': bookId, 'chapter': chapter, 'notes': notes},
+      offlineText: notes.isEmpty ? '' : notes.take(3).join(' '),
+    );
+  }
+
+  Future<TutorReply> bookChat({
+    required String title,
+    required String bookId,
+    required String question,
+    required List<String> notes,
+    String chapter = '',
+  }) {
+    final match = notes.where((note) => note.toLowerCase().contains(question.toLowerCase())).take(1);
+    return _notes(
+      path: '/ai/book-chat',
+      body: {
+        'title': title,
+        'book_id': bookId,
+        'chapter': chapter,
+        'question': question,
+        'notes': notes,
+      },
+      offlineText: match.isEmpty ? question : match.first,
+    );
+  }
+
+  Future<TutorReply> _notes({
+    required String path,
+    required Map<String, Object> body,
+    required String offlineText,
+  }) async {
+    final local = TutorReply(text: offlineText, offline: true, kind: offlineText.isEmpty ? 'general' : 'from_notes');
+    try {
+      final token = await bearer();
+      if (token == null) return local;
+      final response = await dio.post<Map<String, dynamic>>(
+        path,
+        data: body,
+        options: Options(headers: {'Authorization': 'Bearer $token'}),
+      );
+      final data = response.data;
+      if (data == null) return local;
+      final sources = data['sources'];
+      return TutorReply(
+        text: data['text'] as String? ?? '',
+        kind: data['kind'] as String? ?? 'general',
+        sources: [if (sources is List) for (final row in sources) if (row is String) row],
+      );
+    } on DioException catch (error) {
+      if (error.response?.statusCode == 429) return const TutorReply(text: '', limitReached: true);
+      return local;
+    }
   }
 
   String _local(String text, String mode, String targetLanguage) {

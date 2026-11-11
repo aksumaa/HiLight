@@ -260,5 +260,9 @@
   "readingStop": "To'xtatish",
   "readingDone": "Tugatildi",
   "readingMarkDone": "Tugatilgan deb belgilash",
+  "bookSummary": "Qisqacha",
+  "bookChat": "Qaydlar bilan suhbat",
+  "bookChatHint": "Bu kitob haqida so'rang",
+  "bookChatEmpty": "Bu kitobda hali qayd yo'q.",
   "readingGoal": "{minutes} daqiqa maqsad"
 }

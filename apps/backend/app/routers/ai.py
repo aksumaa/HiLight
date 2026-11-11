@@ -10,7 +10,8 @@ from app.config import Settings, get_settings
 from app.db import get_session
 from app.deps import current_user
 from app.errors import AppError
-from app.models import AiUsage, User
+from app.models import AiUsage, Item, User
+from app.rag import rank_notes
 
 router = APIRouter(prefix="/ai", tags=["ai"])
 _MODES = {"explain", "simplify", "translate", "grammar", "quiz"}
@@ -45,6 +46,24 @@ class RewriteOut(BaseModel):
     disclaimer: str
     versions: list[RewriteVersion]
     remaining: int
+
+
+class NotesIn(BaseModel):
+    title: str = Field(min_length=1, max_length=300)
+    book_id: str = ""
+    chapter: str = ""
+    notes: list[str] = Field(default_factory=list, max_length=40)
+
+
+class SummaryOut(BaseModel):
+    text: str
+    kind: str
+    sources: list[str]
+    remaining: int
+
+
+class BookChatIn(NotesIn):
+    question: str = Field(min_length=1, max_length=2000)
 
 
 async def _charge(session: AsyncSession, user: User, limit: int) -> int:
@@ -91,3 +110,71 @@ async def rewrite(
         versions=[RewriteVersion(**row) for row in versions if row.get("text")],
         remaining=remaining,
     )
+
+
+def _clip(notes: list[str]) -> list[str]:
+    cleaned: list[str] = []
+    for note in notes:
+        text = note.strip()[:2000]
+        if text and text not in cleaned:
+            cleaned.append(text)
+        if len(cleaned) == 40:
+            break
+    return cleaned
+
+
+async def _book_notes(session: AsyncSession, user: User, book_id: str, chapter: str) -> list[str]:
+    if not book_id:
+        return []
+    rows = await session.scalars(select(Item).where(Item.user_id == user.id, Item.deleted_at.is_(None)))
+    notes: list[str] = []
+    for row in rows:
+        meta = row.meta or {}
+        if str(meta.get("book_id") or "") != book_id:
+            continue
+        if chapter and str(meta.get("chapter") or "") not in {"", chapter}:
+            continue
+        if row.text:
+            notes.append(row.text)
+    return notes
+
+
+@router.post("/summary", response_model=SummaryOut)
+async def summary(
+    body: NotesIn,
+    user: User = Depends(current_user),
+    session: AsyncSession = Depends(get_session),
+    settings: Settings = Depends(get_settings),
+) -> SummaryOut:
+    notes = _clip([*body.notes, *await _book_notes(session, user, body.book_id, body.chapter)])
+    chosen = notes[:8]
+    remaining = await _charge(session, user, settings.ai_daily_limit)
+    if not chosen:
+        text = await ai_provider(settings).chat(f"There are no notes for {body.title}.", "explain", "en")
+        return SummaryOut(text=text, kind="general", sources=[], remaining=remaining)
+    chapter = f" Chapter: {body.chapter}." if body.chapter else ""
+    prompt = f"Summarize these reading notes from {body.title}.{chapter}\n" + "\n".join(f"- {note}" for note in chosen)
+    text = await ai_provider(settings).chat(prompt, "explain", "en")
+    return SummaryOut(text=text, kind="from_notes", sources=chosen, remaining=remaining)
+
+
+@router.post("/book-chat", response_model=SummaryOut)
+async def book_chat(
+    body: BookChatIn,
+    user: User = Depends(current_user),
+    session: AsyncSession = Depends(get_session),
+    settings: Settings = Depends(get_settings),
+) -> SummaryOut:
+    notes = _clip([*body.notes, *await _book_notes(session, user, body.book_id, body.chapter)])
+    chosen = rank_notes(body.question, notes, limit=5)
+    remaining = await _charge(session, user, settings.ai_daily_limit)
+    if not chosen:
+        text = await ai_provider(settings).chat(body.question, "explain", "en")
+        return SummaryOut(text=text, kind="general", sources=[], remaining=remaining)
+    prompt = (
+        "Answer from these notes only. If they do not say, say so.\n"
+        + "\n".join(f"- {note}" for note in chosen)
+        + f"\nQuestion: {body.question}"
+    )
+    text = await ai_provider(settings).chat(prompt, "explain", "en")
+    return SummaryOut(text=text, kind="from_notes", sources=chosen, remaining=remaining)
