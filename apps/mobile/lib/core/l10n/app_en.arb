@@ -280,6 +280,11 @@
   "bookChat": "Chat with these notes",
   "bookChatHint": "Ask about this book",
   "bookChatEmpty": "This book has no notes yet.",
+  "pronounceTitle": "Practice",
+  "pronounceRough": "A rough guide, not a pronunciation test. The score compares the transcript with the word.",
+  "pronounceRecord": "Record",
+  "pronounceStop": "Stop",
+  "pronounceMissed": "No transcript. Try again when speech recognition is available.",
   "readingGoal": "{minutes} min goal",
   "@readingGoal": {
     "placeholders": {

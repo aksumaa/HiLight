@@ -264,5 +264,10 @@
   "bookChat": "Спросить по заметкам",
   "bookChatHint": "Вопрос об этой книге",
   "bookChatEmpty": "В этой книге пока нет заметок.",
+  "pronounceTitle": "Произношение",
+  "pronounceRough": "Грубая подсказка, не экзамен. Балл сравнивает расшифровку со словом.",
+  "pronounceRecord": "Записать",
+  "pronounceStop": "Стоп",
+  "pronounceMissed": "Расшифровки нет. Попробуйте, когда распознавание доступно.",
   "readingGoal": "Цель {minutes} мин"
 }

@@ -830,6 +830,23 @@ class AppLocalizationsUz extends AppLocalizations {
   String get bookChatEmpty => 'Bu kitobda hali qayd yo\'q.';
 
   @override
+  String get pronounceTitle => 'Talaffuz';
+
+  @override
+  String get pronounceRough =>
+      'Taxminiy yo\'l-yo\'riq, imtihon emas. Ball transkriptni so\'z bilan solishtiradi.';
+
+  @override
+  String get pronounceRecord => 'Yozish';
+
+  @override
+  String get pronounceStop => 'To\'xtatish';
+
+  @override
+  String get pronounceMissed =>
+      'Transkript yo\'q. Nutq aniqlanganda qayta urinib ko\'ring.';
+
+  @override
   String readingGoal(int minutes) {
     return '$minutes daqiqa maqsad';
   }

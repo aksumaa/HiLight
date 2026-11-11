@@ -26,6 +26,7 @@ import '../features/profile/presentation/profile_screen.dart';
 import '../features/shell/presentation/app_shell.dart';
 import '../features/ielts/presentation/ielts_screen.dart';
 import '../features/import/presentation/import_screen.dart';
+import '../features/study/presentation/pronounce_screen.dart';
 import '../features/study/presentation/quiz_screen.dart';
 import '../features/study/presentation/review_screen.dart';
 import '../features/study/presentation/vocab_screen.dart';
@@ -84,6 +85,10 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(path: '/review', builder: (context, state) => const ReviewScreen()),
       GoRoute(path: '/ielts', builder: (context, state) => const IeltsScreen()),
       GoRoute(path: '/quiz', builder: (context, state) => const QuizScreen()),
+      GoRoute(
+        path: '/practice',
+        builder: (context, state) => PronounceScreen(word: state.extra is String ? state.extra! as String : ''),
+      ),
       GoRoute(path: '/import', builder: (context, state) => const ImportScreen()),
       GoRoute(path: '/export', builder: (context, state) => const ExportScreen()),
       GoRoute(path: '/vocab', builder: (context, state) => const VocabScreen()),

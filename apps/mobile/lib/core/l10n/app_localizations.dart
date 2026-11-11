@@ -1684,6 +1684,36 @@ abstract class AppLocalizations {
   /// **'This book has no notes yet.'**
   String get bookChatEmpty;
 
+  /// No description provided for @pronounceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Practice'**
+  String get pronounceTitle;
+
+  /// No description provided for @pronounceRough.
+  ///
+  /// In en, this message translates to:
+  /// **'A rough guide, not a pronunciation test. The score compares the transcript with the word.'**
+  String get pronounceRough;
+
+  /// No description provided for @pronounceRecord.
+  ///
+  /// In en, this message translates to:
+  /// **'Record'**
+  String get pronounceRecord;
+
+  /// No description provided for @pronounceStop.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop'**
+  String get pronounceStop;
+
+  /// No description provided for @pronounceMissed.
+  ///
+  /// In en, this message translates to:
+  /// **'No transcript. Try again when speech recognition is available.'**
+  String get pronounceMissed;
+
   /// No description provided for @readingGoal.
   ///
   /// In en, this message translates to:

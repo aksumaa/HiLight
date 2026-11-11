@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/l10n/app_localizations.dart';
 import '../../capture/domain/capture_file_store.dart';
@@ -126,6 +127,10 @@ class _WordSheetState extends ConsumerState<_WordSheet> {
                     onPressed: () => _tts.speak(widget.word),
                     icon: Icon(Icons.volume_up_outlined, color: colors.primary),
                   ),
+                ),
+                TextButton(
+                  onPressed: () => context.push('/practice', extra: widget.word),
+                  child: Text(l10n.pronounceTitle),
                 ),
                 const Spacer(),
                 FilledButton(

@@ -833,6 +833,23 @@ class AppLocalizationsRu extends AppLocalizations {
   String get bookChatEmpty => 'В этой книге пока нет заметок.';
 
   @override
+  String get pronounceTitle => 'Произношение';
+
+  @override
+  String get pronounceRough =>
+      'Грубая подсказка, не экзамен. Балл сравнивает расшифровку со словом.';
+
+  @override
+  String get pronounceRecord => 'Записать';
+
+  @override
+  String get pronounceStop => 'Стоп';
+
+  @override
+  String get pronounceMissed =>
+      'Расшифровки нет. Попробуйте, когда распознавание доступно.';
+
+  @override
   String readingGoal(int minutes) {
     return 'Цель $minutes мин';
   }

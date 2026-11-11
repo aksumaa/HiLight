@@ -264,5 +264,10 @@
   "bookChat": "Qaydlar bilan suhbat",
   "bookChatHint": "Bu kitob haqida so'rang",
   "bookChatEmpty": "Bu kitobda hali qayd yo'q.",
+  "pronounceTitle": "Talaffuz",
+  "pronounceRough": "Taxminiy yo'l-yo'riq, imtihon emas. Ball transkriptni so'z bilan solishtiradi.",
+  "pronounceRecord": "Yozish",
+  "pronounceStop": "To'xtatish",
+  "pronounceMissed": "Transkript yo'q. Nutq aniqlanganda qayta urinib ko'ring.",
   "readingGoal": "{minutes} daqiqa maqsad"
 }

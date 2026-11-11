@@ -834,6 +834,23 @@ class AppLocalizationsEn extends AppLocalizations {
   String get bookChatEmpty => 'This book has no notes yet.';
 
   @override
+  String get pronounceTitle => 'Practice';
+
+  @override
+  String get pronounceRough =>
+      'A rough guide, not a pronunciation test. The score compares the transcript with the word.';
+
+  @override
+  String get pronounceRecord => 'Record';
+
+  @override
+  String get pronounceStop => 'Stop';
+
+  @override
+  String get pronounceMissed =>
+      'No transcript. Try again when speech recognition is available.';
+
+  @override
   String readingGoal(int minutes) {
     return '$minutes min goal';
   }
