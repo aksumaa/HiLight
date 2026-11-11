@@ -7,6 +7,7 @@ import '../../../core/l10n/app_localizations.dart';
 import '../../../core/theme/hilight_colors.dart';
 import '../../library/presentation/library_item_tile.dart';
 import '../../study/application/study_providers.dart';
+import 'reading_panel.dart';
 
 class BookDetailScreen extends ConsumerWidget {
   const BookDetailScreen({required this.id, super.key});
@@ -35,6 +36,8 @@ class BookDetailScreen extends ConsumerWidget {
             children: [
               if (book.author != null)
                 Text(book.author!, style: TextStyle(color: colors.secondary)),
+              const SizedBox(height: 16),
+              ReadingPanel(book: book, highlights: highlights),
               const SizedBox(height: 16),
               Text(l10n.bookHighlights, style: TextStyle(color: colors.secondary, fontSize: 13)),
               const SizedBox(height: 12),

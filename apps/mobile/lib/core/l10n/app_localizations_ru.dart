@@ -802,4 +802,26 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get exportAnkiBody => 'Лицо, оборот и метки из словаря.';
+
+  @override
+  String readingToday(int minutes, int goal) {
+    return '$minutes из $goal мин сегодня';
+  }
+
+  @override
+  String get readingStart => 'Таймер';
+
+  @override
+  String get readingStop => 'Стоп';
+
+  @override
+  String get readingDone => 'Книга дочитана';
+
+  @override
+  String get readingMarkDone => 'Отметить готовой';
+
+  @override
+  String readingGoal(int minutes) {
+    return 'Цель $minutes мин';
+  }
 }

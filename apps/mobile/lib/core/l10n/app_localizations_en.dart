@@ -803,4 +803,26 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get exportAnkiBody => 'Front, back, and tags from your vocabulary.';
+
+  @override
+  String readingToday(int minutes, int goal) {
+    return '$minutes of $goal min today';
+  }
+
+  @override
+  String get readingStart => 'Start timer';
+
+  @override
+  String get readingStop => 'Stop';
+
+  @override
+  String get readingDone => 'Finished';
+
+  @override
+  String get readingMarkDone => 'Mark finished';
+
+  @override
+  String readingGoal(int minutes) {
+    return '$minutes min goal';
+  }
 }

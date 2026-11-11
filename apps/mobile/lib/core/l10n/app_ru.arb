@@ -254,5 +254,11 @@
   "exportNotion": "Markdown для Notion",
   "exportNotionBody": "Один документ, у каждой книги свой заголовок.",
   "exportAnki": "CSV для Anki",
-  "exportAnkiBody": "Лицо, оборот и метки из словаря."
+  "exportAnkiBody": "Лицо, оборот и метки из словаря.",
+  "readingToday": "{minutes} из {goal} мин сегодня",
+  "readingStart": "Таймер",
+  "readingStop": "Стоп",
+  "readingDone": "Книга дочитана",
+  "readingMarkDone": "Отметить готовой",
+  "readingGoal": "Цель {minutes} мин"
 }

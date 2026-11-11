@@ -19,6 +19,7 @@ class SettingsController extends Notifier<AppSettings> {
   static const reviewMinuteKey = 'review_minute';
   static const dailyNewKey = 'daily_new_limit';
   static const dailyReviewKey = 'daily_review_limit';
+  static const readingGoalKey = 'reading_goal_minutes';
 
   @override
   AppSettings build() {
@@ -40,6 +41,7 @@ class SettingsController extends Notifier<AppSettings> {
       reviewMinute: prefs.getInt(reviewMinuteKey) ?? 0,
       dailyNewLimit: prefs.getInt(dailyNewKey) ?? 10,
       dailyReviewLimit: prefs.getInt(dailyReviewKey) ?? 20,
+      dailyReadingMinutes: prefs.getInt(readingGoalKey) ?? 15,
     );
   }
 
@@ -94,6 +96,12 @@ class SettingsController extends Notifier<AppSettings> {
     final prefs = ref.read(sharedPreferencesProvider);
     await prefs.setInt(dailyNewKey, dailyNew);
     await prefs.setInt(dailyReviewKey, dailyReview);
+  }
+
+  Future<void> setReadingGoal(int minutes) {
+    final next = minutes.clamp(5, 180);
+    state = state.copyWith(dailyReadingMinutes: next);
+    return ref.read(sharedPreferencesProvider).setInt(readingGoalKey, next);
   }
 
   Future<void> markEntered() {

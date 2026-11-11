@@ -1629,6 +1629,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Front, back, and tags from your vocabulary.'**
   String get exportAnkiBody;
+
+  /// No description provided for @readingToday.
+  ///
+  /// In en, this message translates to:
+  /// **'{minutes} of {goal} min today'**
+  String readingToday(int minutes, int goal);
+
+  /// No description provided for @readingStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start timer'**
+  String get readingStart;
+
+  /// No description provided for @readingStop.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop'**
+  String get readingStop;
+
+  /// No description provided for @readingDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Finished'**
+  String get readingDone;
+
+  /// No description provided for @readingMarkDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark finished'**
+  String get readingMarkDone;
+
+  /// No description provided for @readingGoal.
+  ///
+  /// In en, this message translates to:
+  /// **'{minutes} min goal'**
+  String readingGoal(int minutes);
 }
 
 class _AppLocalizationsDelegate

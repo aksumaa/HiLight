@@ -264,5 +264,22 @@
   "exportNotion": "Notion Markdown",
   "exportNotionBody": "One document with a heading for each book.",
   "exportAnki": "Anki CSV",
-  "exportAnkiBody": "Front, back, and tags from your vocabulary."
+  "exportAnkiBody": "Front, back, and tags from your vocabulary.",
+  "readingToday": "{minutes} of {goal} min today",
+  "@readingToday": {
+    "placeholders": {
+      "minutes": {"type": "int"},
+      "goal": {"type": "int"}
+    }
+  },
+  "readingStart": "Start timer",
+  "readingStop": "Stop",
+  "readingDone": "Finished",
+  "readingMarkDone": "Mark finished",
+  "readingGoal": "{minutes} min goal",
+  "@readingGoal": {
+    "placeholders": {
+      "minutes": {"type": "int"}
+    }
+  }
 }

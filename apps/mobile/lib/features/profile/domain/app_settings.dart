@@ -24,6 +24,7 @@ class AppSettings {
     this.reviewMinute = 0,
     this.dailyNewLimit = 10,
     this.dailyReviewLimit = 20,
+    this.dailyReadingMinutes = 15,
   });
 
   final AppThemeChoice theme;
@@ -38,6 +39,7 @@ class AppSettings {
   final int reviewMinute;
   final int dailyNewLimit;
   final int dailyReviewLimit;
+  final int dailyReadingMinutes;
 
   bool get showsReaderHome => goal == LearningGoal.reader || goal == LearningGoal.both;
 
@@ -62,6 +64,7 @@ class AppSettings {
     int? reviewMinute,
     int? dailyNewLimit,
     int? dailyReviewLimit,
+    int? dailyReadingMinutes,
   }) {
     return AppSettings(
       theme: theme ?? this.theme,
@@ -76,6 +79,7 @@ class AppSettings {
       reviewMinute: reviewMinute ?? this.reviewMinute,
       dailyNewLimit: dailyNewLimit ?? this.dailyNewLimit,
       dailyReviewLimit: dailyReviewLimit ?? this.dailyReviewLimit,
+      dailyReadingMinutes: dailyReadingMinutes ?? this.dailyReadingMinutes,
     );
   }
 }

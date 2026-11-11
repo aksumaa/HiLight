@@ -799,4 +799,26 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get exportAnkiBody => 'Lug\'atdan oldi, orqasi va teglar.';
+
+  @override
+  String readingToday(int minutes, int goal) {
+    return 'Bugun $minutes / $goal daqiqa';
+  }
+
+  @override
+  String get readingStart => 'Taymer';
+
+  @override
+  String get readingStop => 'To\'xtatish';
+
+  @override
+  String get readingDone => 'Tugatildi';
+
+  @override
+  String get readingMarkDone => 'Tugatilgan deb belgilash';
+
+  @override
+  String readingGoal(int minutes) {
+    return '$minutes daqiqa maqsad';
+  }
 }
