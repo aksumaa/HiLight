@@ -27,6 +27,14 @@ class Settings(BaseSettings):
     dictionary_model: str = "gpt-4o-mini"
     dictionary_rate_limit: int = 30
     dictionary_rate_window_seconds: int = 60
+    # fake or llm. llm uses AI_API_KEY, or DICTIONARY_API_KEY if that is empty.
+    ai_provider: str = "fake"
+    ai_api_key: str = ""
+    ai_model: str = "gpt-4o-mini"
+    ai_daily_limit: int = 20
+    # hash is free. openai uses text-embedding-3-small shortened to 384 dims.
+    embedding_provider: str = "hash"
+    embedding_model: str = "text-embedding-3-small"
 
 
 @lru_cache

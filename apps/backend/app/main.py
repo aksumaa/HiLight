@@ -3,7 +3,7 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 
 from app.errors import AppError
-from app.routers import auth, collections, dictionary, health, items, me, media, study
+from app.routers import ai, auth, collections, dictionary, health, items, me, media, search, study
 
 
 def create_app() -> FastAPI:
@@ -16,6 +16,8 @@ def create_app() -> FastAPI:
     app.include_router(media.router)
     app.include_router(dictionary.router)
     app.include_router(study.router)
+    app.include_router(ai.router)
+    app.include_router(search.router)
 
     @app.exception_handler(AppError)
     async def app_error(_request: Request, exc: AppError) -> JSONResponse:

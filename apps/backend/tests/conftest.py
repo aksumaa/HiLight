@@ -10,6 +10,9 @@ os.environ.setdefault("JWT_SECRET", "test-secret-only-for-pytest-0123456789")
 os.environ["OCR_PROVIDER"] = "fake"
 os.environ["STT_PROVIDER"] = "fake"
 os.environ["DICTIONARY_PROVIDER"] = "fake"
+os.environ["AI_PROVIDER"] = "fake"
+os.environ["EMBEDDING_PROVIDER"] = "hash"
+os.environ.setdefault("AI_DAILY_LIMIT", "20")
 TEST_URL = os.environ.get(
     "TEST_DATABASE_URL",
     "postgresql+asyncpg://hilight:hilight@localhost:5432/hilight_test",
