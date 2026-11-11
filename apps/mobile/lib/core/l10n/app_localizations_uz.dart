@@ -497,4 +497,145 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get homeWordOfDayEmpty => 'Soʻz saqlang, u shu yerda chiqadi.';
+
+  @override
+  String get booksTitle => 'Kitoblar';
+
+  @override
+  String get feedTitle => 'Tasma';
+
+  @override
+  String get booksEmpty =>
+      'Hali kitob yoʻq. Nom qidiring, ISBN skanerlang yoki qoʻlda yozing.';
+
+  @override
+  String get addBook => 'Kitob qoʻshish';
+
+  @override
+  String get searchBooks => 'Nom boʻyicha qidirish';
+
+  @override
+  String get bookTitleField => 'Nom';
+
+  @override
+  String get bookAuthorField => 'Muallif';
+
+  @override
+  String get bookPagesField => 'Sahifalar';
+
+  @override
+  String get saveBook => 'Kitobni saqlash';
+
+  @override
+  String get scanIsbn => 'ISBN skanerlash';
+
+  @override
+  String get bookHighlights => 'Parchalar';
+
+  @override
+  String get bookNoHighlights => 'Bu kitobdan hali hech narsa yoʻq.';
+
+  @override
+  String get highlightNote => 'Izoh';
+
+  @override
+  String get highlightChapter => 'Bob';
+
+  @override
+  String get highlightFavorite => 'Sevimli';
+
+  @override
+  String get assignBook => 'Kitob';
+
+  @override
+  String get noBook => 'Kitobsiz';
+
+  @override
+  String get lookupSave => 'Lugʻatga';
+
+  @override
+  String get lookupOffline => 'Tarmoq yoʻq. Soʻz saqlanmadi.';
+
+  @override
+  String get lookupSpeak => 'Soʻzni aytish';
+
+  @override
+  String get vocabTitle => 'Lugʻat';
+
+  @override
+  String get vocabEmpty => 'Hali soʻz yoʻq. Parchani ochib, soʻz saqlang.';
+
+  @override
+  String get vocabSearch => 'Soʻz yoki teg qidirish';
+
+  @override
+  String get vocabUndo => 'Qaytarish';
+
+  @override
+  String get vocabDeleted => 'Soʻz oʻchirildi.';
+
+  @override
+  String get masteryNew => 'Yangi';
+
+  @override
+  String get masteryLearning => 'Oʻrganilmoqda';
+
+  @override
+  String get masteryKnown => 'Bilaman';
+
+  @override
+  String get suggestTitle => 'Kam uchraydigan soʻzlar';
+
+  @override
+  String get suggestSave => 'Saqlash';
+
+  @override
+  String get reviewEmpty => 'Bugunga hech narsa yoʻq. Ertaga qayting.';
+
+  @override
+  String get reviewAgain => 'Yana';
+
+  @override
+  String get reviewHard => 'Qiyin';
+
+  @override
+  String get reviewGood => 'Yaxshi';
+
+  @override
+  String get reviewEasy => 'Oson';
+
+  @override
+  String get reviewShow => 'Javobni koʻrsatish';
+
+  @override
+  String get reviewSummary => 'Mashq tugadi';
+
+  @override
+  String get reviewStreak => 'Kunlik ketma-ketlik';
+
+  @override
+  String get shareQuote => 'Ulashish';
+
+  @override
+  String get insightsWords => 'Oʻrganilgan soʻzlar';
+
+  @override
+  String get insightsPerBook => 'Kitoblar boʻyicha parchalar';
+
+  @override
+  String get insightsWeek => 'Shu hafta';
+
+  @override
+  String get insightsEmpty =>
+      'Parcha saqlang yoki kartani takrorlang, shu yerda raqamlar chiqadi.';
+
+  @override
+  String get reminderTitle => 'Kundalik takror';
+
+  @override
+  String get reminderBody =>
+      'HiLight tanlagan vaqtingizda eslatadi. Rad etish mumkin.';
+
+  @override
+  String get reminderAllow => 'Eslatmalarga ruxsat';
 }

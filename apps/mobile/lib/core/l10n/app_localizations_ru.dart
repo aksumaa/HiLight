@@ -498,4 +498,146 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get homeWordOfDayEmpty => 'Сохраните слово, и оно появится здесь.';
+
+  @override
+  String get booksTitle => 'Книги';
+
+  @override
+  String get feedTitle => 'Лента';
+
+  @override
+  String get booksEmpty =>
+      'Книг пока нет. Найдите название, отсканируйте ISBN или введите вручную.';
+
+  @override
+  String get addBook => 'Добавить книгу';
+
+  @override
+  String get searchBooks => 'Поиск по названию';
+
+  @override
+  String get bookTitleField => 'Название';
+
+  @override
+  String get bookAuthorField => 'Автор';
+
+  @override
+  String get bookPagesField => 'Страницы';
+
+  @override
+  String get saveBook => 'Сохранить книгу';
+
+  @override
+  String get scanIsbn => 'Сканировать ISBN';
+
+  @override
+  String get bookHighlights => 'Выделения';
+
+  @override
+  String get bookNoHighlights => 'Из этой книги пока ничего нет.';
+
+  @override
+  String get highlightNote => 'Заметка';
+
+  @override
+  String get highlightChapter => 'Глава';
+
+  @override
+  String get highlightFavorite => 'Избранное';
+
+  @override
+  String get assignBook => 'Книга';
+
+  @override
+  String get noBook => 'Без книги';
+
+  @override
+  String get lookupSave => 'В словарь';
+
+  @override
+  String get lookupOffline => 'Нет сети. Слово не сохранено.';
+
+  @override
+  String get lookupSpeak => 'Произнести слово';
+
+  @override
+  String get vocabTitle => 'Словарь';
+
+  @override
+  String get vocabEmpty =>
+      'Слов пока нет. Откройте выделение и сохраните слово.';
+
+  @override
+  String get vocabSearch => 'Поиск по словам или меткам';
+
+  @override
+  String get vocabUndo => 'Вернуть';
+
+  @override
+  String get vocabDeleted => 'Слово удалено.';
+
+  @override
+  String get masteryNew => 'Новое';
+
+  @override
+  String get masteryLearning => 'Учу';
+
+  @override
+  String get masteryKnown => 'Знаю';
+
+  @override
+  String get suggestTitle => 'Редкие слова';
+
+  @override
+  String get suggestSave => 'Сохранить';
+
+  @override
+  String get reviewEmpty => 'На сегодня ничего нет. Загляните завтра.';
+
+  @override
+  String get reviewAgain => 'Снова';
+
+  @override
+  String get reviewHard => 'Трудно';
+
+  @override
+  String get reviewGood => 'Хорошо';
+
+  @override
+  String get reviewEasy => 'Легко';
+
+  @override
+  String get reviewShow => 'Показать ответ';
+
+  @override
+  String get reviewSummary => 'Сессия закончена';
+
+  @override
+  String get reviewStreak => 'Дней подряд';
+
+  @override
+  String get shareQuote => 'Поделиться';
+
+  @override
+  String get insightsWords => 'Выученные слова';
+
+  @override
+  String get insightsPerBook => 'Выделения по книгам';
+
+  @override
+  String get insightsWeek => 'Эта неделя';
+
+  @override
+  String get insightsEmpty =>
+      'Сохраните выделение или повторите карточку, и здесь появятся числа.';
+
+  @override
+  String get reminderTitle => 'Ежедневное повторение';
+
+  @override
+  String get reminderBody =>
+      'HiLight напомнит в выбранное время. Можно отказаться.';
+
+  @override
+  String get reminderAllow => 'Разрешить напоминания';
 }

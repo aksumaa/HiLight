@@ -7,6 +7,7 @@ import '../../../core/l10n/app_localizations.dart';
 import '../../../core/theme/hilight_colors.dart';
 import '../../../core/theme/hilight_theme.dart';
 import '../../profile/application/settings_controller.dart';
+import '../../books/presentation/books_view.dart';
 import '../domain/library_query.dart';
 import 'library_layouts.dart';
 
@@ -20,6 +21,7 @@ class LibraryScreen extends ConsumerStatefulWidget {
 class _LibraryScreenState extends ConsumerState<LibraryScreen> {
   final _search = TextEditingController();
   var _filter = LibraryFilter.all;
+  var _books = false;
 
   @override
   void dispose() {
@@ -50,6 +52,26 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
               ),
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 0, 20, 8),
+            child: Row(
+              children: [
+                _FilterChip(
+                  label: l10n.feedTitle,
+                  selected: !_books,
+                  chipKey: const Key('library-feed'),
+                  onSelected: () => setState(() => _books = false),
+                ),
+                const SizedBox(width: 8),
+                _FilterChip(
+                  label: l10n.booksTitle,
+                  selected: _books,
+                  chipKey: const Key('library-books'),
+                  onSelected: () => setState(() => _books = true),
+                ),
+              ],
+            ),
+          ),
           SizedBox(
             height: 64,
             child: ListView(
@@ -77,6 +99,7 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                 child: Text(l10n.homeLoadError),
               ),
               data: (list) {
+                if (_books) return BooksView(items: list);
                 if (list.isEmpty) return _Empty(text: l10n.libraryEmpty);
                 final visible = filterLibrary(list, filter: _filter, query: _search.text);
                 if (visible.isEmpty) return _Empty(text: l10n.libraryNoMatches);

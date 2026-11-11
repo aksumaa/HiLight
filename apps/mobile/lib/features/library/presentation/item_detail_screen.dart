@@ -8,6 +8,9 @@ import '../../../core/l10n/app_localizations.dart';
 import '../../../core/theme/hilight_colors.dart';
 import '../../../core/theme/hilight_theme.dart';
 import '../../../data/models/library_item.dart';
+import '../../study/application/study_providers.dart';
+import '../../study/presentation/word_sheet.dart';
+import 'share_quote_card.dart';
 
 class ItemDetailScreen extends ConsumerWidget {
   const ItemDetailScreen({required this.id, super.key});
@@ -51,6 +54,11 @@ class _ItemBodyState extends ConsumerState<_ItemBody> {
   late final TextEditingController _text;
   late final TextEditingController _tag;
   late final TextEditingController _page;
+  late final TextEditingController _note;
+  late final TextEditingController _chapter;
+  late HighlightColor _color;
+  late bool _favorite;
+  String? _bookId;
 
   @override
   void initState() {
@@ -58,6 +66,11 @@ class _ItemBodyState extends ConsumerState<_ItemBody> {
     _text = TextEditingController(text: widget.item.text);
     _tag = TextEditingController(text: widget.item.tag ?? '');
     _page = TextEditingController(text: widget.item.page?.toString() ?? '');
+    _note = TextEditingController(text: widget.item.note ?? '');
+    _chapter = TextEditingController(text: widget.item.chapter ?? '');
+    _color = widget.item.highlightColor;
+    _favorite = widget.item.favorite;
+    _bookId = widget.item.bookId;
   }
 
   @override
@@ -65,6 +78,8 @@ class _ItemBodyState extends ConsumerState<_ItemBody> {
     _text.dispose();
     _tag.dispose();
     _page.dispose();
+    _note.dispose();
+    _chapter.dispose();
     super.dispose();
   }
 
@@ -100,6 +115,8 @@ class _ItemBodyState extends ConsumerState<_ItemBody> {
               switch (value) {
                 case 'copy':
                   _copy();
+                case 'share':
+                  shareQuoteCard(context, _text.text);
                 case 'edit':
                   setState(() => _editing = true);
                 case 'delete':
@@ -108,6 +125,7 @@ class _ItemBodyState extends ConsumerState<_ItemBody> {
             },
             itemBuilder: (context) => [
               PopupMenuItem(value: 'copy', child: Text(l10n.itemCopy)),
+              PopupMenuItem(value: 'share', child: Text(l10n.shareQuote)),
               if (!_editing) PopupMenuItem(value: 'edit', child: Text(l10n.itemEdit)),
               PopupMenuItem(value: 'delete', child: Text(l10n.itemDelete)),
             ],
@@ -143,7 +161,55 @@ class _ItemBodyState extends ConsumerState<_ItemBody> {
                   ? HilightTheme.quoteStyle(colors)
                   : const TextStyle(fontFamily: HilightTheme.uiFont, fontSize: 18, height: 1.4),
             ),
+          const SizedBox(height: 12),
+          if (!_editing)
+            Wrap(
+              spacing: 6,
+              runSpacing: 6,
+              children: [
+                for (final word in item.text.split(RegExp(r'[^A-Za-z]+')).where((part) => part.length > 2))
+                  Semantics(
+                    button: true,
+                    label: word,
+                    child: ActionChip(
+                      label: Text(word),
+                      onPressed: () => showWordSheet(context, ref, word: word, sentence: item.text, itemId: item.id),
+                    ),
+                  ),
+              ],
+            ),
           const SizedBox(height: 20),
+          Wrap(
+            spacing: 8,
+            children: [
+              for (final color in HighlightColor.values)
+                ChoiceChip(
+                  label: Text(color.name),
+                  selected: _color == color,
+                  onSelected: (_) => setState(() => _color = color),
+                ),
+              FilterChip(
+                label: Text(l10n.highlightFavorite),
+                selected: _favorite,
+                onSelected: (value) => setState(() => _favorite = value),
+              ),
+            ],
+          ),
+          const SizedBox(height: 12),
+          if (_editing) ...[
+            TextField(controller: _note, decoration: InputDecoration(labelText: l10n.highlightNote)),
+            const SizedBox(height: 12),
+            TextField(controller: _chapter, decoration: InputDecoration(labelText: l10n.highlightChapter)),
+            const SizedBox(height: 12),
+            _BookPicker(
+              bookId: _bookId,
+              onChanged: (id) => setState(() => _bookId = id),
+            ),
+            const SizedBox(height: 12),
+          ] else if (item.note != null) ...[
+            Text(item.note!, style: TextStyle(color: colors.secondary, height: 1.4)),
+            const SizedBox(height: 12),
+          ],
           if (_editing) ...[
             TextField(controller: _tag, decoration: InputDecoration(labelText: l10n.editTag)),
             const SizedBox(height: 12),
@@ -180,14 +246,25 @@ class _ItemBodyState extends ConsumerState<_ItemBody> {
   Future<void> _save() async {
     final tag = _tag.text.trim();
     final pageText = _page.text.trim();
+    final note = _note.text.trim();
+    final chapter = _chapter.text.trim();
     final updated = widget.item.copyWith(
       text: _text.text.trim(),
       tag: tag,
       page: int.tryParse(pageText),
+      note: note,
+      chapter: chapter,
+      favorite: _favorite,
+      highlightColor: _color,
+      bookId: _bookId,
       clearTag: tag.isEmpty,
       clearPage: pageText.isEmpty,
+      clearNote: note.isEmpty,
+      clearChapter: chapter.isEmpty,
+      clearBook: _bookId == null,
     );
     await ref.read(itemRepositoryProvider).update(updated);
+    await ref.read(studyRepositoryProvider).ensureHighlightCards(itemId: updated.id, text: updated.text);
     if (mounted) setState(() => _editing = false);
   }
 
@@ -212,5 +289,28 @@ class _ItemBodyState extends ConsumerState<_ItemBody> {
     if (confirmed != true || !mounted) return;
     await ref.read(itemRepositoryProvider).delete(widget.item.id);
     if (mounted) context.pop();
+  }
+}
+
+class _BookPicker extends ConsumerWidget {
+  const _BookPicker({required this.bookId, required this.onChanged});
+
+  final String? bookId;
+  final ValueChanged<String?> onChanged;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context);
+    final books = ref.watch(booksProvider).value ?? const [];
+    return DropdownButton<String?>(
+      isExpanded: true,
+      value: books.any((book) => book.id == bookId) ? bookId : null,
+      hint: Text(l10n.assignBook),
+      items: [
+        DropdownMenuItem<String?>(value: null, child: Text(l10n.noBook)),
+        for (final book in books) DropdownMenuItem<String?>(value: book.id, child: Text(book.title)),
+      ],
+      onChanged: onChanged,
+    );
   }
 }

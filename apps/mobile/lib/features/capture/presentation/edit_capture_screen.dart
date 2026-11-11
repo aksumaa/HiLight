@@ -10,7 +10,11 @@ import '../../../core/l10n/app_localizations.dart';
 import '../../../core/theme/hilight_colors.dart';
 import '../../../core/theme/hilight_theme.dart';
 import '../../../data/models/library_item.dart';
+import '../../study/application/study_providers.dart';
+import '../../study/domain/vocab_word.dart';
+import '../../study/domain/word_suggestions.dart';
 import '../domain/capture_event.dart';
+import '../domain/capture_file_store.dart';
 import 'language_chips.dart';
 import 'local_audio_player.dart';
 
@@ -29,6 +33,7 @@ class _EditCaptureScreenState extends ConsumerState<EditCaptureScreen> {
   late final TextEditingController _tag;
   late final TextEditingController _page;
   late String _language;
+  String? _bookId;
   var _busy = false;
 
   @override
@@ -51,13 +56,24 @@ class _EditCaptureScreenState extends ConsumerState<EditCaptureScreen> {
 
   Future<void> _save() async {
     setState(() => _busy = true);
-    await ref.read(capturePipelineProvider).save(
+    final saved = await ref.read(capturePipelineProvider).save(
       _processed,
       text: _text.text,
       tag: _tag.text,
       page: int.tryParse(_page.text.trim()),
       languageCode: _language,
+      bookId: _bookId,
     );
+    await ref.read(studyRepositoryProvider).ensureHighlightCards(itemId: saved.id, text: saved.text);
+    if (!mounted) return;
+    final known = ref.read(vocabProvider).value?.map((word) => word.word).toSet() ?? {};
+    final suggestions = uncommonWords(saved.text, known);
+    if (suggestions.isNotEmpty) {
+      await showModalBottomSheet<void>(
+        context: context,
+        builder: (context) => _Suggestions(words: suggestions, sentence: saved.text, itemId: saved.id),
+      );
+    }
     if (mounted) context.go('/');
   }
 
@@ -173,6 +189,11 @@ class _EditCaptureScreenState extends ConsumerState<EditCaptureScreen> {
               decoration: InputDecoration(labelText: l10n.editPage),
             ),
             const SizedBox(height: 16),
+            _BookMenu(
+              bookId: _bookId,
+              onChanged: (id) => setState(() => _bookId = id),
+            ),
+            const SizedBox(height: 16),
             Text(l10n.editLanguage, style: TextStyle(color: colors.secondary)),
             const SizedBox(height: 8),
             LanguageChips(
@@ -227,6 +248,81 @@ class _EditCaptureScreenState extends ConsumerState<EditCaptureScreen> {
           padding: const EdgeInsets.all(14),
           child: Text(message, style: TextStyle(color: colors.secondary)),
         ),
+      ),
+    );
+  }
+}
+
+class _BookMenu extends ConsumerWidget {
+  const _BookMenu({required this.bookId, required this.onChanged});
+
+  final String? bookId;
+  final ValueChanged<String?> onChanged;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context);
+    final books = ref.watch(booksProvider).value ?? const [];
+    return DropdownButton<String?>(
+      isExpanded: true,
+      value: books.any((book) => book.id == bookId) ? bookId : null,
+      hint: Text(l10n.assignBook),
+      items: [
+        DropdownMenuItem<String?>(value: null, child: Text(l10n.noBook)),
+        for (final book in books) DropdownMenuItem(value: book.id, child: Text(book.title)),
+      ],
+      onChanged: onChanged,
+    );
+  }
+}
+
+class _Suggestions extends ConsumerWidget {
+  const _Suggestions({required this.words, required this.sentence, required this.itemId});
+
+  final List<String> words;
+  final String sentence;
+  final String itemId;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context);
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(20, 16, 20, 24),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(l10n.suggestTitle),
+          const SizedBox(height: 12),
+          for (final word in words)
+            ListTile(
+              contentPadding: EdgeInsets.zero,
+              title: Text(word),
+              trailing: TextButton(
+                onPressed: () {
+                  final now = DateTime.now().toUtc();
+                  ref.read(studyRepositoryProvider).saveWord(
+                    VocabWord(
+                      id: createCaptureId(),
+                      word: word,
+                      sourceLanguage: 'en',
+                      targetLanguage: 'en',
+                      translation: word,
+                      definition: '',
+                      example: sentence,
+                      partOfSpeech: '',
+                      sourceSentence: sentence,
+                      sourceItemId: itemId,
+                      createdAt: now,
+                      updatedAt: now,
+                    ),
+                  );
+                  Navigator.pop(context);
+                },
+                child: Text(l10n.suggestSave),
+              ),
+            ),
+        ],
       ),
     );
   }

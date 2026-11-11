@@ -1035,6 +1035,282 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Save a word and one will appear here.'**
   String get homeWordOfDayEmpty;
+
+  /// No description provided for @booksTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Books'**
+  String get booksTitle;
+
+  /// No description provided for @feedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Feed'**
+  String get feedTitle;
+
+  /// No description provided for @booksEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No books yet. Search a title, scan an ISBN, or type one in.'**
+  String get booksEmpty;
+
+  /// No description provided for @addBook.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a book'**
+  String get addBook;
+
+  /// No description provided for @searchBooks.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by title'**
+  String get searchBooks;
+
+  /// No description provided for @bookTitleField.
+  ///
+  /// In en, this message translates to:
+  /// **'Title'**
+  String get bookTitleField;
+
+  /// No description provided for @bookAuthorField.
+  ///
+  /// In en, this message translates to:
+  /// **'Author'**
+  String get bookAuthorField;
+
+  /// No description provided for @bookPagesField.
+  ///
+  /// In en, this message translates to:
+  /// **'Pages'**
+  String get bookPagesField;
+
+  /// No description provided for @saveBook.
+  ///
+  /// In en, this message translates to:
+  /// **'Save book'**
+  String get saveBook;
+
+  /// No description provided for @scanIsbn.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan ISBN'**
+  String get scanIsbn;
+
+  /// No description provided for @bookHighlights.
+  ///
+  /// In en, this message translates to:
+  /// **'Highlights'**
+  String get bookHighlights;
+
+  /// No description provided for @bookNoHighlights.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing from this book yet.'**
+  String get bookNoHighlights;
+
+  /// No description provided for @highlightNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Note'**
+  String get highlightNote;
+
+  /// No description provided for @highlightChapter.
+  ///
+  /// In en, this message translates to:
+  /// **'Chapter'**
+  String get highlightChapter;
+
+  /// No description provided for @highlightFavorite.
+  ///
+  /// In en, this message translates to:
+  /// **'Favorite'**
+  String get highlightFavorite;
+
+  /// No description provided for @assignBook.
+  ///
+  /// In en, this message translates to:
+  /// **'Book'**
+  String get assignBook;
+
+  /// No description provided for @noBook.
+  ///
+  /// In en, this message translates to:
+  /// **'No book'**
+  String get noBook;
+
+  /// No description provided for @lookupSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save to Vocab'**
+  String get lookupSave;
+
+  /// No description provided for @lookupOffline.
+  ///
+  /// In en, this message translates to:
+  /// **'You are offline. The word was not saved.'**
+  String get lookupOffline;
+
+  /// No description provided for @lookupSpeak.
+  ///
+  /// In en, this message translates to:
+  /// **'Speak the word'**
+  String get lookupSpeak;
+
+  /// No description provided for @vocabTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Vocabulary'**
+  String get vocabTitle;
+
+  /// No description provided for @vocabEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No words yet. Open a highlight and save a word.'**
+  String get vocabEmpty;
+
+  /// No description provided for @vocabSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Search words or tags'**
+  String get vocabSearch;
+
+  /// No description provided for @vocabUndo.
+  ///
+  /// In en, this message translates to:
+  /// **'Undo'**
+  String get vocabUndo;
+
+  /// No description provided for @vocabDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Word removed.'**
+  String get vocabDeleted;
+
+  /// No description provided for @masteryNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New'**
+  String get masteryNew;
+
+  /// No description provided for @masteryLearning.
+  ///
+  /// In en, this message translates to:
+  /// **'Learning'**
+  String get masteryLearning;
+
+  /// No description provided for @masteryKnown.
+  ///
+  /// In en, this message translates to:
+  /// **'Known'**
+  String get masteryKnown;
+
+  /// No description provided for @suggestTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Uncommon words'**
+  String get suggestTitle;
+
+  /// No description provided for @suggestSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get suggestSave;
+
+  /// No description provided for @reviewEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing is due. Come back tomorrow.'**
+  String get reviewEmpty;
+
+  /// No description provided for @reviewAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Again'**
+  String get reviewAgain;
+
+  /// No description provided for @reviewHard.
+  ///
+  /// In en, this message translates to:
+  /// **'Hard'**
+  String get reviewHard;
+
+  /// No description provided for @reviewGood.
+  ///
+  /// In en, this message translates to:
+  /// **'Good'**
+  String get reviewGood;
+
+  /// No description provided for @reviewEasy.
+  ///
+  /// In en, this message translates to:
+  /// **'Easy'**
+  String get reviewEasy;
+
+  /// No description provided for @reviewShow.
+  ///
+  /// In en, this message translates to:
+  /// **'Show answer'**
+  String get reviewShow;
+
+  /// No description provided for @reviewSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Session done'**
+  String get reviewSummary;
+
+  /// No description provided for @reviewStreak.
+  ///
+  /// In en, this message translates to:
+  /// **'Day streak'**
+  String get reviewStreak;
+
+  /// No description provided for @shareQuote.
+  ///
+  /// In en, this message translates to:
+  /// **'Share'**
+  String get shareQuote;
+
+  /// No description provided for @insightsWords.
+  ///
+  /// In en, this message translates to:
+  /// **'Words learned'**
+  String get insightsWords;
+
+  /// No description provided for @insightsPerBook.
+  ///
+  /// In en, this message translates to:
+  /// **'Highlights by book'**
+  String get insightsPerBook;
+
+  /// No description provided for @insightsWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'This week'**
+  String get insightsWeek;
+
+  /// No description provided for @insightsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Save a highlight or review a card to see this fill in.'**
+  String get insightsEmpty;
+
+  /// No description provided for @reminderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily review'**
+  String get reminderTitle;
+
+  /// No description provided for @reminderBody.
+  ///
+  /// In en, this message translates to:
+  /// **'HiLight will remind you at the time you choose. You can say no.'**
+  String get reminderBody;
+
+  /// No description provided for @reminderAllow.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow reminders'**
+  String get reminderAllow;
 }
 
 class _AppLocalizationsDelegate

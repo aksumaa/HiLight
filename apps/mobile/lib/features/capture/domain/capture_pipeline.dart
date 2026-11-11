@@ -52,6 +52,11 @@ class CapturePipeline {
     String? tag,
     int? page,
     String? languageCode,
+    String? bookId,
+    String? note,
+    String? chapter,
+    bool favorite = false,
+    HighlightColor highlightColor = HighlightColor.gold,
   }) async {
     final item = LibraryItem(
       id: processed.saved?.id ?? processed.event.id,
@@ -60,6 +65,11 @@ class CapturePipeline {
       text: text.trim(),
       tag: _blankToNull(tag),
       page: page,
+      bookId: bookId,
+      note: _blankToNull(note),
+      chapter: _blankToNull(chapter),
+      favorite: favorite,
+      highlightColor: highlightColor,
       audioPath: processed.event.audioPath,
       imagePath: processed.event.imagePath,
       languageCode: languageCode ?? processed.event.languageCode,

@@ -10,6 +10,9 @@ import '../features/capture/domain/capture_event.dart';
 import '../features/capture/presentation/edit_capture_screen.dart';
 import '../features/capture/presentation/record_screen.dart';
 import '../features/capture/presentation/scan_screen.dart';
+import '../features/books/presentation/add_book_screen.dart';
+import '../features/books/presentation/book_detail_screen.dart';
+import '../features/books/presentation/isbn_scan_screen.dart';
 import '../features/capture/presentation/write_note_screen.dart';
 import '../features/device/presentation/device_screen.dart';
 import '../features/insights/presentation/insights_screen.dart';
@@ -68,6 +71,12 @@ final routerProvider = Provider<GoRouter>((ref) {
         },
       ),
       GoRoute(path: '/appearance', builder: (context, state) => const AppearanceScreen()),
+      GoRoute(path: '/books/add', builder: (context, state) => const AddBookScreen()),
+      GoRoute(path: '/books/scan', builder: (context, state) => const IsbnScanScreen()),
+      GoRoute(
+        path: '/books/:id',
+        builder: (context, state) => BookDetailScreen(id: state.pathParameters['id']!),
+      ),
       GoRoute(path: '/review', builder: (context, state) => const ReviewScreen()),
       GoRoute(path: '/vocab', builder: (context, state) => const VocabScreen()),
       GoRoute(path: '/device', builder: (context, state) => const DeviceScreen()),

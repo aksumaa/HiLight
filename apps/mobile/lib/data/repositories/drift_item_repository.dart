@@ -69,7 +69,12 @@ class DriftItemRepository implements ItemRepository {
         .get();
     return [
       for (final row in rows)
-        OutboxJob(id: row.id, itemId: row.itemId, operation: row.operation),
+        OutboxJob(
+          id: row.id,
+          itemId: row.itemId,
+          operation: row.operation,
+          entityType: row.entityType,
+        ),
     ];
   }
 

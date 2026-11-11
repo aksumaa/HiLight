@@ -500,4 +500,145 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeWordOfDayEmpty => 'Save a word and one will appear here.';
+
+  @override
+  String get booksTitle => 'Books';
+
+  @override
+  String get feedTitle => 'Feed';
+
+  @override
+  String get booksEmpty =>
+      'No books yet. Search a title, scan an ISBN, or type one in.';
+
+  @override
+  String get addBook => 'Add a book';
+
+  @override
+  String get searchBooks => 'Search by title';
+
+  @override
+  String get bookTitleField => 'Title';
+
+  @override
+  String get bookAuthorField => 'Author';
+
+  @override
+  String get bookPagesField => 'Pages';
+
+  @override
+  String get saveBook => 'Save book';
+
+  @override
+  String get scanIsbn => 'Scan ISBN';
+
+  @override
+  String get bookHighlights => 'Highlights';
+
+  @override
+  String get bookNoHighlights => 'Nothing from this book yet.';
+
+  @override
+  String get highlightNote => 'Note';
+
+  @override
+  String get highlightChapter => 'Chapter';
+
+  @override
+  String get highlightFavorite => 'Favorite';
+
+  @override
+  String get assignBook => 'Book';
+
+  @override
+  String get noBook => 'No book';
+
+  @override
+  String get lookupSave => 'Save to Vocab';
+
+  @override
+  String get lookupOffline => 'You are offline. The word was not saved.';
+
+  @override
+  String get lookupSpeak => 'Speak the word';
+
+  @override
+  String get vocabTitle => 'Vocabulary';
+
+  @override
+  String get vocabEmpty => 'No words yet. Open a highlight and save a word.';
+
+  @override
+  String get vocabSearch => 'Search words or tags';
+
+  @override
+  String get vocabUndo => 'Undo';
+
+  @override
+  String get vocabDeleted => 'Word removed.';
+
+  @override
+  String get masteryNew => 'New';
+
+  @override
+  String get masteryLearning => 'Learning';
+
+  @override
+  String get masteryKnown => 'Known';
+
+  @override
+  String get suggestTitle => 'Uncommon words';
+
+  @override
+  String get suggestSave => 'Save';
+
+  @override
+  String get reviewEmpty => 'Nothing is due. Come back tomorrow.';
+
+  @override
+  String get reviewAgain => 'Again';
+
+  @override
+  String get reviewHard => 'Hard';
+
+  @override
+  String get reviewGood => 'Good';
+
+  @override
+  String get reviewEasy => 'Easy';
+
+  @override
+  String get reviewShow => 'Show answer';
+
+  @override
+  String get reviewSummary => 'Session done';
+
+  @override
+  String get reviewStreak => 'Day streak';
+
+  @override
+  String get shareQuote => 'Share';
+
+  @override
+  String get insightsWords => 'Words learned';
+
+  @override
+  String get insightsPerBook => 'Highlights by book';
+
+  @override
+  String get insightsWeek => 'This week';
+
+  @override
+  String get insightsEmpty =>
+      'Save a highlight or review a card to see this fill in.';
+
+  @override
+  String get reminderTitle => 'Daily review';
+
+  @override
+  String get reminderBody =>
+      'HiLight will remind you at the time you choose. You can say no.';
+
+  @override
+  String get reminderAllow => 'Allow reminders';
 }

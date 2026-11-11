@@ -95,6 +95,32 @@ class ApiClient {
     );
   }
 
+  Future<void> putRecord(String collection, String id, Map<String, dynamic> body) async {
+    final token = await bearer();
+    if (token == null) throw ApiException('Sign in required.');
+    await dio.put(
+      '/$collection/$id',
+      data: body,
+      options: Options(headers: {'Authorization': 'Bearer $token'}),
+    );
+  }
+
+  Future<List<Map<String, dynamic>>> pullRecords(
+    String collection, {
+    String? updatedSince,
+  }) async {
+    final token = await bearer();
+    if (token == null) throw ApiException('Sign in required.');
+    final response = await dio.get<Map<String, dynamic>>(
+      '/$collection',
+      queryParameters: {'limit': 100, 'updated_since': ?updatedSince},
+      options: Options(headers: {'Authorization': 'Bearer $token'}),
+    );
+    final rows = response.data?['items'];
+    if (rows is! List) return const [];
+    return rows.cast<Map<String, dynamic>>();
+  }
+
   Future<TokenPair> _session(String method, String path, Map<String, dynamic> body) async {
     final response = await dio.post<Map<String, dynamic>>(path, data: body);
     final pair = _pair(response.data);
@@ -129,6 +155,11 @@ Map<String, dynamic> _body(LibraryItem item) {
     'meta': {
       'tag': item.tag,
       'recognition_status': item.recognitionStatus.name,
+      'highlight_color': item.highlightColor.name,
+      'note': item.note,
+      'favorite': item.favorite,
+      'chapter': item.chapter,
+      'book_id': item.bookId,
     },
     'updated_at': item.modifiedAt.toUtc().toIso8601String(),
   };
@@ -138,6 +169,7 @@ LibraryItem itemFromJson(Map<String, dynamic> json) {
   final meta = json['meta'];
   final tag = meta is Map ? meta['tag'] as String? : null;
   final statusName = meta is Map ? meta['recognition_status'] as String? : null;
+  final colorName = meta is Map ? meta['highlight_color'] as String? : null;
   return LibraryItem(
     id: json['id'] as String,
     type: ItemType.values.byName(json['type'] as String),
@@ -148,6 +180,11 @@ LibraryItem itemFromJson(Map<String, dynamic> json) {
     audioPath: json['audio_url'] as String?,
     imagePath: json['image_url'] as String?,
     tag: tag,
+    highlightColor: HighlightColor.values.byName(colorName ?? 'gold'),
+    note: meta is Map ? meta['note'] as String? : null,
+    favorite: meta is Map && meta['favorite'] == true,
+    chapter: meta is Map ? meta['chapter'] as String? : null,
+    bookId: meta is Map ? meta['book_id'] as String? : null,
     createdAt: DateTime.parse(json['created_at'] as String),
     updatedAt: DateTime.parse(json['updated_at'] as String),
     deletedAt: json['deleted_at'] == null ? null : DateTime.parse(json['deleted_at'] as String),

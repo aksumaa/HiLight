@@ -4,6 +4,8 @@ enum ItemSource { scan, voice, manual, device }
 
 enum RecognitionStatus { recognized, pending, empty }
 
+enum HighlightColor { gold, lilac, ink, blue }
+
 /// A library row. The UI and the capture pipeline use this type.
 /// Drift rows stay inside the database implementation.
 class LibraryItem {
@@ -22,6 +24,11 @@ class LibraryItem {
     this.page,
     this.audioPath,
     this.imagePath,
+    this.highlightColor = HighlightColor.gold,
+    this.note,
+    this.favorite = false,
+    this.chapter,
+    this.bookId,
   });
 
   final String id;
@@ -32,6 +39,11 @@ class LibraryItem {
   final int? page;
   final String? audioPath;
   final String? imagePath;
+  final HighlightColor highlightColor;
+  final String? note;
+  final bool favorite;
+  final String? chapter;
+  final String? bookId;
   final String languageCode;
   final DateTime createdAt;
   final DateTime? updatedAt;
@@ -52,6 +64,14 @@ class LibraryItem {
     bool? dirty,
     bool clearTag = false,
     bool clearPage = false,
+    HighlightColor? highlightColor,
+    String? note,
+    bool? favorite,
+    String? chapter,
+    String? bookId,
+    bool clearNote = false,
+    bool clearChapter = false,
+    bool clearBook = false,
   }) {
     return LibraryItem(
       id: id,
@@ -62,6 +82,11 @@ class LibraryItem {
       page: clearPage ? null : page ?? this.page,
       audioPath: audioPath,
       imagePath: imagePath,
+      highlightColor: highlightColor ?? this.highlightColor,
+      note: clearNote ? null : note ?? this.note,
+      favorite: favorite ?? this.favorite,
+      chapter: clearChapter ? null : chapter ?? this.chapter,
+      bookId: clearBook ? null : bookId ?? this.bookId,
       languageCode: languageCode ?? this.languageCode,
       createdAt: createdAt,
       updatedAt: updatedAt ?? this.updatedAt,

@@ -19,9 +19,15 @@ abstract class ItemRepository {
 }
 
 class OutboxJob {
-  const OutboxJob({required this.id, required this.itemId, required this.operation});
+  const OutboxJob({
+    required this.id,
+    required this.itemId,
+    required this.operation,
+    this.entityType = 'item',
+  });
 
   final int id;
   final String itemId;
   final String operation;
+  final String entityType;
 }

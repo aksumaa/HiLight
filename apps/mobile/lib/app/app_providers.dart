@@ -9,7 +9,9 @@ import '../data/db/app_database.dart';
 import '../data/models/library_item.dart';
 import '../data/remote/api_client.dart';
 import '../data/remote/token_store.dart';
+import '../data/repositories/book_repository.dart';
 import '../data/repositories/drift_item_repository.dart';
+import '../data/repositories/study_repository.dart';
 import '../data/repositories/item_repository.dart';
 import '../data/sync/sync_service.dart';
 import '../features/capture/domain/capture_file_store.dart';
@@ -51,10 +53,13 @@ final apiClientProvider = Provider<ApiClient>((ref) {
 });
 
 final syncServiceProvider = Provider<SyncService>((ref) {
+  final database = ref.watch(appDatabaseProvider);
   return SyncService(
     api: ref.watch(apiClientProvider),
     items: ref.watch(itemRepositoryProvider),
     preferences: ref.watch(sharedPreferencesProvider),
+    books: DriftBookRepository(database),
+    study: StudyRepository(database),
   );
 });
 
