@@ -256,5 +256,13 @@
   "searchWords": "Words",
   "relatedTitle": "Related",
   "relatedEmpty": "No related note yet.",
-  "shareSaved": "Saved from another app."
+  "shareSaved": "Saved from another app.",
+  "exportTitle": "Export",
+  "exportEmpty": "Save a highlight or a word first.",
+  "exportObsidian": "Obsidian folder",
+  "exportObsidianBody": "One Markdown note per book, ready to drop into a vault.",
+  "exportNotion": "Notion Markdown",
+  "exportNotionBody": "One document with a heading for each book.",
+  "exportAnki": "Anki CSV",
+  "exportAnkiBody": "Front, back, and tags from your vocabulary."
 }

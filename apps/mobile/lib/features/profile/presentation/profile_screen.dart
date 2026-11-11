@@ -34,6 +34,11 @@ class ProfileScreen extends ConsumerWidget {
         padding: const EdgeInsets.fromLTRB(20, 8, 20, 120),
         children: [
           ListTile(
+            title: Text(l10n.exportTitle),
+            trailing: Icon(Icons.chevron_right, color: context.hilight.secondary),
+            onTap: () => context.push('/export'),
+          ),
+          ListTile(
             title: Text(l10n.appearanceTitle),
             subtitle: Text('$language · $theme'),
             trailing: Icon(Icons.chevron_right, color: context.hilight.secondary),

@@ -776,4 +776,30 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get shareSaved => 'Сохранено из другого приложения.';
+
+  @override
+  String get exportTitle => 'Экспорт';
+
+  @override
+  String get exportEmpty => 'Сначала сохраните цитату или слово.';
+
+  @override
+  String get exportObsidian => 'Папка Obsidian';
+
+  @override
+  String get exportObsidianBody =>
+      'Одна заметка Markdown на книгу, её можно положить в хранилище.';
+
+  @override
+  String get exportNotion => 'Markdown для Notion';
+
+  @override
+  String get exportNotionBody =>
+      'Один документ, у каждой книги свой заголовок.';
+
+  @override
+  String get exportAnki => 'CSV для Anki';
+
+  @override
+  String get exportAnkiBody => 'Лицо, оборот и метки из словаря.';
 }

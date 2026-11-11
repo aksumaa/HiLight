@@ -774,4 +774,29 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get shareSaved => 'Boshqa ilovadan saqlandi.';
+
+  @override
+  String get exportTitle => 'Eksport';
+
+  @override
+  String get exportEmpty => 'Avval iqtibos yoki so\'z saqlang.';
+
+  @override
+  String get exportObsidian => 'Obsidian papkasi';
+
+  @override
+  String get exportObsidianBody => 'Har bir kitob uchun bitta Markdown qayd.';
+
+  @override
+  String get exportNotion => 'Notion Markdown';
+
+  @override
+  String get exportNotionBody =>
+      'Har bir kitobning sarlavhasi bor bitta hujjat.';
+
+  @override
+  String get exportAnki => 'Anki CSV';
+
+  @override
+  String get exportAnkiBody => 'Lug\'atdan oldi, orqasi va teglar.';
 }

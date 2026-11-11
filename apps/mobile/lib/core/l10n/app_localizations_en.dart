@@ -778,4 +778,29 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get shareSaved => 'Saved from another app.';
+
+  @override
+  String get exportTitle => 'Export';
+
+  @override
+  String get exportEmpty => 'Save a highlight or a word first.';
+
+  @override
+  String get exportObsidian => 'Obsidian folder';
+
+  @override
+  String get exportObsidianBody =>
+      'One Markdown note per book, ready to drop into a vault.';
+
+  @override
+  String get exportNotion => 'Notion Markdown';
+
+  @override
+  String get exportNotionBody => 'One document with a heading for each book.';
+
+  @override
+  String get exportAnki => 'Anki CSV';
+
+  @override
+  String get exportAnkiBody => 'Front, back, and tags from your vocabulary.';
 }

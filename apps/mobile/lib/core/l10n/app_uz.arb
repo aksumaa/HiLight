@@ -246,5 +246,13 @@
   "searchWords": "So'zlar",
   "relatedTitle": "Yaqin",
   "relatedEmpty": "Yaqin eslatma hozircha yo'q.",
-  "shareSaved": "Boshqa ilovadan saqlandi."
+  "shareSaved": "Boshqa ilovadan saqlandi.",
+  "exportTitle": "Eksport",
+  "exportEmpty": "Avval iqtibos yoki so'z saqlang.",
+  "exportObsidian": "Obsidian papkasi",
+  "exportObsidianBody": "Har bir kitob uchun bitta Markdown qayd.",
+  "exportNotion": "Notion Markdown",
+  "exportNotionBody": "Har bir kitobning sarlavhasi bor bitta hujjat.",
+  "exportAnki": "Anki CSV",
+  "exportAnkiBody": "Lug'atdan oldi, orqasi va teglar."
 }

@@ -1581,6 +1581,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Saved from another app.'**
   String get shareSaved;
+
+  /// No description provided for @exportTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Export'**
+  String get exportTitle;
+
+  /// No description provided for @exportEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Save a highlight or a word first.'**
+  String get exportEmpty;
+
+  /// No description provided for @exportObsidian.
+  ///
+  /// In en, this message translates to:
+  /// **'Obsidian folder'**
+  String get exportObsidian;
+
+  /// No description provided for @exportObsidianBody.
+  ///
+  /// In en, this message translates to:
+  /// **'One Markdown note per book, ready to drop into a vault.'**
+  String get exportObsidianBody;
+
+  /// No description provided for @exportNotion.
+  ///
+  /// In en, this message translates to:
+  /// **'Notion Markdown'**
+  String get exportNotion;
+
+  /// No description provided for @exportNotionBody.
+  ///
+  /// In en, this message translates to:
+  /// **'One document with a heading for each book.'**
+  String get exportNotionBody;
+
+  /// No description provided for @exportAnki.
+  ///
+  /// In en, this message translates to:
+  /// **'Anki CSV'**
+  String get exportAnki;
+
+  /// No description provided for @exportAnkiBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Front, back, and tags from your vocabulary.'**
+  String get exportAnkiBody;
 }
 
 class _AppLocalizationsDelegate

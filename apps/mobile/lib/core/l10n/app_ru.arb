@@ -246,5 +246,13 @@
   "searchWords": "Слова",
   "relatedTitle": "Рядом",
   "relatedEmpty": "Похожей заметки пока нет.",
-  "shareSaved": "Сохранено из другого приложения."
+  "shareSaved": "Сохранено из другого приложения.",
+  "exportTitle": "Экспорт",
+  "exportEmpty": "Сначала сохраните цитату или слово.",
+  "exportObsidian": "Папка Obsidian",
+  "exportObsidianBody": "Одна заметка Markdown на книгу, её можно положить в хранилище.",
+  "exportNotion": "Markdown для Notion",
+  "exportNotionBody": "Один документ, у каждой книги свой заголовок.",
+  "exportAnki": "CSV для Anki",
+  "exportAnkiBody": "Лицо, оборот и метки из словаря."
 }
