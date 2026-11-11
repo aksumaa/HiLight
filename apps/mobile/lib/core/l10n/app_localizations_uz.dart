@@ -469,4 +469,32 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get onboardingSlide3Body =>
       'HiLight AI eslatmalaringizdan javob beradi va javob ulardan boʻlmasa, belgilaydi.';
+
+  @override
+  String get onboardingGoalTitle => 'Bosh sahifa nimani koʻrsatsin?';
+
+  @override
+  String get onboardingGoalBody =>
+      'Ikkalasini ham qoldirish mumkin. Bu faqat birinchi ekranni oʻzgartiradi.';
+
+  @override
+  String get goalReader => 'Kitobxon';
+
+  @override
+  String get goalLearner => 'IELTS';
+
+  @override
+  String get goalBoth => 'Ikkalasi';
+
+  @override
+  String get homeHighlights => 'Bugungi parchalar';
+
+  @override
+  String get homeReviewDue => 'Takrorlash';
+
+  @override
+  String get homeWordOfDay => 'Kun soʻzi';
+
+  @override
+  String get homeWordOfDayEmpty => 'Soʻz saqlang, u shu yerda chiqadi.';
 }

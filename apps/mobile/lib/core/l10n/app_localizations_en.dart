@@ -472,4 +472,32 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get onboardingSlide3Body =>
       'HiLight AI will answer from your notes, and label when it does not.';
+
+  @override
+  String get onboardingGoalTitle => 'What should Home show?';
+
+  @override
+  String get onboardingGoalBody =>
+      'You can keep both. This only changes the first screen.';
+
+  @override
+  String get goalReader => 'Reader';
+
+  @override
+  String get goalLearner => 'IELTS learner';
+
+  @override
+  String get goalBoth => 'Both';
+
+  @override
+  String get homeHighlights => 'Today\'s highlights';
+
+  @override
+  String get homeReviewDue => 'Review due';
+
+  @override
+  String get homeWordOfDay => 'Word of the day';
+
+  @override
+  String get homeWordOfDayEmpty => 'Save a word and one will appear here.';
 }

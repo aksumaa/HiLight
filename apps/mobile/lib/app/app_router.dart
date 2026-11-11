@@ -20,6 +20,8 @@ import '../features/profile/application/settings_controller.dart';
 import '../features/profile/presentation/appearance_screen.dart';
 import '../features/profile/presentation/profile_screen.dart';
 import '../features/shell/presentation/app_shell.dart';
+import '../features/study/presentation/review_screen.dart';
+import '../features/study/presentation/vocab_screen.dart';
 import '../features/shell/presentation/onboarding_screen.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
@@ -66,6 +68,8 @@ final routerProvider = Provider<GoRouter>((ref) {
         },
       ),
       GoRoute(path: '/appearance', builder: (context, state) => const AppearanceScreen()),
+      GoRoute(path: '/review', builder: (context, state) => const ReviewScreen()),
+      GoRoute(path: '/vocab', builder: (context, state) => const VocabScreen()),
       GoRoute(path: '/device', builder: (context, state) => const DeviceScreen()),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {

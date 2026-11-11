@@ -146,5 +146,14 @@
   "onboardingSlide2Title": "Одна библиотека",
   "onboardingSlide2Body": "Цитаты, голос и заметки попадают в одну ленту. Книги необязательны.",
   "onboardingSlide3Title": "Спросите позже",
-  "onboardingSlide3Body": "HiLight AI ответит по вашим заметкам и подпишет, если ответ не из них."
+  "onboardingSlide3Body": "HiLight AI ответит по вашим заметкам и подпишет, если ответ не из них.",
+  "onboardingGoalTitle": "Что показать на главной?",
+  "onboardingGoalBody": "Можно оставить оба варианта. Это меняет только первый экран.",
+  "goalReader": "Читатель",
+  "goalLearner": "IELTS",
+  "goalBoth": "Оба",
+  "homeHighlights": "Сегодняшние выделения",
+  "homeReviewDue": "К повторению",
+  "homeWordOfDay": "Слово дня",
+  "homeWordOfDayEmpty": "Сохраните слово, и оно появится здесь."
 }

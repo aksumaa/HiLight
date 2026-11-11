@@ -14,6 +14,11 @@ class SettingsController extends Notifier<AppSettings> {
   static const fontKey = 'font_scale';
   static const onboardingKey = 'onboarding_complete';
   static const gateKey = 'gate_passed';
+  static const goalKey = 'learning_goal';
+  static const reviewHourKey = 'review_hour';
+  static const reviewMinuteKey = 'review_minute';
+  static const dailyNewKey = 'daily_new_limit';
+  static const dailyReviewKey = 'daily_review_limit';
 
   @override
   AppSettings build() {
@@ -30,6 +35,11 @@ class SettingsController extends Notifier<AppSettings> {
       fontScale: (prefs.getDouble(fontKey) ?? 1).clamp(0.85, 1.35).toDouble(),
       onboardingComplete: prefs.getBool(onboardingKey) ?? false,
       gatePassed: prefs.getBool(gateKey) ?? false,
+      goal: _enum(LearningGoal.values, prefs.getString(goalKey), LearningGoal.both),
+      reviewHour: prefs.getInt(reviewHourKey) ?? 20,
+      reviewMinute: prefs.getInt(reviewMinuteKey) ?? 0,
+      dailyNewLimit: prefs.getInt(dailyNewKey) ?? 10,
+      dailyReviewLimit: prefs.getInt(dailyReviewKey) ?? 20,
     );
   }
 
@@ -65,6 +75,25 @@ class SettingsController extends Notifier<AppSettings> {
   Future<void> completeOnboarding() {
     state = state.copyWith(onboardingComplete: true);
     return ref.read(sharedPreferencesProvider).setBool(onboardingKey, true);
+  }
+
+  Future<void> setGoal(LearningGoal goal) {
+    state = state.copyWith(goal: goal);
+    return ref.read(sharedPreferencesProvider).setString(goalKey, goal.name);
+  }
+
+  Future<void> setReviewTime(int hour, int minute) async {
+    state = state.copyWith(reviewHour: hour, reviewMinute: minute);
+    final prefs = ref.read(sharedPreferencesProvider);
+    await prefs.setInt(reviewHourKey, hour);
+    await prefs.setInt(reviewMinuteKey, minute);
+  }
+
+  Future<void> setReviewLimits({required int dailyNew, required int dailyReview}) async {
+    state = state.copyWith(dailyNewLimit: dailyNew, dailyReviewLimit: dailyReview);
+    final prefs = ref.read(sharedPreferencesProvider);
+    await prefs.setInt(dailyNewKey, dailyNew);
+    await prefs.setInt(dailyReviewKey, dailyReview);
   }
 
   Future<void> markEntered() {

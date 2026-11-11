@@ -981,6 +981,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'HiLight AI will answer from your notes, and label when it does not.'**
   String get onboardingSlide3Body;
+
+  /// No description provided for @onboardingGoalTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What should Home show?'**
+  String get onboardingGoalTitle;
+
+  /// No description provided for @onboardingGoalBody.
+  ///
+  /// In en, this message translates to:
+  /// **'You can keep both. This only changes the first screen.'**
+  String get onboardingGoalBody;
+
+  /// No description provided for @goalReader.
+  ///
+  /// In en, this message translates to:
+  /// **'Reader'**
+  String get goalReader;
+
+  /// No description provided for @goalLearner.
+  ///
+  /// In en, this message translates to:
+  /// **'IELTS learner'**
+  String get goalLearner;
+
+  /// No description provided for @goalBoth.
+  ///
+  /// In en, this message translates to:
+  /// **'Both'**
+  String get goalBoth;
+
+  /// No description provided for @homeHighlights.
+  ///
+  /// In en, this message translates to:
+  /// **'Today\'s highlights'**
+  String get homeHighlights;
+
+  /// No description provided for @homeReviewDue.
+  ///
+  /// In en, this message translates to:
+  /// **'Review due'**
+  String get homeReviewDue;
+
+  /// No description provided for @homeWordOfDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Word of the day'**
+  String get homeWordOfDay;
+
+  /// No description provided for @homeWordOfDayEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Save a word and one will appear here.'**
+  String get homeWordOfDayEmpty;
 }
 
 class _AppLocalizationsDelegate

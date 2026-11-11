@@ -156,5 +156,14 @@
   "onboardingSlide2Title": "One library",
   "onboardingSlide2Body": "Quotes, voice, and notes land in a single feed. Books are optional.",
   "onboardingSlide3Title": "Ask later",
-  "onboardingSlide3Body": "HiLight AI will answer from your notes, and label when it does not."
+  "onboardingSlide3Body": "HiLight AI will answer from your notes, and label when it does not.",
+  "onboardingGoalTitle": "What should Home show?",
+  "onboardingGoalBody": "You can keep both. This only changes the first screen.",
+  "goalReader": "Reader",
+  "goalLearner": "IELTS learner",
+  "goalBoth": "Both",
+  "homeHighlights": "Today's highlights",
+  "homeReviewDue": "Review due",
+  "homeWordOfDay": "Word of the day",
+  "homeWordOfDayEmpty": "Save a word and one will appear here."
 }

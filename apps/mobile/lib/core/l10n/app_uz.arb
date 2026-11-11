@@ -146,5 +146,14 @@
   "onboardingSlide2Title": "Bitta kutubxona",
   "onboardingSlide2Body": "Iqtibos, ovoz va eslatmalar bitta tasmasga tushadi. Kitoblar ixtiyoriy.",
   "onboardingSlide3Title": "Keyin soʻrang",
-  "onboardingSlide3Body": "HiLight AI eslatmalaringizdan javob beradi va javob ulardan boʻlmasa, belgilaydi."
+  "onboardingSlide3Body": "HiLight AI eslatmalaringizdan javob beradi va javob ulardan boʻlmasa, belgilaydi.",
+  "onboardingGoalTitle": "Bosh sahifa nimani koʻrsatsin?",
+  "onboardingGoalBody": "Ikkalasini ham qoldirish mumkin. Bu faqat birinchi ekranni oʻzgartiradi.",
+  "goalReader": "Kitobxon",
+  "goalLearner": "IELTS",
+  "goalBoth": "Ikkalasi",
+  "homeHighlights": "Bugungi parchalar",
+  "homeReviewDue": "Takrorlash",
+  "homeWordOfDay": "Kun soʻzi",
+  "homeWordOfDayEmpty": "Soʻz saqlang, u shu yerda chiqadi."
 }

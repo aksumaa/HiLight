@@ -8,6 +8,8 @@ enum LibraryLayoutKind { list, cards, compact }
 
 enum AccentChoice { quote, voice, note, ai }
 
+enum LearningGoal { reader, learner, both }
+
 class AppSettings {
   const AppSettings({
     required this.theme,
@@ -17,6 +19,11 @@ class AppSettings {
     required this.fontScale,
     required this.onboardingComplete,
     required this.gatePassed,
+    this.goal = LearningGoal.both,
+    this.reviewHour = 20,
+    this.reviewMinute = 0,
+    this.dailyNewLimit = 10,
+    this.dailyReviewLimit = 20,
   });
 
   final AppThemeChoice theme;
@@ -26,6 +33,15 @@ class AppSettings {
   final double fontScale;
   final bool onboardingComplete;
   final bool gatePassed;
+  final LearningGoal goal;
+  final int reviewHour;
+  final int reviewMinute;
+  final int dailyNewLimit;
+  final int dailyReviewLimit;
+
+  bool get showsReaderHome => goal == LearningGoal.reader || goal == LearningGoal.both;
+
+  bool get showsLearnerHome => goal == LearningGoal.learner || goal == LearningGoal.both;
 
   ThemeMode get themeMode => switch (theme) {
     AppThemeChoice.system => ThemeMode.system,
@@ -41,6 +57,11 @@ class AppSettings {
     double? fontScale,
     bool? onboardingComplete,
     bool? gatePassed,
+    LearningGoal? goal,
+    int? reviewHour,
+    int? reviewMinute,
+    int? dailyNewLimit,
+    int? dailyReviewLimit,
   }) {
     return AppSettings(
       theme: theme ?? this.theme,
@@ -50,6 +71,11 @@ class AppSettings {
       fontScale: fontScale ?? this.fontScale,
       onboardingComplete: onboardingComplete ?? this.onboardingComplete,
       gatePassed: gatePassed ?? this.gatePassed,
+      goal: goal ?? this.goal,
+      reviewHour: reviewHour ?? this.reviewHour,
+      reviewMinute: reviewMinute ?? this.reviewMinute,
+      dailyNewLimit: dailyNewLimit ?? this.dailyNewLimit,
+      dailyReviewLimit: dailyReviewLimit ?? this.dailyReviewLimit,
     );
   }
 }

@@ -470,4 +470,32 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get onboardingSlide3Body =>
       'HiLight AI ответит по вашим заметкам и подпишет, если ответ не из них.';
+
+  @override
+  String get onboardingGoalTitle => 'Что показать на главной?';
+
+  @override
+  String get onboardingGoalBody =>
+      'Можно оставить оба варианта. Это меняет только первый экран.';
+
+  @override
+  String get goalReader => 'Читатель';
+
+  @override
+  String get goalLearner => 'IELTS';
+
+  @override
+  String get goalBoth => 'Оба';
+
+  @override
+  String get homeHighlights => 'Сегодняшние выделения';
+
+  @override
+  String get homeReviewDue => 'К повторению';
+
+  @override
+  String get homeWordOfDay => 'Слово дня';
+
+  @override
+  String get homeWordOfDayEmpty => 'Сохраните слово, и оно появится здесь.';
 }

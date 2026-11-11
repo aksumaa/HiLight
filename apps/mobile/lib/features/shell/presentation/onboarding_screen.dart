@@ -7,6 +7,7 @@ import '../../../core/theme/hilight_colors.dart';
 import '../../../core/theme/hilight_theme.dart';
 import '../../capture/presentation/language_chips.dart';
 import '../../profile/application/settings_controller.dart';
+import '../../profile/domain/app_settings.dart';
 
 class OnboardingScreen extends ConsumerStatefulWidget {
   const OnboardingScreen({super.key});
@@ -35,7 +36,9 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
       (l10n.onboardingSlide2Title, l10n.onboardingSlide2Body),
       (l10n.onboardingSlide3Title, l10n.onboardingSlide3Body),
     ];
-    final last = _page == slides.length - 1;
+    final pageCount = slides.length + 1;
+    final last = _page == pageCount - 1;
+    final goal = ref.watch(settingsProvider.select((settings) => settings.goal));
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -61,12 +64,16 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                   onPageChanged: (page) => setState(() => _page = page),
                   children: [
                     for (final slide in slides) _Slide(title: slide.$1, body: slide.$2),
+                    _GoalPage(
+                      selected: goal,
+                      onSelected: (value) => ref.read(settingsProvider.notifier).setGoal(value),
+                    ),
                   ],
                 ),
               ),
               Row(
                 children: [
-                  for (var i = 0; i < slides.length; i++)
+                  for (var i = 0; i < pageCount; i++)
                     Container(
                       width: i == _page ? 18 : 8,
                       height: 8,
@@ -97,6 +104,64 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _GoalPage extends StatelessWidget {
+  const _GoalPage({required this.selected, required this.onSelected});
+
+  final LearningGoal selected;
+  final ValueChanged<LearningGoal> onSelected;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final colors = context.hilight;
+    final choices = [
+      (LearningGoal.reader, l10n.goalReader),
+      (LearningGoal.learner, l10n.goalLearner),
+      (LearningGoal.both, l10n.goalBoth),
+    ];
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          l10n.onboardingGoalTitle,
+          style: TextStyle(
+            fontFamily: HilightTheme.uiFont,
+            fontSize: 32,
+            height: 1.2,
+            fontWeight: FontWeight.w500,
+            color: colors.text,
+          ),
+        ),
+        const SizedBox(height: 16),
+        Text(
+          l10n.onboardingGoalBody,
+          style: TextStyle(color: colors.secondary, fontSize: 16, height: 1.45),
+        ),
+        const SizedBox(height: 24),
+        for (final choice in choices) ...[
+          Semantics(
+            button: true,
+            selected: selected == choice.$1,
+            label: choice.$2,
+            child: SizedBox(
+              width: double.infinity,
+              child: OutlinedButton(
+                onPressed: () => onSelected(choice.$1),
+                style: OutlinedButton.styleFrom(
+                  backgroundColor: selected == choice.$1 ? colors.card : colors.background,
+                  side: BorderSide(color: selected == choice.$1 ? colors.primary : colors.hairline),
+                ),
+                child: Text(choice.$2),
+              ),
+            ),
+          ),
+          const SizedBox(height: 12),
+        ],
+      ],
     );
   }
 }
