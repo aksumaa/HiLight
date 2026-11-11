@@ -1575,6 +1575,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No related note yet.'**
   String get relatedEmpty;
+
+  /// No description provided for @shareSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved from another app.'**
+  String get shareSaved;
 }
 
 class _AppLocalizationsDelegate

@@ -245,5 +245,6 @@
   "searchMeaning": "Смысл",
   "searchWords": "Слова",
   "relatedTitle": "Рядом",
-  "relatedEmpty": "Похожей заметки пока нет."
+  "relatedEmpty": "Похожей заметки пока нет.",
+  "shareSaved": "Сохранено из другого приложения."
 }

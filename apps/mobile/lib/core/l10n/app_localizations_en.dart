@@ -775,4 +775,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get relatedEmpty => 'No related note yet.';
+
+  @override
+  String get shareSaved => 'Saved from another app.';
 }

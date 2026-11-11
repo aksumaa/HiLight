@@ -245,5 +245,6 @@
   "searchMeaning": "Ma'no",
   "searchWords": "So'zlar",
   "relatedTitle": "Yaqin",
-  "relatedEmpty": "Yaqin eslatma hozircha yo'q."
+  "relatedEmpty": "Yaqin eslatma hozircha yo'q.",
+  "shareSaved": "Boshqa ilovadan saqlandi."
 }

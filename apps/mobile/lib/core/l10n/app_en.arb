@@ -255,5 +255,6 @@
   "searchMeaning": "Meaning",
   "searchWords": "Words",
   "relatedTitle": "Related",
-  "relatedEmpty": "No related note yet."
+  "relatedEmpty": "No related note yet.",
+  "shareSaved": "Saved from another app."
 }

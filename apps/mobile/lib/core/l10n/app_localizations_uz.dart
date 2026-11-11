@@ -771,4 +771,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get relatedEmpty => 'Yaqin eslatma hozircha yo\'q.';
+
+  @override
+  String get shareSaved => 'Boshqa ilovadan saqlandi.';
 }

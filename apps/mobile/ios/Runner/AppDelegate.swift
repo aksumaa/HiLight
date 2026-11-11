@@ -23,6 +23,12 @@ import UIKit
         let quote = args?["quote"] as? String ?? ""
         let due = args?["due"] as? Int ?? 0
         result(SharedContainer.writeWidget(quote: quote, due: due))
+      case "readInbox":
+        result(SharedContainer.readInbox())
+      case "consumeInbox":
+        let args = call.arguments as? [String: Any]
+        SharedContainer.consume(id: args?["id"] as? String ?? "")
+        result(nil)
       default:
         result(FlutterMethodNotImplemented)
       }

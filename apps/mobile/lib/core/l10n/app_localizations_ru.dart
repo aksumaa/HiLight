@@ -773,4 +773,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get relatedEmpty => 'Похожей заметки пока нет.';
+
+  @override
+  String get shareSaved => 'Сохранено из другого приложения.';
 }
