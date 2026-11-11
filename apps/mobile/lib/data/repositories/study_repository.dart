@@ -129,7 +129,39 @@ class StudyRepository {
     await _enqueue(logId, 'review_log', 'upsert');
   }
 
-  Future<void> _insertCard({
+  Future<void> recordQuiz({
+    required String prompt,
+    required String answer,
+    required int quality,
+  }) async {
+    final rows = await (_database.select(_database.reviewCards)
+          ..where((row) => row.deletedAt.isNull()))
+        .get();
+    final needle = answer.toLowerCase();
+    ReviewCard? match;
+    for (final row in rows) {
+      if (row.answer.toLowerCase() == needle || row.prompt.toLowerCase() == prompt.toLowerCase()) {
+        match = row;
+        break;
+      }
+    }
+    final card = match == null
+        ? await _loadCard(
+            await _insertCard(kind: 'quiz', prompt: prompt, answer: answer),
+          )
+        : _card(match);
+    if (card == null) return;
+    await applyReview(card, quality);
+  }
+
+  Future<StudyCard?> _loadCard(String id) async {
+    final row = await (_database.select(_database.reviewCards)..where((card) => card.id.equals(id)))
+        .getSingleOrNull();
+    if (row == null) return null;
+    return _card(row);
+  }
+
+  Future<String> _insertCard({
     required String kind,
     required String prompt,
     required String answer,
@@ -153,6 +185,7 @@ class StudyRepository {
       ),
     );
     await _enqueue(id, 'card', 'upsert');
+    return id;
   }
 
   String _id() => createCaptureId();

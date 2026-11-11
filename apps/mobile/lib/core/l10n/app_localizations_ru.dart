@@ -640,4 +640,137 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get reminderAllow => 'Разрешить напоминания';
+
+  @override
+  String get ieltsTitle => 'Практика IELTS';
+
+  @override
+  String get ieltsEmpty => 'На этой полке пока пусто.';
+
+  @override
+  String get ieltsVocab => 'Слова';
+
+  @override
+  String get ieltsListening => 'Аудирование';
+
+  @override
+  String get ieltsReading => 'Чтение';
+
+  @override
+  String get ieltsWriting => 'Письмо';
+
+  @override
+  String get ieltsOfficial => 'Официальные сайты';
+
+  @override
+  String get ieltsOfficialBody =>
+      'Ссылки открываются вне HiLight. Учебные фразы здесь написаны для приложения.';
+
+  @override
+  String get ieltsTask1 => 'Задание 1';
+
+  @override
+  String get ieltsTask2 => 'Задание 2';
+
+  @override
+  String get ieltsBefore => 'Было';
+
+  @override
+  String get ieltsUpgrade => 'Улучшить фразу';
+
+  @override
+  String get ieltsDisclaimer => 'Учебный отзыв, не официальный балл IELTS.';
+
+  @override
+  String get topicEducation => 'Образование';
+
+  @override
+  String get topicEnvironment => 'Среда';
+
+  @override
+  String get topicTechnology => 'Технологии';
+
+  @override
+  String get topicHealth => 'Здоровье';
+
+  @override
+  String get topicWork => 'Работа';
+
+  @override
+  String get topicSociety => 'Общество';
+
+  @override
+  String get quizTitle => 'Проверка';
+
+  @override
+  String get quizBlank => 'Пропуск';
+
+  @override
+  String get quizChoice => 'Выбор';
+
+  @override
+  String get quizDictation => 'Диктант';
+
+  @override
+  String get quizCheck => 'Проверить';
+
+  @override
+  String get quizCorrect => 'Верно. Карточка сдвинулась вперёд.';
+
+  @override
+  String get quizAgain => 'Мимо. Карточка вернётся раньше.';
+
+  @override
+  String get quizEmpty => 'Сначала сохраните фразу или слово.';
+
+  @override
+  String get quizSpeak => 'Прослушать фразу';
+
+  @override
+  String get aiExplain => 'Объяснить';
+
+  @override
+  String get aiSimplify => 'Проще';
+
+  @override
+  String get aiTranslate => 'Перевести';
+
+  @override
+  String get aiGrammar => 'Грамматика';
+
+  @override
+  String get aiQuiz => 'Спросить меня';
+
+  @override
+  String get aiLimit => 'Лимит на сегодня исчерпан. Он обновится завтра.';
+
+  @override
+  String get aiOffline => 'Офлайн-практика. Репетитору это не отправлялось.';
+
+  @override
+  String get importTitle => 'Импорт';
+
+  @override
+  String get importPick => 'Выбрать файл';
+
+  @override
+  String get importSave => 'Сохранить цитаты';
+
+  @override
+  String get importEmpty => 'Нового нет.';
+
+  @override
+  String get importDuplicates => 'Повторы пропущены';
+
+  @override
+  String get searchMeaning => 'Смысл';
+
+  @override
+  String get searchWords => 'Слова';
+
+  @override
+  String get relatedTitle => 'Рядом';
+
+  @override
+  String get relatedEmpty => 'Похожей заметки пока нет.';
 }

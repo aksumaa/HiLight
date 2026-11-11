@@ -23,6 +23,9 @@ import '../features/profile/application/settings_controller.dart';
 import '../features/profile/presentation/appearance_screen.dart';
 import '../features/profile/presentation/profile_screen.dart';
 import '../features/shell/presentation/app_shell.dart';
+import '../features/ielts/presentation/ielts_screen.dart';
+import '../features/import/presentation/import_screen.dart';
+import '../features/study/presentation/quiz_screen.dart';
 import '../features/study/presentation/review_screen.dart';
 import '../features/study/presentation/vocab_screen.dart';
 import '../features/shell/presentation/onboarding_screen.dart';
@@ -78,6 +81,9 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => BookDetailScreen(id: state.pathParameters['id']!),
       ),
       GoRoute(path: '/review', builder: (context, state) => const ReviewScreen()),
+      GoRoute(path: '/ielts', builder: (context, state) => const IeltsScreen()),
+      GoRoute(path: '/quiz', builder: (context, state) => const QuizScreen()),
+      GoRoute(path: '/import', builder: (context, state) => const ImportScreen()),
       GoRoute(path: '/vocab', builder: (context, state) => const VocabScreen()),
       GoRoute(path: '/device', builder: (context, state) => const DeviceScreen()),
       StatefulShellRoute.indexedStack(

@@ -638,4 +638,137 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get reminderAllow => 'Eslatmalarga ruxsat';
+
+  @override
+  String get ieltsTitle => 'IELTS mashqi';
+
+  @override
+  String get ieltsEmpty => 'Bu javonda hozircha hech narsa yo\'q.';
+
+  @override
+  String get ieltsVocab => 'So\'zlar';
+
+  @override
+  String get ieltsListening => 'Tinglash';
+
+  @override
+  String get ieltsReading => 'O\'qish';
+
+  @override
+  String get ieltsWriting => 'Yozish';
+
+  @override
+  String get ieltsOfficial => 'Rasmiy manbalar';
+
+  @override
+  String get ieltsOfficialBody =>
+      'Havolalar HiLightdan tashqariga chiqadi. Bu yerdagi mashqlar ilova uchun yozilgan.';
+
+  @override
+  String get ieltsTask1 => '1-topshiriq';
+
+  @override
+  String get ieltsTask2 => '2-topshiriq';
+
+  @override
+  String get ieltsBefore => 'Avval';
+
+  @override
+  String get ieltsUpgrade => 'Gapni yaxshilash';
+
+  @override
+  String get ieltsDisclaimer => 'Mashq fikri, rasmiy IELTS bali emas.';
+
+  @override
+  String get topicEducation => 'Ta\'lim';
+
+  @override
+  String get topicEnvironment => 'Muhit';
+
+  @override
+  String get topicTechnology => 'Texnologiya';
+
+  @override
+  String get topicHealth => 'Salomatlik';
+
+  @override
+  String get topicWork => 'Ish';
+
+  @override
+  String get topicSociety => 'Jamiyat';
+
+  @override
+  String get quizTitle => 'Sinov';
+
+  @override
+  String get quizBlank => 'Bo\'sh joy';
+
+  @override
+  String get quizChoice => 'Tanlov';
+
+  @override
+  String get quizDictation => 'Imlo';
+
+  @override
+  String get quizCheck => 'Tekshirish';
+
+  @override
+  String get quizCorrect => 'To\'g\'ri. Karta oldinga surildi.';
+
+  @override
+  String get quizAgain => 'Xato. Karta ertaroq qaytadi.';
+
+  @override
+  String get quizEmpty => 'Avval gap yoki so\'z saqlang.';
+
+  @override
+  String get quizSpeak => 'Gapni eshitish';
+
+  @override
+  String get aiExplain => 'Tushuntirish';
+
+  @override
+  String get aiSimplify => 'Soddalashtirish';
+
+  @override
+  String get aiTranslate => 'Tarjima';
+
+  @override
+  String get aiGrammar => 'Grammatika';
+
+  @override
+  String get aiQuiz => 'Mendan so\'rang';
+
+  @override
+  String get aiLimit => 'Bugungi chegara tugadi. Ertaga yangilanadi.';
+
+  @override
+  String get aiOffline => 'Oflayn mashq. Bu repetitorga yuborilmadi.';
+
+  @override
+  String get importTitle => 'Import';
+
+  @override
+  String get importPick => 'Fayl tanlash';
+
+  @override
+  String get importSave => 'Iqtiboslarni saqlash';
+
+  @override
+  String get importEmpty => 'Yangisi yo\'q.';
+
+  @override
+  String get importDuplicates => 'Takrorlar tashlab ketildi';
+
+  @override
+  String get searchMeaning => 'Ma\'no';
+
+  @override
+  String get searchWords => 'So\'zlar';
+
+  @override
+  String get relatedTitle => 'Yaqin';
+
+  @override
+  String get relatedEmpty => 'Yaqin eslatma hozircha yo\'q.';
 }

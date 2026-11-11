@@ -22,6 +22,7 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
   final _search = TextEditingController();
   var _filter = LibraryFilter.all;
   var _books = false;
+  var _meaning = false;
 
   @override
   void dispose() {
@@ -54,7 +55,9 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 0, 20, 8),
-            child: Row(
+            child: Wrap(
+              spacing: 8,
+              runSpacing: 8,
               children: [
                 _FilterChip(
                   label: l10n.feedTitle,
@@ -62,12 +65,23 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                   chipKey: const Key('library-feed'),
                   onSelected: () => setState(() => _books = false),
                 ),
-                const SizedBox(width: 8),
                 _FilterChip(
                   label: l10n.booksTitle,
                   selected: _books,
                   chipKey: const Key('library-books'),
                   onSelected: () => setState(() => _books = true),
+                ),
+                _FilterChip(
+                  label: _meaning ? l10n.searchMeaning : l10n.searchWords,
+                  selected: _meaning,
+                  chipKey: const Key('library-meaning'),
+                  onSelected: () => setState(() => _meaning = !_meaning),
+                ),
+                _FilterChip(
+                  label: l10n.importTitle,
+                  selected: false,
+                  chipKey: const Key('library-import'),
+                  onSelected: () => context.push('/import'),
                 ),
               ],
             ),
@@ -101,7 +115,7 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
               data: (list) {
                 if (_books) return BooksView(items: list);
                 if (list.isEmpty) return _Empty(text: l10n.libraryEmpty);
-                final visible = filterLibrary(list, filter: _filter, query: _search.text);
+                final visible = filterLibrary(list, filter: _filter, query: _search.text, meaning: _meaning);
                 if (visible.isEmpty) return _Empty(text: l10n.libraryNoMatches);
                 return layoutFor(layout).build(
                   context,

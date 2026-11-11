@@ -95,6 +95,12 @@ class HomeScreen extends ConsumerWidget {
                   onTap: word == null ? null : () => context.push('/vocab'),
                 ),
                 const SizedBox(height: 16),
+                _HomeCard(
+                  title: l10n.ieltsTitle,
+                  subtitle: l10n.ieltsTitle,
+                  onTap: () => context.push('/ielts'),
+                ),
+                const SizedBox(height: 16),
               ],
               if (settings.showsReaderHome) ...[
               SectionLabel(l10n.homeHighlights),

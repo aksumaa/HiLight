@@ -1311,6 +1311,270 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Allow reminders'**
   String get reminderAllow;
+
+  /// No description provided for @ieltsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'IELTS practice'**
+  String get ieltsTitle;
+
+  /// No description provided for @ieltsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing on this shelf yet.'**
+  String get ieltsEmpty;
+
+  /// No description provided for @ieltsVocab.
+  ///
+  /// In en, this message translates to:
+  /// **'Vocab'**
+  String get ieltsVocab;
+
+  /// No description provided for @ieltsListening.
+  ///
+  /// In en, this message translates to:
+  /// **'Listening'**
+  String get ieltsListening;
+
+  /// No description provided for @ieltsReading.
+  ///
+  /// In en, this message translates to:
+  /// **'Reading'**
+  String get ieltsReading;
+
+  /// No description provided for @ieltsWriting.
+  ///
+  /// In en, this message translates to:
+  /// **'Writing'**
+  String get ieltsWriting;
+
+  /// No description provided for @ieltsOfficial.
+  ///
+  /// In en, this message translates to:
+  /// **'Official resources'**
+  String get ieltsOfficial;
+
+  /// No description provided for @ieltsOfficialBody.
+  ///
+  /// In en, this message translates to:
+  /// **'These links leave HiLight. The practice lines here were written for the app.'**
+  String get ieltsOfficialBody;
+
+  /// No description provided for @ieltsTask1.
+  ///
+  /// In en, this message translates to:
+  /// **'Task 1'**
+  String get ieltsTask1;
+
+  /// No description provided for @ieltsTask2.
+  ///
+  /// In en, this message translates to:
+  /// **'Task 2'**
+  String get ieltsTask2;
+
+  /// No description provided for @ieltsBefore.
+  ///
+  /// In en, this message translates to:
+  /// **'Before'**
+  String get ieltsBefore;
+
+  /// No description provided for @ieltsUpgrade.
+  ///
+  /// In en, this message translates to:
+  /// **'Upgrade my sentence'**
+  String get ieltsUpgrade;
+
+  /// No description provided for @ieltsDisclaimer.
+  ///
+  /// In en, this message translates to:
+  /// **'Practice feedback, not an official IELTS score.'**
+  String get ieltsDisclaimer;
+
+  /// No description provided for @topicEducation.
+  ///
+  /// In en, this message translates to:
+  /// **'Education'**
+  String get topicEducation;
+
+  /// No description provided for @topicEnvironment.
+  ///
+  /// In en, this message translates to:
+  /// **'Environment'**
+  String get topicEnvironment;
+
+  /// No description provided for @topicTechnology.
+  ///
+  /// In en, this message translates to:
+  /// **'Technology'**
+  String get topicTechnology;
+
+  /// No description provided for @topicHealth.
+  ///
+  /// In en, this message translates to:
+  /// **'Health'**
+  String get topicHealth;
+
+  /// No description provided for @topicWork.
+  ///
+  /// In en, this message translates to:
+  /// **'Work'**
+  String get topicWork;
+
+  /// No description provided for @topicSociety.
+  ///
+  /// In en, this message translates to:
+  /// **'Society'**
+  String get topicSociety;
+
+  /// No description provided for @quizTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Quiz'**
+  String get quizTitle;
+
+  /// No description provided for @quizBlank.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill the gap'**
+  String get quizBlank;
+
+  /// No description provided for @quizChoice.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose'**
+  String get quizChoice;
+
+  /// No description provided for @quizDictation.
+  ///
+  /// In en, this message translates to:
+  /// **'Dictation'**
+  String get quizDictation;
+
+  /// No description provided for @quizCheck.
+  ///
+  /// In en, this message translates to:
+  /// **'Check'**
+  String get quizCheck;
+
+  /// No description provided for @quizCorrect.
+  ///
+  /// In en, this message translates to:
+  /// **'Kept. This card moves forward.'**
+  String get quizCorrect;
+
+  /// No description provided for @quizAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Missed. This card comes back sooner.'**
+  String get quizAgain;
+
+  /// No description provided for @quizEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Save a sentence or a word first.'**
+  String get quizEmpty;
+
+  /// No description provided for @quizSpeak.
+  ///
+  /// In en, this message translates to:
+  /// **'Play the sentence'**
+  String get quizSpeak;
+
+  /// No description provided for @aiExplain.
+  ///
+  /// In en, this message translates to:
+  /// **'Explain'**
+  String get aiExplain;
+
+  /// No description provided for @aiSimplify.
+  ///
+  /// In en, this message translates to:
+  /// **'Simplify'**
+  String get aiSimplify;
+
+  /// No description provided for @aiTranslate.
+  ///
+  /// In en, this message translates to:
+  /// **'Translate'**
+  String get aiTranslate;
+
+  /// No description provided for @aiGrammar.
+  ///
+  /// In en, this message translates to:
+  /// **'Grammar'**
+  String get aiGrammar;
+
+  /// No description provided for @aiQuiz.
+  ///
+  /// In en, this message translates to:
+  /// **'Quiz me'**
+  String get aiQuiz;
+
+  /// No description provided for @aiLimit.
+  ///
+  /// In en, this message translates to:
+  /// **'Today\'s tutor limit is used. It resets tomorrow.'**
+  String get aiLimit;
+
+  /// No description provided for @aiOffline.
+  ///
+  /// In en, this message translates to:
+  /// **'Offline practice. This was not sent to the tutor.'**
+  String get aiOffline;
+
+  /// No description provided for @importTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Import'**
+  String get importTitle;
+
+  /// No description provided for @importPick.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a file'**
+  String get importPick;
+
+  /// No description provided for @importSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save highlights'**
+  String get importSave;
+
+  /// No description provided for @importEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing new to save.'**
+  String get importEmpty;
+
+  /// No description provided for @importDuplicates.
+  ///
+  /// In en, this message translates to:
+  /// **'Duplicates skipped'**
+  String get importDuplicates;
+
+  /// No description provided for @searchMeaning.
+  ///
+  /// In en, this message translates to:
+  /// **'Meaning'**
+  String get searchMeaning;
+
+  /// No description provided for @searchWords.
+  ///
+  /// In en, this message translates to:
+  /// **'Words'**
+  String get searchWords;
+
+  /// No description provided for @relatedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Related'**
+  String get relatedTitle;
+
+  /// No description provided for @relatedEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No related note yet.'**
+  String get relatedEmpty;
 }
 
 class _AppLocalizationsDelegate

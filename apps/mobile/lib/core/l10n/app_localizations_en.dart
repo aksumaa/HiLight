@@ -641,4 +641,138 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get reminderAllow => 'Allow reminders';
+
+  @override
+  String get ieltsTitle => 'IELTS practice';
+
+  @override
+  String get ieltsEmpty => 'Nothing on this shelf yet.';
+
+  @override
+  String get ieltsVocab => 'Vocab';
+
+  @override
+  String get ieltsListening => 'Listening';
+
+  @override
+  String get ieltsReading => 'Reading';
+
+  @override
+  String get ieltsWriting => 'Writing';
+
+  @override
+  String get ieltsOfficial => 'Official resources';
+
+  @override
+  String get ieltsOfficialBody =>
+      'These links leave HiLight. The practice lines here were written for the app.';
+
+  @override
+  String get ieltsTask1 => 'Task 1';
+
+  @override
+  String get ieltsTask2 => 'Task 2';
+
+  @override
+  String get ieltsBefore => 'Before';
+
+  @override
+  String get ieltsUpgrade => 'Upgrade my sentence';
+
+  @override
+  String get ieltsDisclaimer =>
+      'Practice feedback, not an official IELTS score.';
+
+  @override
+  String get topicEducation => 'Education';
+
+  @override
+  String get topicEnvironment => 'Environment';
+
+  @override
+  String get topicTechnology => 'Technology';
+
+  @override
+  String get topicHealth => 'Health';
+
+  @override
+  String get topicWork => 'Work';
+
+  @override
+  String get topicSociety => 'Society';
+
+  @override
+  String get quizTitle => 'Quiz';
+
+  @override
+  String get quizBlank => 'Fill the gap';
+
+  @override
+  String get quizChoice => 'Choose';
+
+  @override
+  String get quizDictation => 'Dictation';
+
+  @override
+  String get quizCheck => 'Check';
+
+  @override
+  String get quizCorrect => 'Kept. This card moves forward.';
+
+  @override
+  String get quizAgain => 'Missed. This card comes back sooner.';
+
+  @override
+  String get quizEmpty => 'Save a sentence or a word first.';
+
+  @override
+  String get quizSpeak => 'Play the sentence';
+
+  @override
+  String get aiExplain => 'Explain';
+
+  @override
+  String get aiSimplify => 'Simplify';
+
+  @override
+  String get aiTranslate => 'Translate';
+
+  @override
+  String get aiGrammar => 'Grammar';
+
+  @override
+  String get aiQuiz => 'Quiz me';
+
+  @override
+  String get aiLimit => 'Today\'s tutor limit is used. It resets tomorrow.';
+
+  @override
+  String get aiOffline => 'Offline practice. This was not sent to the tutor.';
+
+  @override
+  String get importTitle => 'Import';
+
+  @override
+  String get importPick => 'Choose a file';
+
+  @override
+  String get importSave => 'Save highlights';
+
+  @override
+  String get importEmpty => 'Nothing new to save.';
+
+  @override
+  String get importDuplicates => 'Duplicates skipped';
+
+  @override
+  String get searchMeaning => 'Meaning';
+
+  @override
+  String get searchWords => 'Words';
+
+  @override
+  String get relatedTitle => 'Related';
+
+  @override
+  String get relatedEmpty => 'No related note yet.';
 }

@@ -8,8 +8,11 @@ import '../../../core/l10n/app_localizations.dart';
 import '../../../core/theme/hilight_colors.dart';
 import '../../../core/theme/hilight_theme.dart';
 import '../../../data/models/library_item.dart';
+import '../../ai/application/tutor_provider.dart';
+import '../../profile/application/settings_controller.dart';
 import '../../study/application/study_providers.dart';
 import '../../study/presentation/word_sheet.dart';
+import '../domain/meaning.dart';
 import 'share_quote_card.dart';
 
 class ItemDetailScreen extends ConsumerWidget {
@@ -178,6 +181,21 @@ class _ItemBodyState extends ConsumerState<_ItemBody> {
                   ),
               ],
             ),
+          const SizedBox(height: 12),
+          Wrap(
+            spacing: 8,
+            children: [
+              for (final mode in const ['explain', 'simplify', 'translate', 'grammar', 'quiz'])
+                ActionChip(
+                  label: Text(_modeLabel(l10n, mode)),
+                  onPressed: () => _tutor(mode),
+                ),
+            ],
+          ),
+          const SizedBox(height: 16),
+          Text(l10n.relatedTitle, style: TextStyle(color: colors.secondary, fontSize: 13)),
+          const SizedBox(height: 8),
+          _Related(focus: item),
           const SizedBox(height: 20),
           Wrap(
             spacing: 8,
@@ -235,6 +253,33 @@ class _ItemBodyState extends ConsumerState<_ItemBody> {
     );
   }
 
+  String _modeLabel(AppLocalizations l10n, String mode) {
+    return switch (mode) {
+      'simplify' => l10n.aiSimplify,
+      'translate' => l10n.aiTranslate,
+      'grammar' => l10n.aiGrammar,
+      'quiz' => l10n.aiQuiz,
+      _ => l10n.aiExplain,
+    };
+  }
+
+  Future<void> _tutor(String mode) async {
+    final l10n = AppLocalizations.of(context);
+    final reply = await ref.read(tutorProvider).chat(
+      text: widget.item.text,
+      mode: mode,
+      targetLanguage: ref.read(settingsProvider).localeCode,
+    );
+    if (!mounted) return;
+    final message = reply.limitReached
+        ? l10n.aiLimit
+        : '${reply.offline ? '${l10n.aiOffline} ' : ''}${reply.text}';
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+    if (mode == 'quiz' && !reply.limitReached) {
+      context.push('/quiz');
+    }
+  }
+
   Future<void> _copy() async {
     await Clipboard.setData(ClipboardData(text: _text.text));
     if (!mounted) return;
@@ -289,6 +334,53 @@ class _ItemBodyState extends ConsumerState<_ItemBody> {
     if (confirmed != true || !mounted) return;
     await ref.read(itemRepositoryProvider).delete(widget.item.id);
     if (mounted) context.pop();
+  }
+}
+
+class _Related extends ConsumerStatefulWidget {
+  const _Related({required this.focus});
+
+  final LibraryItem focus;
+
+  @override
+  ConsumerState<_Related> createState() => _RelatedState();
+}
+
+class _RelatedState extends ConsumerState<_Related> {
+  List<String> _remoteIds = const [];
+
+  @override
+  void initState() {
+    super.initState();
+    Future<void>(() async {
+      final ids = await ref.read(tutorProvider).searchIds(widget.focus.text);
+      if (mounted) setState(() => _remoteIds = ids);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final colors = context.hilight;
+    final items = ref.watch(libraryItemsProvider).value ?? const <LibraryItem>[];
+    final remote = [for (final item in items) if (_remoteIds.contains(item.id) && item.id != widget.focus.id) item];
+    final shown = remote.isEmpty ? relatedNotes(items, widget.focus) : remote;
+    if (shown.isEmpty) {
+      return Text(l10n.relatedEmpty, style: TextStyle(color: colors.secondary));
+    }
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        for (final item in shown)
+          TextButton(
+            onPressed: () => context.push('/item/${item.id}'),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text(item.text, maxLines: 2, overflow: TextOverflow.ellipsis),
+            ),
+          ),
+      ],
+    );
   }
 }
 

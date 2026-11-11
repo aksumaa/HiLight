@@ -7,6 +7,8 @@ import '../../../core/l10n/app_localizations.dart';
 import '../../../core/theme/hilight_colors.dart';
 import '../../../core/theme/hilight_theme.dart';
 import '../../../data/models/library_item.dart';
+import '../../profile/application/settings_controller.dart';
+import '../application/tutor_provider.dart';
 import '../domain/ai_repository.dart';
 
 final aiRepositoryProvider = Provider<AiRepository>((ref) {
@@ -67,6 +69,23 @@ class _AiChatScreenState extends ConsumerState<AiChatScreen> {
                     ],
                   ),
           ),
+          SizedBox(
+            height: 44,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              children: [
+                for (final mode in const ['explain', 'simplify', 'translate', 'grammar', 'quiz'])
+                  Padding(
+                    padding: const EdgeInsets.only(right: 8),
+                    child: ActionChip(
+                      label: Text(_modeLabel(l10n, mode)),
+                      onPressed: () => _act(mode),
+                    ),
+                  ),
+              ],
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 8, 20, 24),
             child: Row(
@@ -92,6 +111,34 @@ class _AiChatScreenState extends ConsumerState<AiChatScreen> {
     );
   }
 
+  String _modeLabel(AppLocalizations l10n, String mode) {
+    return switch (mode) {
+      'simplify' => l10n.aiSimplify,
+      'translate' => l10n.aiTranslate,
+      'grammar' => l10n.aiGrammar,
+      'quiz' => l10n.aiQuiz,
+      _ => l10n.aiExplain,
+    };
+  }
+
+  Future<void> _act(String mode) async {
+    final l10n = AppLocalizations.of(context);
+    final text = _input.text.trim().isNotEmpty ? _input.text.trim() : widget.focus?.text ?? '';
+    if (text.isEmpty) return;
+    final reply = await ref.read(tutorProvider).chat(
+      text: text,
+      mode: mode,
+      targetLanguage: ref.read(settingsProvider).localeCode,
+    );
+    if (!mounted) return;
+    final body = reply.limitReached ? l10n.aiLimit : '${reply.offline ? '${l10n.aiOffline}\n' : ''}${reply.text}';
+    setState(() {
+      _messages.add(_ChatMessage.user(_modeLabel(l10n, mode)));
+      _messages.add(_ChatMessage.note(body));
+    });
+    if (mode == 'quiz' && !reply.limitReached) context.push('/quiz');
+  }
+
   void _send() {
     final text = _input.text.trim();
     if (text.isEmpty) return;
@@ -105,11 +152,13 @@ class _AiChatScreenState extends ConsumerState<AiChatScreen> {
 }
 
 class _ChatMessage {
-  _ChatMessage.user(this.text) : reply = null;
-  _ChatMessage.assistant(this.reply) : text = null;
+  _ChatMessage.user(this.text) : reply = null, fromUser = true;
+  _ChatMessage.assistant(this.reply) : text = null, fromUser = false;
+  _ChatMessage.note(this.text) : reply = null, fromUser = false;
 
   final String? text;
   final AiReply? reply;
+  final bool fromUser;
 }
 
 class _MessageView extends StatelessWidget {
@@ -124,7 +173,7 @@ class _MessageView extends StatelessWidget {
     final reply = message.reply;
     if (reply == null) {
       return Align(
-        alignment: Alignment.centerRight,
+        alignment: message.fromUser ? Alignment.centerRight : Alignment.centerLeft,
         child: Container(
           margin: const EdgeInsets.only(bottom: 16),
           padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),

@@ -1,4 +1,5 @@
 import '../../../data/models/library_item.dart';
+import 'meaning.dart';
 
 enum LibraryFilter { all, quote, voice, note, ai }
 
@@ -6,12 +7,24 @@ List<LibraryItem> filterLibrary(
   List<LibraryItem> items, {
   required LibraryFilter filter,
   required String query,
+  bool meaning = false,
 }) {
   final needle = query.trim().toLowerCase();
-  return [
+  final typed = [
     for (final item in items)
-      if (_typeMatches(item, filter) && _queryMatches(item, needle)) item,
+      if (_typeMatches(item, filter)) item,
   ];
+  if (needle.isEmpty) return typed;
+  if (!meaning) {
+    return [
+      for (final item in typed)
+        if (_queryMatches(item, needle)) item,
+    ];
+  }
+  final ranked = [
+    for (final item in typed) (item: item, score: meaningScore(needle, '${item.text} ${item.tag ?? ''}')),
+  ]..sort((a, b) => b.score.compareTo(a.score));
+  return [for (final row in ranked) if (row.score > 0) row.item];
 }
 
 bool _typeMatches(LibraryItem item, LibraryFilter filter) {
