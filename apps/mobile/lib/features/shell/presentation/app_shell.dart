@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/l10n/app_localizations.dart';
+import '../../widget/application/widget_bridge.dart';
 import '../../../core/theme/hilight_colors.dart';
 import '../../../core/theme/hilight_theme.dart';
 
@@ -19,7 +20,7 @@ class AppShell extends StatelessWidget {
     final index = navigationShell.currentIndex;
     return Scaffold(
       extendBody: true,
-      body: navigationShell,
+      body: Stack(children: [navigationShell, const WidgetPublisher()]),
       bottomNavigationBar: ClipRect(
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 24, sigmaY: 24),
