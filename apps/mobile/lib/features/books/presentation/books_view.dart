@@ -62,12 +62,27 @@ class BooksView extends ConsumerWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Expanded(
-                          child: Text(
-                            book.title,
-                            maxLines: 3,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(color: colors.text, fontWeight: FontWeight.w500),
-                          ),
+                          child: book.coverUrl == null
+                              ? Text(
+                                  book.title,
+                                  maxLines: 3,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(color: colors.text, fontWeight: FontWeight.w500),
+                                )
+                              : ClipRRect(
+                                  borderRadius: BorderRadius.circular(8),
+                                  child: Image.network(
+                                    book.coverUrl!,
+                                    fit: BoxFit.cover,
+                                    width: double.infinity,
+                                    errorBuilder: (_, _, _) => Text(
+                                      book.title,
+                                      maxLines: 3,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(color: colors.text, fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
                         ),
                         if (book.author != null)
                           Text(book.author!, maxLines: 1, style: TextStyle(color: colors.secondary, fontSize: 13)),
