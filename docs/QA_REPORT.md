@@ -12,7 +12,7 @@ microphone control from this Mac), so there is nothing honest to describe.
 | Check | Result |
 | --- | --- |
 | `docker compose down -v && docker compose up` | Fail. `docker` is not on `PATH` and Docker.app is not installed. The API container was not started. Homebrew Postgres 16 was already accepting connections on port 5432, so the API tests used that server instead. |
-| `pytest` | Pass. 5 tests, from `backend/` with `.venv/bin/pytest`. Auth, item isolation, last-write-wins, and OCR language/size rejection. |
+| `pytest` | Pass. 5 tests, from `apps/backend/` with `.venv/bin/pytest`. Auth, item isolation, last-write-wins, and OCR language/size rejection. |
 | `flutter analyze` | Pass. No issues found. |
 | `flutter test` | Pass. 14 tests. |
 | `flutter run --release -d 00008110-001C495E223A801E` | Build succeeded. Launch from `flutter run` failed (`Could not run build/ios/iphoneos/Runner.app`, exit 2). `flutter install --release` then showed HiLight 1.0.0 (2) on the phone. `devicectl` refused to open it: the development profile is not trusted (`FBSOpenApplicationServiceErrorDomain` / Security). The UI was not exercised. |
@@ -32,7 +32,7 @@ microphone control from this Mac), so there is nothing honest to describe.
 | d. HiLight AI text and voice, notes / general / nothing-found, daily limit, offline, cancel, spoken answer | Fail | `FakeAiRepository` does a local keyword match and the chat screen shows a fixed sentence from the translation files. No model, stream, voice input, daily limit, cancel, or speech output. |
 | e. Assistant commands | Fail | No command parser. Open Library, create a note, search, theme, and language are ordinary controls, not voice commands. |
 | f. Airplane mode, add 3, sync, no duplicates | Not run on device | Offline writes stay in the Drift outbox. Sync pushes that outbox, then pulls. Newer `updated_at` wins (`test/sync_merge_test.dart`). A delete the server never stored used to fail the whole queue with 404; a 404 is now treated as already gone. Airplane mode was not switched on the phone, and the API was not up, so sync itself was not observed. |
-| g. Two accounts cannot see each other's items or AI sources | Partial | `backend/tests/test_items.py` passed: one user does not see the other's items. AI does not use the server, so "AI sources" isolation was not tested. It was not tried with two accounts on the phone. |
+| g. Two accounts cannot see each other's items or AI sources | Partial | `apps/backend/tests/test_items.py` passed: one user does not see the other's items. AI does not use the server, so "AI sources" isolation was not tested. It was not tried with two accounts on the phone. |
 | h. Appearance: theme, layout, accent, font scale, language | Partial | `test/appearance_screen_test.dart` saves dark theme and compact layout and checks the preview. Accent, font scale, and a live language switch were not exercised on the phone. The system text size is no longer replaced by the in-app slider; the slider multiplies it. |
 | i. Mock device: connect, receive a scan and a voice clip | Fail | The screen has no connect step. The button saves one sample sentence as a device note. It does not receive an image or audio. |
 | j. Delete account and export | Fail | Neither exists in the app or the API. |
@@ -63,7 +63,7 @@ measured. There is no Instruments trace.
 ## Security
 
 - `git ls-files` shows no `.env`, `.pem`, or `.p12`. `.gitignore` ignores
-  `.env`, `backend/.env`, and `.venv`.
+  `.env`, `apps/backend/.env`, and `.venv`.
 - Tokens are written only through `FlutterSecureStorage` with
   `KeychainAccessibility.first_unlock_this_device` and iCloud keychain sync off.
 - A release build with a missing or `http` `API_BASE` uses

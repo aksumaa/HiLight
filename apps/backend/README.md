@@ -26,6 +26,8 @@ Migrations run when the API container starts (`alembic upgrade head`).
 2. Find the Mac's address: System Settings → Network, or `ipconfig getifaddr en0`.
 3. In the Flutter run command, pass that address:
 
+From `apps/mobile`:
+
 ```bash
 flutter run -d <iphone-id> --dart-define=API_BASE=http://192.168.1.20:8000
 ```

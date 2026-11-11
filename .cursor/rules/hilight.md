@@ -37,3 +37,11 @@ Bottom nav: Home, Library, center round Capture button, Insights, Profile.
 Code quality: small widgets, const constructors, no business logic in widgets,
 handle loading/empty/error states, unit tests for repositories and the capture
 pipeline, no new packages without a reason, `flutter analyze` must be clean.
+
+Folder structure:
+- `apps/mobile` — Flutter app (lib, ios, test, assets, pubspec).
+- `apps/backend` — FastAPI, Alembic, docker-compose, tests.
+- `apps/web` — reserved for a future web frontend.
+- `firmware` — reserved for device firmware.
+- `docs` — project notes.
+- `.cursor/rules/hilight.md` — these rules, at the repo root.
